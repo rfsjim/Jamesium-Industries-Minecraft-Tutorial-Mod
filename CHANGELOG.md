@@ -3,6 +3,17 @@
 All notable changes to Jamesium Industries will be documented in this file.
 
 
+## 0.2.2 - 2026-09-19
+
+
+
+### Added
+
+
+- Red Ore Block textures for top, bottom, and sides
+
+
+
 ## 0.2.1 - 2026-09-19
 
 
@@ -10,9 +21,9 @@ All notable changes to Jamesium Industries will be documented in this file.
 ### Added
 
 
-- Added Netherbrick sword
+- Added Nether Brick sword
 
-- Updated textures for customed items - Magic Cube, Nether Sword, and Pet Rabbit Spawn Egg
+- Updated textures for customized items - Magic Cube, Nether Sword, and Pet Rabbit Spawn Egg
 
 
 
