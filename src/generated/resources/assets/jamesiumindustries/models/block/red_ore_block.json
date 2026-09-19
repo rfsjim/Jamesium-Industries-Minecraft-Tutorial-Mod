@@ -1,6 +1,8 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "all": "jamesiumindustries:block/red_ore_block"
+    "bottom": "jamesiumindustries:block/red_ore_block_bottom",
+    "side": "jamesiumindustries:block/red_ore_block_side",
+    "top": "jamesiumindustries:block/red_ore_block_top"
   }
 }

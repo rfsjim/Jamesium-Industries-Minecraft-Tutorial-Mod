@@ -3,7 +3,7 @@ package net.jimmynet.jamesindustries.datagen;
 import net.jimmynet.jamesindustries.JamesiumIndustries;
 import net.jimmynet.jamesindustries.block.ModBlocks;
 import net.jimmynet.jamesindustries.item.ModItems;
-
+import net.jimmynet.jamesindustries.models.ModModelTemplates;
 import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.data.PackOutput;
@@ -25,8 +25,9 @@ public class ModModelProvider extends ModelProvider {
         BlockModelGenerators blockModels,
         ItemModelGenerators itemModels) {
 
-        blockModels.createTrivialCube(
-            ModBlocks.RED_ORE_BLOCK.get()
+        blockModels.createTrivialBlock(
+            ModBlocks.RED_ORE_BLOCK.get(),
+            ModModelTemplates.red_block_texture_provider
         );
 
         itemModels.generateFlatItem(

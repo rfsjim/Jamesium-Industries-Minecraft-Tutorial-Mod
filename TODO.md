@@ -128,6 +128,8 @@ Intentionally postponded because #WORLDGEN
 - [X] Establish recipe datagen
 - [X] Create working shapeless recipe
 - [X] Create working smelting recipe
+- [X] Update Item textures
+- [X] Updated Block texture using different textures for top, bottom, and sides.
 
 ## Datagen
 - [X] Model provider
@@ -138,6 +140,7 @@ Intentionally postponded because #WORLDGEN
 - [X] Keep individual providers in `datagen/`
 - [X] Reduce `JamesiumIndustries` toward boring bootstrap/registration duties
 - [X] Centralise loot-table `ResourceKeys`/constants
+- [X] Create Block Model Templates 
 
 ## Pet Rabbit
 
