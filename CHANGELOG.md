@@ -3,6 +3,19 @@
 All notable changes to Jamesium Industries will be documented in this file.
 
 
+## 0.2.1 - 2026-09-19
+
+
+
+### Added
+
+
+- Added Netherbrick sword
+
+- Updated textures for customed items - Magic Cube, Nether Sword, and Pet Rabbit Spawn Egg
+
+
+
 ## 0.2.0 - 2026-09-13
 
 
