@@ -35,21 +35,20 @@ public class PetRabbitEntity extends Rabbit {
 
     @Override 
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
-        
+        if (!(this.level() instanceof ServerLevel serverLevel)) {
+            return InteractionResult.PASS;
+        }
+
         ItemStack itemStack = player.getItemInHand(hand);
 
         if (itemStack.isEmpty()) {
-
-            if (!this.level().isClientSide() && this.level() instanceof ServerLevel serverLevel) {
-                this.patRabbit(player, serverLevel);
-            }
-
+            this.patRabbit(player, serverLevel);
             return InteractionResult.SUCCESS;
         } else if (this.isFood(itemStack)) {
             return super.mobInteract(player, hand);
         }
 
-        InteractionResult variantResult = interactionChangeVariant(itemStack);
+        InteractionResult variantResult = interactionChangeVariant(player, itemStack);
 
         if (variantResult != InteractionResult.PASS) {
             return variantResult;
@@ -133,7 +132,7 @@ public class PetRabbitEntity extends Rabbit {
         this.giftTime = this.random.nextInt(GIFT_INTERVAL_RANGE) + GIFT_INTERVAL_RANGE;
     }
  
-    private InteractionResult interactionChangeVariant(ItemStack itemStack) {
+    private InteractionResult interactionChangeVariant(Player player, ItemStack itemStack) {
         Rabbit.Variant targetVariant;
         
         if (itemStack.is(Items.GOLD_INGOT)) {
@@ -158,7 +157,12 @@ public class PetRabbitEntity extends Rabbit {
             return InteractionResult.PASS;
         }
 
-        this.setVariant(targetVariant);
+        if (this.level() instanceof ServerLevel)
+        {
+            this.setVariant(targetVariant);
+            itemStack.consume(1, player);
+        }
+
         return  InteractionResult.CONSUME;
     }
 }

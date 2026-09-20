@@ -1,8 +1,7 @@
 # TODO - Jamesium Industries — Project
 
 ## Bug Fix / Clean Up
-- [ ] Variant interaction server guard `setVariant()` lacks interaction path protections
-- [ ] Pet Rabbit Transformations consume the offered item
+Nil
 
 ## Pet Rabbit
 
@@ -101,6 +100,8 @@ Intentionally postponded because #WORLDGEN
 
 ## Bug Fix / Clean Up
 - [X] Currently namespace collision between vanilla `minecraft:nether_brick` recipe and with an associated nether_brick advancement needs to be repaired.
+- [X] Variant interaction server guard `setVariant()` lacks interaction path protections
+- [X] Pet Rabbit Transformations consume the offered item
 
 ## Core mod / infrastructure
 - [X] Create Jamesium Industries mod
