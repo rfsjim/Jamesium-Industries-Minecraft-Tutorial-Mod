@@ -23,5 +23,11 @@ public final class ModBlocks {
             p -> p.mapColor(MapColor.STONE)
         );
 
+    public static final DeferredBlock<Block> MAPLE_LOG_BLOCK =
+        BLOCKS.registerSimpleBlock(
+            "maple_log_block",
+            p -> p.mapColor(MapColor.WOOD)
+        );
+
     private ModBlocks() {}
 }

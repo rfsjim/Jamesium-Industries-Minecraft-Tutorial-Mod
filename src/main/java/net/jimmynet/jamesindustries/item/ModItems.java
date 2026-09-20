@@ -26,6 +26,10 @@ public class ModItems {
         "red_ore_block",
         ModBlocks.RED_ORE_BLOCK);
 
+    public static final DeferredItem<BlockItem> MAPLE_LOG_ITEM = ITEMS.registerSimpleBlockItem(
+        "maple_log_block",
+        ModBlocks.MAPLE_LOG_BLOCK);
+
     public static final DeferredItem<SpawnEggItem> PET_RABBIT_SPAWN_EGG = ITEMS.registerItem(
         "pet_rabbit_spawn_egg",
         p -> new SpawnEggItem(
