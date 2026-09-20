@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:nether_brick"
+        "recipe": "jamesiumindustries:nether_brick_from_red_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:nether_brick"
+      "jamesiumindustries:nether_brick_from_red_ore"
     ]
   }
 }

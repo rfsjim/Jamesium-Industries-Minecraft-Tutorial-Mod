@@ -4,7 +4,7 @@ import java.util.concurrent.CompletableFuture;
 
 import net.jimmynet.jamesindustries.JamesiumIndustries;
 import net.jimmynet.jamesindustries.item.ModItems;
-
+import net.jimmynet.jamesindustries.recipe.ModRecipeKeys;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -52,8 +52,9 @@ public class ModRecipeProvider extends RecipeProvider  {
             10
         )
         .unlockedBy("has_red_ore", this.has(ModItems.RED_ORE_ITEM))
-        .save(this.output);
+        .save(this.output,ModRecipeKeys.NETHER_BRICK_FROM_RED_ORE);
         
+        // Shaped recipe
         ShapedRecipeBuilder.shaped(
             this.registries.lookupOrThrow(Registries.ITEM),
             RecipeCategory.COMBAT,

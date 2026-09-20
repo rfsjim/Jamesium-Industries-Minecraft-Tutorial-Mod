@@ -27,7 +27,12 @@ public class ModModelProvider extends ModelProvider {
 
         blockModels.createTrivialBlock(
             ModBlocks.RED_ORE_BLOCK.get(),
-            ModModelTemplates.red_block_texture_provider
+            ModModelTemplates.cubeBottomTopTextureProvider(ModBlocks.RED_ORE_BLOCK.get())
+        );
+
+        blockModels.createTrivialBlock(
+            ModBlocks.MAPLE_LOG_BLOCK.get(),
+            ModModelTemplates.cubeTopTextureProvider(ModBlocks.MAPLE_LOG_BLOCK.get())
         );
 
         itemModels.generateFlatItem(
