@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 
@@ -28,7 +29,7 @@ public class ModLootTableSubProvider implements LootTableSubProvider {
     public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer) {
         
         consumer.accept(
-            ModLootTableKeys.PET_RABBIT_GIFT,
+            ModLootTableKeys.PET_RABBIT_SEASONAL_GIFT,
             LootTable.lootTable().withPool(
                 LootPool.lootPool()
                 .setRolls(ONE_ROLL)
@@ -94,6 +95,13 @@ public class ModLootTableSubProvider implements LootTableSubProvider {
                 LootPool.lootPool()
                 .setRolls(ONE_ROLL)
                 .add(LootItem.lootTableItem(Items.WITHER_SKELETON_SKULL))
+            ));
+        consumer.accept(
+            ModLootTableKeys.NO_LOOT,
+            LootTable.lootTable().withPool(
+                LootPool.lootPool()
+                .setRolls(ONE_ROLL)
+                .add(EmptyLootItem.emptyItem())
             ));
     }
 }

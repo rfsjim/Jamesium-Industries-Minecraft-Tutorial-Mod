@@ -15,13 +15,7 @@ Nil
 - [ ] Tune weights/counts/drop rates after playing with it
 
 ### Seasonal Gifts
-- [ ] Add `isEasterSeason()`
-- [ ] Use deliberately broad Easter season rather than implementing ecclesiastical computus
-- [ ] Approximate season: 1 March → 1 May
-- [ ] Create Easter gift loot table
-- [ ] Add enhanced Easter loot such as emeralds/diamonds
 - [ ] Decide how seasonal table selection interacts with rabbit variants
-- [ ] Make seasonal date logic easy enough to test without waiting until March
 
 ## Canada Expansion Pack
 
@@ -200,6 +194,14 @@ Intentionally postponded because #WORLDGEN
 - [X] Confirm that rabbits really do gift nuggets and gems
 - [X] Only produce celebratory sound/particles when loot generation succeeds
 - [X] Have datagen and runtime share the same `PET_RABBIT_GIFT` key
+
+### Seasonal Gifts
+- [X] Add `isAroundEaster()`
+- [X] Use deliberately broad Easter season rather than implementing ecclesiastical computus
+- [X] Approximate season: 1 March → 1 May
+- [X] Create Easter gift loot table
+- [X] Add enhanced Easter loot such as emeralds/diamonds
+- [X] Make seasonal date logic easy enough to test without waiting until March
 
 ### Variant Changing Interactions
 - [X] Allow offered `ItemStacks` to transform rabbit variants

@@ -12,9 +12,9 @@ import net.minecraft.world.level.storage.loot.LootTable;
  */
 public final class ModLootTableKeys {
 
-    public static final ResourceKey<LootTable> PET_RABBIT_GIFT = ResourceKey.create(
+    public static final ResourceKey<LootTable> PET_RABBIT_SEASONAL_GIFT = ResourceKey.create(
         Registries.LOOT_TABLE,
-        Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "pet_rabbit_gift")
+        Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "pet_rabbit_seasonal_gift")
     );
 
     public static final ResourceKey<LootTable> PET_RABBIT_GOLD = ResourceKey.create(
@@ -50,6 +50,11 @@ public final class ModLootTableKeys {
     public static final ResourceKey<LootTable> PET_RABBIT_EVIL = ResourceKey.create(
         Registries.LOOT_TABLE,
         Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "pet_rabbit_evil")
+    );
+
+    public static  final ResourceKey<LootTable> NO_LOOT = ResourceKey.create(
+        Registries.LOOT_TABLE,
+        Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "no_loot")
     );
 
     private ModLootTableKeys() {}
