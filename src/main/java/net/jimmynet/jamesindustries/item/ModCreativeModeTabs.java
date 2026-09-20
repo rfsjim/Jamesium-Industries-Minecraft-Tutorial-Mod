@@ -17,8 +17,8 @@ public class ModCreativeModeTabs {
             Registries.CREATIVE_MODE_TAB,
             JamesiumIndustries.MODID);
 
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = 
-        CREATIVE_MODE_TABS.register("example_tab", () -> 
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> JAMES_INDUSTRIES_TAB = 
+        CREATIVE_MODE_TABS.register("james_industries_tab", () -> 
             CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.jamesiumindustries"))
             .withTabsBefore(CreativeModeTabs.COMBAT)
