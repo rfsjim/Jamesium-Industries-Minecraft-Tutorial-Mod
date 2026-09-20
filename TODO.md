@@ -1,5 +1,9 @@
 # TODO - Jamesium Industries — Project
 
+## Bug Fix / Clean Up
+- [ ] Variant interaction server guard `setVariant()` lacks interaction path protections
+- [ ] Pet Rabbit Transformations consume the offered item
+
 ## Pet Rabbit
 
 ### Mob / Pet Interaction
@@ -95,6 +99,9 @@ Intentionally postponded because #WORLDGEN
 
 # DONE
 
+## Bug Fix / Clean Up
+- [X] Currently namespace collision between vanilla `minecraft:nether_brick` recipe and with an associated nether_brick advancement needs to be repaired.
+
 ## Core mod / infrastructure
 - [X] Create Jamesium Industries mod
 - [X] Minecraft 1.21.11
@@ -179,7 +186,6 @@ Intentionally postponded because #WORLDGEN
 - [X] Restrict production to server
 - [X] Require rabbit to be alive
 - [X] Prevent baby rabbits producing gifts
-- [X] Exclude EVIL rabbits
 - [X] Randomise production interval
 - [X] Add egg-laying sound
 - [X] Add particles
@@ -199,5 +205,4 @@ Intentionally postponded because #WORLDGEN
 - [X] Gold ingot → appropriate gold rabbit variant
 - [X] Gold rabbit → influence gift production toward gold nuggets
 - [X] Wither rose or wither skeleton skull → EVIL/Killer Bunny
-- [X] Transformations consume the offered item
 - [X] Determine whether other vanilla rabbit variants deserve corresponding transformation items
