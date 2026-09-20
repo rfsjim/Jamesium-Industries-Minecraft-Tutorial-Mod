@@ -3,7 +3,7 @@ name: Build
 on: [push, pull_request]
 
 permissions:
-  contents: write 
+  contents: read
 
 jobs:
   build:
@@ -22,7 +22,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4.3.0
+        uses: gradle/actions/setup-gradle@v5
 
       - name: Build with Gradle
         run: ./gradlew build --stacktrace
