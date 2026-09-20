@@ -18,7 +18,9 @@ import net.minecraft.world.level.storage.loot.LootTable;
 
 /**
  * 
- * PetRabbitEntity - Petting heals player and mob, mob periodically drops resource gifts
+ * PetRabbitEntity - Petting heals player and mob,
+ * mob periodically drops resource gifts,
+ * mob variant can be changed with items that are consumed on variant change.
  */
 public class PetRabbitEntity extends Rabbit {
 
@@ -133,26 +135,8 @@ public class PetRabbitEntity extends Rabbit {
     }
  
     private InteractionResult interactionChangeVariant(Player player, ItemStack itemStack) {
-        Rabbit.Variant targetVariant;
-        
-        if (itemStack.is(Items.GOLD_INGOT)) {
-            targetVariant = Rabbit.Variant.GOLD;
-        } else if (itemStack.is(Items.IRON_INGOT)) { 
-            targetVariant = Rabbit.Variant.WHITE;
-        } else if (itemStack.is(Items.COAL)) {
-            targetVariant = Rabbit.Variant.BLACK;
-        } else if (itemStack.is(Items.DIRT)) {
-            targetVariant = Rabbit.Variant.BROWN;
-        } else if (itemStack.is(Items.FLINT)) {
-            targetVariant = Rabbit.Variant.WHITE_SPLOTCHED;
-        } else if (itemStack.is(Items.APPLE)) {
-            targetVariant = Rabbit.Variant.SALT;
-        } else if (itemStack.is(Items.WITHER_ROSE)) {
-            targetVariant = Rabbit.Variant.EVIL;
-        } else {
-            return InteractionResult.PASS;
-        }
-        
+        Rabbit.Variant targetVariant = setTargetVariant(itemStack);
+
         if (this.getVariant() == targetVariant) {
             return InteractionResult.PASS;
         }
@@ -164,5 +148,25 @@ public class PetRabbitEntity extends Rabbit {
         }
 
         return  InteractionResult.CONSUME;
+    }
+
+    private Rabbit.Variant setTargetVariant(ItemStack itemStack) {
+        if (itemStack.is(Items.GOLD_INGOT)) {
+            return  Rabbit.Variant.GOLD;
+        } else if (itemStack.is(Items.IRON_INGOT)) { 
+            return  Rabbit.Variant.WHITE;
+        } else if (itemStack.is(Items.COAL)) {
+            return  Rabbit.Variant.BLACK;
+        } else if (itemStack.is(Items.DIRT)) {
+            return  Rabbit.Variant.BROWN;
+        } else if (itemStack.is(Items.FLINT)) {
+            return  Rabbit.Variant.WHITE_SPLOTCHED;
+        } else if (itemStack.is(Items.APPLE)) {
+            return  Rabbit.Variant.SALT;
+        } else if (itemStack.is(Items.WITHER_ROSE)) {
+            return  Rabbit.Variant.EVIL;
+        } else {
+            return this.getVariant();
+        }
     }
 }
