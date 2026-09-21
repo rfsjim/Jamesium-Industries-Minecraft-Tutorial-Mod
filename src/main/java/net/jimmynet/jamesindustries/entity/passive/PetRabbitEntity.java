@@ -37,14 +37,15 @@ public class PetRabbitEntity extends Rabbit {
 
     @Override 
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
-        if (!(this.level() instanceof ServerLevel serverLevel)) {
-            return InteractionResult.PASS;
-        }
-
+        
         ItemStack itemStack = player.getItemInHand(hand);
 
         if (itemStack.isEmpty()) {
-            this.patRabbit(player, serverLevel);
+            
+            if (!this.level().isClientSide() && this.level() instanceof ServerLevel serverLevel) {
+                this.patRabbit(player, serverLevel);
+            } 
+            
             return InteractionResult.SUCCESS;
         } else if (this.isFood(itemStack)) {
             return super.mobInteract(player, hand);
