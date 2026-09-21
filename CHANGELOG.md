@@ -3,6 +3,35 @@
 All notable changes to Jamesium Industries will be documented in this file.
 
 
+## Unreleased
+
+
+
+### Added
+
+
+- Maple Logs, initial item for future Maple Tree world generation
+
+- Framework for seasonal Pet Rabbit Gifts created, added date aware seasonal checks, adjust loot table based on current season
+
+
+
+### Changed
+
+
+- Updated YAML build file to current Node version for Gradle
+
+
+
+### Fixed
+
+
+- Repaired incorrect namespace issue with netherbrick smelting recipe from red ore blocks, removed overriden vanilla recipe
+
+- Added controls for change variant mechanics and items are correctly consumed on variant changes
+
+
+
 ## 0.2.2 - 2026-09-19
 
 
@@ -21,9 +50,9 @@ All notable changes to Jamesium Industries will be documented in this file.
 ### Added
 
 
-- Added Nether Brick sword
+- Added Netherbrick sword
 
-- Updated textures for customized items - Magic Cube, Nether Sword, and Pet Rabbit Spawn Egg
+- Updated textures for customed items - Magic Cube, Nether Sword, and Pet Rabbit Spawn Egg
 
 
 

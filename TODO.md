@@ -1,7 +1,11 @@
 # TODO - Jamesium Industries — Project
 
 ## Bug Fix / Clean Up
-Nil
+- [ ] Pet Rabbit interactions can fire on both hands due to disconnect between client and server interactions
+- [ ] Map log blocks and Red Ore Blocks currently place holder blocks both require corresponding block-drop loot tables, both require block loot-table providers to self drop block items.
+- [ ] Changing an EVIL rabbit back does not fully restore peaceful behavior. Consider either removing EVIL variant interactions, making EVIL a one-way transformation, or explicitly managing the reversible behavior.
+- [ ] Continue investigating tests to deliberately control time for `SeasonalHelpers` `assertTrue(seasons.isAroundEaster());`
+- [ ] Convert Maple Log Block from decorative to conventional wood log block, make appropriate sounds, hardness, and orientation.
 
 ## Pet Rabbit
 
@@ -96,6 +100,7 @@ Intentionally postponded because #WORLDGEN
 - [X] Currently namespace collision between vanilla `minecraft:nether_brick` recipe and with an associated nether_brick advancement needs to be repaired.
 - [X] Variant interaction server guard `setVariant()` lacks interaction path protections
 - [X] Pet Rabbit Transformations consume the offered item
+- [X] Add Maple Log Block Placeholder to creative tab.
 
 ## Core mod / infrastructure
 - [X] Create Jamesium Industries mod
