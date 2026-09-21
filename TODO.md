@@ -1,11 +1,9 @@
 # TODO - Jamesium Industries — Project
 
 ## Bug Fix / Clean Up
-- [ ] Pet Rabbit interactions can fire on both hands due to disconnect between client and server interactions
 - [ ] Map log blocks and Red Ore Blocks currently place holder blocks both require corresponding block-drop loot tables, both require block loot-table providers to self drop block items.
-- [ ] Changing an EVIL rabbit back does not fully restore peaceful behavior. Consider either removing EVIL variant interactions, making EVIL a one-way transformation, or explicitly managing the reversible behavior.
-- [ ] Continue investigating tests to deliberately control time for `SeasonalHelpers` `assertTrue(seasons.isAroundEaster());`
 - [ ] Convert Maple Log Block from decorative to conventional wood log block, make appropriate sounds, hardness, and orientation.
+- [ ] `ModModelTemplates.java` accepts a block argument but builds textures from the registered red ore block directly. Using the supplied block would make the template reusable without adding another abstraction
 
 ## Pet Rabbit
 
@@ -17,6 +15,9 @@
 
 ### Loot Tables / Periodic Gifts
 - [ ] Tune weights/counts/drop rates after playing with it
+- [ ] Reduce repetitive loot-table construction. Using a small private helper to remove boilerplate. Keep it flexible enough for the planned weights and counts.
+- [ ] For loot-table keys use a private factory for the repeated namespace-and-registry construction. Preserving the existing identifiers.
+- [ ] Encapsulate the gift timer. The gift timer is public, and its random initialization is duplicated in the constructor and after a gift. Make the timer private and use one small method to choose the next delay.
 
 ### Seasonal Gifts
 - [ ] Decide how seasonal table selection interacts with rabbit variants
@@ -43,7 +44,7 @@
 - [ ] Decide effects
 - [ ] Create item/texture
 - [ ] Create bear gift loot table
-- [ ] Reuse/generalise periodic gift architecture where sensible
+- [ ] Reuse/generalise periodic gift architecture where sensible. Consider timer persistence, and introducing a reusable gift scheduler for honey.
 
 # BACKLOG
 
@@ -93,6 +94,7 @@ Intentionally postponded because #WORLDGEN
 - [ ] Data components for stateful items where appropriate
 - [ ] Loot contexts beyond `EMPTY` when gift generation actually needs contextual information
 - [ ] GitHub Releases/CD when distributing builds becomes worthwhile
+- [ ] Changing an `EVIL` rabbit back does not fully restore peaceful behavior. Consider either removing `EVIL` variant interactions, making `EVIL` a one-way transformation, or explicitly managing the reversible behavior. `EVIL` is a fun idea however, balance of loot table is currently off and is it required?
 
 # DONE
 
@@ -101,6 +103,8 @@ Intentionally postponded because #WORLDGEN
 - [X] Variant interaction server guard `setVariant()` lacks interaction path protections
 - [X] Pet Rabbit Transformations consume the offered item
 - [X] Add Maple Log Block Placeholder to creative tab.
+- [X] Pet Rabbit interactions can fire on both hands due to disconnect between client and server interactions
+- [X] Temporarily disabled Variant interactions for `EVIL`.
 
 ## Core mod / infrastructure
 - [X] Create Jamesium Industries mod
@@ -207,6 +211,7 @@ Intentionally postponded because #WORLDGEN
 - [X] Create Easter gift loot table
 - [X] Add enhanced Easter loot such as emeralds/diamonds
 - [X] Make seasonal date logic easy enough to test without waiting until March
+- [X] Continue investigating tests to deliberately control time for `SeasonalHelpers` `assertTrue(seasons.isAroundEaster());`
 
 ### Variant Changing Interactions
 - [X] Allow offered `ItemStacks` to transform rabbit variants
