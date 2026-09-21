@@ -17,6 +17,10 @@ Useful Tools
 - `.\gradlew runServer` Run Server
 - `.\gradlew classes` Fast Compilation Checks
 - `.\gradlew clean` Clean Slate
+- `.\gradlew test` Run Tests
+- `Restart Java Language Server` VS Code's understanding of this Java project appears to be wrong. Rebuild it.
+- `Clean Java Language Server Workspace` A heavier cache/project-workspace cleanup when restarting isn't enough.
+- `Java: List All Java Source Paths` List ALL Java source paths
 
 VS Code IDE Commands and Navigation
 =======
