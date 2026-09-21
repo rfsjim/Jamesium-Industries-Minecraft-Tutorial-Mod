@@ -18,10 +18,10 @@ public final class ModModelTemplates {
         TextureSlot.BOTTOM,
         TextureSlot.SIDE);
 
-    private static final ModelTemplate CUBE_TOP_TEMPLATE = new ModelTemplate(
-        ModelTemplates.CUBE_TOP.model,
+    private static final ModelTemplate CUBE_COLUMN_TEMPLATE = new ModelTemplate(
+        ModelTemplates.CUBE_COLUMN.model,
         Optional.empty(),
-        TextureSlot.TOP,
+        TextureSlot.END,
         TextureSlot.SIDE
     );
     
@@ -43,18 +43,18 @@ public final class ModModelTemplates {
             CUBE_BOTTOM_TOP_TEMPLATE);
     }
 
-    public static final TexturedModel.Provider cubeTopTextureProvider(Block block) {
+    public static final TexturedModel.Provider cubeColumnTextureProvider(Block block) {
         return TexturedModel.createDefault(
             b -> new TextureMapping()
             .put(
-                TextureSlot.TOP,
+                TextureSlot.END,
                 TextureMapping.getBlockTexture(block, "_top")
             )
             .put(
                 TextureSlot.SIDE,
                 TextureMapping.getBlockTexture(block, "_side")
             ),
-            CUBE_TOP_TEMPLATE);
+            CUBE_COLUMN_TEMPLATE);
     }
 
     private ModModelTemplates() {}
