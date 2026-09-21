@@ -32,7 +32,7 @@ public class ModModelProvider extends ModelProvider {
 
         blockModels.createTrivialBlock(
             ModBlocks.MAPLE_LOG_BLOCK.get(),
-            ModModelTemplates.cubeTopTextureProvider(ModBlocks.MAPLE_LOG_BLOCK.get())
+            ModModelTemplates.cubeColumnTextureProvider(ModBlocks.MAPLE_LOG_BLOCK.get())
         );
 
         itemModels.generateFlatItem(

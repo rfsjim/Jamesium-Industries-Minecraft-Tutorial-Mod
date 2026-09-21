@@ -1,7 +1,7 @@
 {
-  "parent": "minecraft:block/cube_top",
+  "parent": "minecraft:block/cube_column",
   "textures": {
-    "side": "jamesiumindustries:block/maple_log_block_side",
-    "top": "jamesiumindustries:block/maple_log_block_top"
+    "end": "jamesiumindustries:block/maple_log_block_top",
+    "side": "jamesiumindustries:block/maple_log_block_side"
   }
 }

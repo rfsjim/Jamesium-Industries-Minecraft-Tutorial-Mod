@@ -3,12 +3,12 @@ package net.jimmynet.jamesindustries.event;
 import java.util.List;
 import java.util.Set;
 
+import net.jimmynet.jamesindustries.datagen.ModBlockLootSubProvider;
 import net.jimmynet.jamesindustries.datagen.ModLootTableSubProvider;
 import net.jimmynet.jamesindustries.datagen.ModModelProvider;
 import net.jimmynet.jamesindustries.datagen.ModRecipeProvider;
 import net.jimmynet.jamesindustries.entity.ModEntities;
 import net.jimmynet.jamesindustries.item.ModItems;
-
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.entity.animal.rabbit.Rabbit;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -58,6 +58,10 @@ public final class ModEvents {
                     new LootTableProvider.SubProviderEntry(
                         ModLootTableSubProvider::new,
                         LootContextParamSets.EMPTY
+                    ),
+                    new LootTableProvider.SubProviderEntry(
+                        ModBlockLootSubProvider::new,
+                        LootContextParamSets.BLOCK
                     )
                 ),
                 lookupProvider

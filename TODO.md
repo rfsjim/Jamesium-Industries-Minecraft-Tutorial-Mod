@@ -1,7 +1,6 @@
 # TODO - Jamesium Industries — Project
 
 ## Bug Fix / Clean Up
-- [ ] Map log blocks and Red Ore Blocks currently place holder blocks both require corresponding block-drop loot tables, both require block loot-table providers to self drop block items.
 - [ ] Convert Maple Log Block from decorative to conventional wood log block, make appropriate sounds, hardness, and orientation.
 - [ ] `ModModelTemplates.java` accepts a block argument but builds textures from the registered red ore block directly. Using the supplied block would make the template reusable without adding another abstraction
 
@@ -105,6 +104,7 @@ Intentionally postponded because #WORLDGEN
 - [X] Add Maple Log Block Placeholder to creative tab.
 - [X] Pet Rabbit interactions can fire on both hands due to disconnect between client and server interactions
 - [X] Temporarily disabled Variant interactions for `EVIL`.
+- [X] Map log blocks and Red Ore Blocks currently place holder blocks both require corresponding block-drop loot tables, both require block loot-table providers to self drop block items.
 
 ## Core mod / infrastructure
 - [X] Create Jamesium Industries mod
