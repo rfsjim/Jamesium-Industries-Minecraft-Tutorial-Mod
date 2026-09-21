@@ -95,6 +95,7 @@ neoForge {
             // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             logLevel = org.slf4j.event.Level.DEBUG
         }
+
     }
 
     mods {
@@ -104,6 +105,14 @@ neoForge {
         "${mod_id}" {
             sourceSet(sourceSets.main)
         }
+    }
+
+    unitTest {
+        // Enable JUnit support in the moddev plugin
+        enable()
+        // Configure which mod is being tested.
+        // This allows NeoForge to load the test/ classes and resources as belonging to the mod.
+        testedMod = mods."${mod_id}"
     }
 }
 
@@ -137,6 +146,14 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+    // JUnit Testing Setup
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
