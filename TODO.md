@@ -1,8 +1,7 @@
 # TODO - Jamesium Industries — Project
 
 ## Bug Fix / Clean Up
-- [ ] Convert Maple Log Block from decorative to conventional wood log block, make appropriate sounds, hardness, and orientation.
-- [ ] `ModModelTemplates.java` accepts a block argument but builds textures from the registered red ore block directly. Using the supplied block would make the template reusable without adding another abstraction
+- [ ] Convert Maple Log Block from decorative to conventional wood log block, make appropriate sounds, hardness, and orientation. Use the vanilla rotated-pillar pattern and generate models/blockstates for each axis. Also address the axe-mining tag when completing conventional wood behavior. Requires orientation and wood integration. 
 
 ## Pet Rabbit
 
@@ -85,7 +84,7 @@ Intentionally postponded because #WORLDGEN
 ## Research rabbit holes deliberately deferred
 - [ ] Synched entity data when a feature actually needs client/server state synchronisation
 - [ ] Persistent custom pet state when a feature actually needs to survive save/reload
-- [ ] Persistent `nextPetTime` and/or `nuggetTime` across unload/reload of the entity
+- [ ] Persistent `nextPetTime` and/or `GiftTime` across unload/reload of the entity
 - [ ] Ownership UUID persistence
 - [ ] More advanced AI goal architecture
 - [ ] Custom entity rendering/models
@@ -105,6 +104,7 @@ Intentionally postponded because #WORLDGEN
 - [X] Pet Rabbit interactions can fire on both hands due to disconnect between client and server interactions
 - [X] Temporarily disabled Variant interactions for `EVIL`.
 - [X] Map log blocks and Red Ore Blocks currently place holder blocks both require corresponding block-drop loot tables, both require block loot-table providers to self drop block items.
+- [X] `ModModelTemplates.java` accepts a block argument but builds textures from the registered red ore block directly. Using the supplied block would make the template reusable without adding another abstraction
 
 ## Core mod / infrastructure
 - [X] Create Jamesium Industries mod
@@ -186,7 +186,7 @@ Intentionally postponded because #WORLDGEN
 ### Loot Tables / Periodic gifts
 - [X] Investigate vanilla Chicken egg-laying implementation
 - [X] Identify `aiStep()` as appropriate lifecycle hook
-- [X] Add `nuggetTime` timer
+- [X] Add `GiftTime` timer
 - [X] Restrict production to server
 - [X] Require rabbit to be alive
 - [X] Prevent baby rabbits producing gifts

@@ -14,6 +14,10 @@ All notable changes to Jamesium Industries will be documented in this file.
 
 - Framework for seasonal Pet Rabbit Gifts created, added date aware seasonal checks, adjust loot table based on current season
 
+- Added place holder maple logs to creative tab
+
+- Added Loot tables for Red Ore and Maple Log Blocks
+
 
 
 ### Changed
@@ -29,6 +33,14 @@ All notable changes to Jamesium Industries will be documented in this file.
 - Repaired incorrect namespace issue with netherbrick smelting recipe from red ore blocks, removed overriden vanilla recipe
 
 - Added controls for change variant mechanics and items are correctly consumed on variant changes
+
+- Fixed code that allowed Pet Rabbit interactions can fire on both hands due to disconnect between client and server interactions
+
+- Temporarily disabled EVIL Pet Rabbit variant interactions due to Changing an EVIL rabbit back does not fully restore peaceful behavior.
+
+- Adjust model template and block properties for Maple Log Blocks
+
+- Pet Rabbit bugfix - Adjusted the guard checks around chaning variant to EVIL preventing WITHER ROSE from initiating the variant change
 
 
 
