@@ -10,9 +10,10 @@ Features
 - A pet rabbit that periodically gifts nuggets and gems
 - Red ore block that smelts into nether bricks
 
-TODO List
+TODO List & CHANGELOG
 =======
 - [Project Plan / TODO list](TODO.md)
+- [Change Log](CHANGELOG.md)
 
 Useful Tools
 =======
