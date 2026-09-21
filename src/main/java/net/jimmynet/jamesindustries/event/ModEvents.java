@@ -37,6 +37,7 @@ public final class ModEvents {
     private static void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             event.accept(ModItems.RED_ORE_ITEM);
+            event.accept(ModItems.MAPLE_LOG_ITEM);
         }
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
             event.accept(ModItems.PET_RABBIT_SPAWN_EGG);
