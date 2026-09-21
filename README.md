@@ -8,7 +8,11 @@ Minecraft 1.21.11
 Features
 =======
 - A pet rabbit that periodically gifts nuggets and gems
-- Red ore block that smelts into nether bricks 
+- Red ore block that smelts into nether bricks
+
+TODO List
+=======
+- [Project Plan / TODO list](TODO.md)
 
 Useful Tools
 =======
