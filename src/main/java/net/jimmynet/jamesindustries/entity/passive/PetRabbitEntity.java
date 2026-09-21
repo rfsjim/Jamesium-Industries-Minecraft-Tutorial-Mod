@@ -51,7 +51,7 @@ public class PetRabbitEntity extends Rabbit {
             return super.mobInteract(player, hand);
         }
 
-        if (this.getVariant() != Rabbit.Variant.EVIL) {
+        if (this.getVariant() != Rabbit.Variant.EVIL || !itemStack.is(Items.WITHER_ROSE)) {
             InteractionResult variantResult = interactionChangeVariant(player, itemStack);
             
             if (variantResult != InteractionResult.PASS) {
