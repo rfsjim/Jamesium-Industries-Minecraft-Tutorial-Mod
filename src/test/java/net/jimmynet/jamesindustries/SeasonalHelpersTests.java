@@ -18,4 +18,40 @@ public class SeasonalHelpersTests {
 
         Assertions.assertTrue(seasons.isAroundEaster());
     }
+
+    @Test
+    void dayBeforeEasterWindow() {
+        SeasonalHelpers seasons = new SeasonalHelpers(
+            LocalDate.of(2027, 2, 28)
+        );
+
+        Assertions.assertFalse(seasons.isAroundEaster());
+    }
+
+    @Test 
+    void dayAfterEasterWindow() {
+        SeasonalHelpers seasons = new SeasonalHelpers(
+            LocalDate.of(2027, 5, 1)
+        );
+
+        Assertions.assertFalse(seasons.isAroundEaster());
+    }
+
+    @Test
+    void firstDayOfEasterWindow() {
+        SeasonalHelpers seasons = new SeasonalHelpers(
+            LocalDate.of(2027, 3, 1)
+        );
+
+        Assertions.assertTrue(seasons.isAroundEaster());
+    }
+
+    @Test 
+    void lastDayOfEasterWindow() {
+        SeasonalHelpers seasons = new SeasonalHelpers(
+            LocalDate.of(2027, 4, 30)
+        );
+
+        Assertions.assertTrue(seasons.isAroundEaster());
+    }
 }
