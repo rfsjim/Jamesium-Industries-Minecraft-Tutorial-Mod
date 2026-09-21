@@ -51,10 +51,12 @@ public class PetRabbitEntity extends Rabbit {
             return super.mobInteract(player, hand);
         }
 
-        InteractionResult variantResult = interactionChangeVariant(player, itemStack);
-
-        if (variantResult != InteractionResult.PASS) {
-            return variantResult;
+        if (this.getVariant() != Rabbit.Variant.EVIL) {
+            InteractionResult variantResult = interactionChangeVariant(player, itemStack);
+            
+            if (variantResult != InteractionResult.PASS) {
+                return variantResult;
+            }
         }
         
         return super.mobInteract(player, hand);
