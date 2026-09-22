@@ -18,6 +18,8 @@ All notable changes to Jamesium Industries will be documented in this file.
 
 - Added Loot tables for Red Ore and Maple Log Blocks
 
+- Converted Maple Log Block from decorative to conventional wood log block, added block item tags for RED ORE BLOCK and MAPLE LOG BLOCKS, adjusted textures for logs
+
 
 
 ### Changed
@@ -41,6 +43,8 @@ All notable changes to Jamesium Industries will be documented in this file.
 - Adjust model template and block properties for Maple Log Blocks
 
 - Pet Rabbit bugfix - Adjusted the guard checks around chaning variant to EVIL preventing WITHER ROSE from initiating the variant change
+
+- Bugfix for build.yml and shields in README.md
 
 
 
