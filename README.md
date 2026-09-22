@@ -6,13 +6,13 @@ Updated Minecraft tutorial using Neoforge 21.11.45
 Minecraft 1.21.11
 
 ![Static Badge](https://img.shields.io/badge/github-another_minecraft_mod_repo-800000?logo=github)
- [![License](https://img.shields.io/badge/License-MIT_license-red)](LICENSE)
-
- ![Build](https://github.com/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod/actions/workflows/ci.yml/badge.svg)
-
- ![Licence](https://img.shields.io/github/license/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod)
-
+![Licence](https://img.shields.io/github/license/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod)
  ![Last Commit](https://img.shields.io/github/last-commit/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod)
+ ![Build](https://img.shields.io/github/actions/workflow/status/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod/build.yml)
+
+ 
+
+
 
 Features
 =======

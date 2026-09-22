@@ -26,12 +26,3 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew build --stacktrace
-
-      - name: Build-A-Badge
-        uses: peterrhodesdev/build-a-badge@v1.3.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          filename: my-badge
-          label: BUILD
-          message: badge
-          color: red
