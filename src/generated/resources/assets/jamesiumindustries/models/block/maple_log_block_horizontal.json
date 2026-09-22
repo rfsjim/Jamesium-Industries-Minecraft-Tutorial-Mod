@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/cube_column",
+  "parent": "minecraft:block/cube_column_horizontal",
   "textures": {
     "end": "jamesiumindustries:block/maple_log_block_top",
     "side": "jamesiumindustries:block/maple_log_block"

@@ -3,6 +3,7 @@ package net.jimmynet.jamesindustries.block;
 import net.jimmynet.jamesindustries.JamesiumIndustries;
 
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -22,19 +23,21 @@ public final class ModBlocks {
     public static final DeferredBlock<Block> RED_ORE_BLOCK = 
         BLOCKS.registerSimpleBlock(
             "red_ore_block",
-            p -> p.mapColor(MapColor.STONE)
+            p -> p
+            .mapColor(MapColor.STONE)
         );
 
     public static final DeferredBlock<Block> MAPLE_LOG_BLOCK =
-        BLOCKS.registerSimpleBlock(
+        BLOCKS.registerBlock(
             "maple_log_block",
-            p -> p
-            .mapColor(MapColor.WOOD)
-            .instrument(NoteBlockInstrument.BASS)
-            .strength(1)
-            .sound(SoundType.WOOD)
-            .ignitedByLava()
+            RotatedPillarBlock::new,
+                p -> p
+                .mapColor(MapColor.WOOD)
+                .sound(SoundType.WOOD)
+                .instrument(NoteBlockInstrument.BASS)
+                .strength(1f)
+                .ignitedByLava()
         );
 
-    private ModBlocks() {}
+        private ModBlocks() {}
 }

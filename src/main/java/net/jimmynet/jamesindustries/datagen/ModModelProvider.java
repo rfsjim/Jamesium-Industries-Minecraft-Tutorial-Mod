@@ -30,10 +30,9 @@ public class ModModelProvider extends ModelProvider {
             ModModelTemplates.cubeBottomTopTextureProvider(ModBlocks.RED_ORE_BLOCK.get())
         );
 
-        blockModels.createTrivialBlock(
-            ModBlocks.MAPLE_LOG_BLOCK.get(),
-            ModModelTemplates.cubeColumnTextureProvider(ModBlocks.MAPLE_LOG_BLOCK.get())
-        );
+        blockModels
+            .woodProvider(ModBlocks.MAPLE_LOG_BLOCK.get())
+            .logWithHorizontal(ModBlocks.MAPLE_LOG_BLOCK.get());
 
         itemModels.generateFlatItem(
             ModItems.MAGIC_CUBE.get(),

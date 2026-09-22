@@ -1,7 +1,6 @@
 # TODO - Jamesium Industries — Project
 
 ## Bug Fix / Clean Up
-- [ ] Convert Maple Log Block from decorative to conventional wood log block, make appropriate sounds, hardness, and orientation. Use the vanilla rotated-pillar pattern and generate models/blockstates for each axis. Also address the axe-mining tag when completing conventional wood behavior. Requires orientation and wood integration. 
 
 ## Pet Rabbit
 
@@ -105,6 +104,7 @@ Intentionally postponded because #WORLDGEN
 - [X] Temporarily disabled Variant interactions for `EVIL`.
 - [X] Map log blocks and Red Ore Blocks currently place holder blocks both require corresponding block-drop loot tables, both require block loot-table providers to self drop block items.
 - [X] `ModModelTemplates.java` accepts a block argument but builds textures from the registered red ore block directly. Using the supplied block would make the template reusable without adding another abstraction
+- [X] Convert Maple Log Block from decorative to conventional wood log block, make appropriate sounds, hardness, and orientation. Use the vanilla rotated-pillar pattern and generate models/blockstates for each axis. Also address the axe-mining tag when completing conventional wood behavior. Requires orientation and wood integration. 
 
 ## Core mod / infrastructure
 - [X] Create Jamesium Industries mod
