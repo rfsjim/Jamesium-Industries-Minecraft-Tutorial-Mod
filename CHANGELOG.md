@@ -20,6 +20,10 @@ All notable changes to Jamesium Industries will be documented in this file.
 
 - Converted Maple Log Block from decorative to conventional wood log block, added block item tags for RED ORE BLOCK and MAPLE LOG BLOCKS, adjusted textures for logs
 
+- Port Silver blocks and items from previous repo based on Minecraft 1.16.x Forge 36 Silver Ore Blocks, Silver Blocks, and Silver Ingots
+
+- Upscaled placeholder Silver textures from ported mod 16 x 16 into 64 x 64 files
+
 
 
 ### Changed
@@ -45,6 +49,8 @@ All notable changes to Jamesium Industries will be documented in this file.
 - Pet Rabbit bugfix - Adjusted the guard checks around chaning variant to EVIL preventing WITHER ROSE from initiating the variant change
 
 - Bugfix for build.yml and shields in README.md
+
+- Added datagen for Tags to create burnable logs
 
 
 
