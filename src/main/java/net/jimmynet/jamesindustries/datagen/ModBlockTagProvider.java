@@ -18,12 +18,13 @@ public class ModBlockTagProvider extends BlockTagsProvider {
     protected void addTags(HolderLookup.Provider provider)
     {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
-            .add(ModBlocks.RED_ORE_BLOCK.get());
+            .add(ModBlocks.RED_ORE_BLOCK.get())
+            .add(ModBlocks.SILVER_ORE_BLOCK.get());
 
-        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+        tag(BlockTags.MINEABLE_WITH_AXE)
             .add(ModBlocks.MAPLE_LOG_BLOCK.get());
-        
-        this.tag(BlockTags.LOGS_THAT_BURN)
+ 
+        tag(BlockTags.LOGS_THAT_BURN)
             .add(ModBlocks.MAPLE_LOG_BLOCK.get());
     }
 }

@@ -26,5 +26,7 @@ public class ModBlockLootSubProvider extends BlockLootSubProvider  {
     protected void generate() {
         this.dropSelf(ModBlocks.MAPLE_LOG_BLOCK.get());
         this.dropSelf(ModBlocks.RED_ORE_BLOCK.get());
+        this.dropSelf(ModBlocks.SILVER_ORE_BLOCK.get());
+        this.dropSelf(ModBlocks.SILVER_BLOCK.get());
     }
 }

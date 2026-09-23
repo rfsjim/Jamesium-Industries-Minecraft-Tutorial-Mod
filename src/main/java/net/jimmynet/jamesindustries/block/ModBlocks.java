@@ -25,6 +25,27 @@ public final class ModBlocks {
             "red_ore_block",
             p -> p
             .mapColor(MapColor.STONE)
+            .strength(3f)
+            .sound(SoundType.STONE)
+        );
+    
+    public static final DeferredBlock<Block> SILVER_ORE_BLOCK =
+        BLOCKS.registerSimpleBlock(
+            "silver_ore_block",
+            p -> p
+            .mapColor(MapColor.COLOR_GRAY)
+            .strength(3f)
+            .sound(SoundType.STONE)
+        );
+
+    public static final DeferredBlock<Block> SILVER_BLOCK =
+        BLOCKS.registerSimpleBlock(
+            "silver_block",
+            p -> p
+            .mapColor(MapColor.COLOR_GRAY)
+            .strength(3f)
+            .sound(SoundType.METAL)
+            .instrument(NoteBlockInstrument.BELL)
         );
 
     public static final DeferredBlock<Block> MAPLE_LOG_BLOCK =

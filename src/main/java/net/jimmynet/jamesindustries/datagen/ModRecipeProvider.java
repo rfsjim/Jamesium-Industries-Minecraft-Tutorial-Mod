@@ -53,6 +53,16 @@ public class ModRecipeProvider extends RecipeProvider  {
         )
         .unlockedBy("has_red_ore", this.has(ModItems.RED_ORE_ITEM))
         .save(this.output,ModRecipeKeys.NETHER_BRICK_FROM_RED_ORE);
+
+        SimpleCookingRecipeBuilder.smelting(
+            Ingredient.of(ModItems.SILVER_ORE_ITEM),
+            RecipeCategory.BUILDING_BLOCKS,
+            ModItems.SILVER_INGOT,
+            0.1f,
+            10
+        )
+        .unlockedBy("has_silver_ore", this.has(ModItems.SILVER_ORE_ITEM))
+        .save(this.output);
         
         // Shaped recipe
         ShapedRecipeBuilder.shaped(
@@ -66,6 +76,18 @@ public class ModRecipeProvider extends RecipeProvider  {
         .define('N', Items.BRICKS_NETHER)
         .define('S', net.minecraft.world.item.Items.STICK)
         .unlockedBy("has_nether_brick", this.has(Items.BRICKS_NETHER))
+        .save(this.output);
+
+        ShapedRecipeBuilder.shaped(
+            this.registries.lookupOrThrow(Registries.ITEM),
+            RecipeCategory.DECORATIONS,
+            ModItems.SILVER_ITEM
+        )
+        .pattern("III")
+        .pattern("III")
+        .pattern("III")
+        .define('I', ModItems.SILVER_INGOT)
+        .unlockedBy("has_silver_ingot", this.has(ModItems.SILVER_INGOT))
         .save(this.output);
     }
 

@@ -30,6 +30,16 @@ public class ModModelProvider extends ModelProvider {
             ModModelTemplates.cubeBottomTopTextureProvider(ModBlocks.RED_ORE_BLOCK.get())
         );
 
+        blockModels.createTrivialBlock(
+            ModBlocks.SILVER_ORE_BLOCK.get(),
+            ModModelTemplates.cubeAllTextureProvider(ModBlocks.SILVER_ORE_BLOCK.get())
+        );
+
+        blockModels.createTrivialBlock(
+             ModBlocks.SILVER_BLOCK.get(),
+            ModModelTemplates.cubeAllTextureProvider(ModBlocks.SILVER_BLOCK.get())
+        );
+
         blockModels
             .woodProvider(ModBlocks.MAPLE_LOG_BLOCK.get())
             .logWithHorizontal(ModBlocks.MAPLE_LOG_BLOCK.get());
@@ -46,7 +56,13 @@ public class ModModelProvider extends ModelProvider {
 
         itemModels.generateFlatItem(
             ModItems.NETHER_SWORD.get(),
-            ModelTemplates.FLAT_HANDHELD_ITEM);
+            ModelTemplates.FLAT_HANDHELD_ITEM
+        );
+
+        itemModels.generateFlatItem(
+            ModItems.SILVER_INGOT.get(),
+            ModelTemplates.FLAT_ITEM
+        );
 
     }
 }

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 10,
+  "experience": 0.1,
+  "ingredient": "jamesiumindustries:silver_ore_block",
+  "result": {
+    "count": 1,
+    "id": "jamesiumindustries:silver_ingot"
+  }
+}
