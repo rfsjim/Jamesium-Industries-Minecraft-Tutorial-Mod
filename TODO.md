@@ -4,7 +4,6 @@
 Nil Currently identified outstanding
 
 ## Basic Blocks / Items
-- [ ] Upscale merged Shiny Tools textures from 32x32 to 64x64
 - [ ] Consider uses for Silver Tools - potentially they are gold tier
 - [ ] Nether Brick Sword spawns with Fire Aspect
 
@@ -149,6 +148,7 @@ Intentionally postponded because #WORLDGEN
 - [X] Updated Block texture using different textures for top, bottom, and sides.
 - [X] Merged Existing Stub Mod Shiny Tools from Minecraft 1.16.x Forge 36 - A mod adding shiny new tools to minecraft `SILVER_ORE_BLOCK`, `SILVER_BLOCK`, `SILVER_INGOT` - migrating functions to Minecraft 1.21.11 Neoforge 21.11.45
 - [X] Nether Sword is fire resistant
+- [X] Upscale merged Shiny Tools textures from 32x32 to 64x64
 
 ## Datagen
 - [X] Model provider

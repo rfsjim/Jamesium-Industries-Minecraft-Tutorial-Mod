@@ -17,8 +17,10 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
     @Override 
     protected void addTags(HolderLookup.Provider provider) {
-        tag(ItemTags.SWORDS).add(ModItems.NETHER_SWORD.get());
+        this.tag(ItemTags.SWORDS)
+            .add(ModItems.NETHER_SWORD.get());
 
-        tag(ItemTags.LOGS_THAT_BURN).add(ModBlocks.MAPLE_LOG_BLOCK.get().asItem());
+        this.tag(ItemTags.LOGS_THAT_BURN)
+            .add(ModBlocks.MAPLE_LOG_BLOCK.get().asItem());
     }
 }

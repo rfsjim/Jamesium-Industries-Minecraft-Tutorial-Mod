@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Set;
 
 import net.jimmynet.jamesindustries.datagen.ModBlockLootSubProvider;
+import net.jimmynet.jamesindustries.datagen.ModBlockTagProvider;
+import net.jimmynet.jamesindustries.datagen.ModItemTagProvider;
 import net.jimmynet.jamesindustries.datagen.ModLootTableSubProvider;
 import net.jimmynet.jamesindustries.datagen.ModModelProvider;
 import net.jimmynet.jamesindustries.datagen.ModRecipeProvider;
@@ -59,10 +61,14 @@ public final class ModEvents {
     }
 
     private static void gatherData(GatherDataEvent.Client event) {
+    
         event.createProvider(ModModelProvider::new);
         event.createProvider(ModRecipeProvider.Runner::new);
+        event.createProvider(ModBlockTagProvider::new);
+        event.createProvider(ModItemTagProvider::new);
+
         event.createProvider(
-            (output, lookupProvider) -> new LootTableProvider(
+            (output, provider) -> new LootTableProvider(
                 output,
                 Set.of(),
                 List.of(
@@ -75,7 +81,7 @@ public final class ModEvents {
                         LootContextParamSets.BLOCK
                     )
                 ),
-                lookupProvider
+                provider
             )
         );
     }
