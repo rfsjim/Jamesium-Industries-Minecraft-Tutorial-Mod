@@ -27,7 +27,13 @@ public final class EnchantHelpers {
             .lookupOrThrow(Registries.ENCHANTMENT)
             .getOrThrow(enchantment);
         
-        stack.enchant(enchantmentHolder, level);
+        if (
+            stack.supportsEnchantment(enchantmentHolder) &&
+            level >= enchantmentHolder.value().getMinLevel() &&
+            level <= enchantmentHolder.value().getMaxLevel()
+        ) {
+            stack.enchant(enchantmentHolder, level);
+        }
 
         return stack;
     }
