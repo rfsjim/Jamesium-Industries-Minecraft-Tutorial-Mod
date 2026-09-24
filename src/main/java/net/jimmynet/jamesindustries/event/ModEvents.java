@@ -10,10 +10,13 @@ import net.jimmynet.jamesindustries.datagen.ModLootTableSubProvider;
 import net.jimmynet.jamesindustries.datagen.ModModelProvider;
 import net.jimmynet.jamesindustries.datagen.ModRecipeProvider;
 import net.jimmynet.jamesindustries.entity.ModEntities;
+import net.jimmynet.jamesindustries.helpers.EnchantHelpers;
 import net.jimmynet.jamesindustries.item.ModItems;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.entity.animal.rabbit.Rabbit;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 
 import net.neoforged.bus.api.IEventBus;
@@ -45,7 +48,12 @@ public final class ModEvents {
             event.accept(ModItems.PET_RABBIT_SPAWN_EGG);
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
-            event.accept(ModItems.NETHER_SWORD);
+           ItemStack enchantedNetherSword = EnchantHelpers.applyEnchantment(
+            new ItemStack(ModItems.NETHER_SWORD.get()),
+            event.getParameters().holders(),
+            Enchantments.FIRE_ASPECT);
+            
+            event.accept(enchantedNetherSword);
         }
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
             event.accept(ModItems.RED_ORE_ITEM);

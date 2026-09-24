@@ -4,7 +4,6 @@ import net.jimmynet.jamesindustries.JamesiumIndustries;
 import net.jimmynet.jamesindustries.block.ModBlocks;
 import net.jimmynet.jamesindustries.entity.ModEntities;
 import net.jimmynet.jamesindustries.item.tools.ModToolMaterials;
-
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -33,7 +32,7 @@ public class ModItems {
             .fireResistant()
         )
     );
-    
+
     public static final DeferredItem<Item> SILVER_INGOT = ITEMS.registerItem(
         "silver_ingot",
         p -> new Item(

@@ -11,6 +11,11 @@
     " S "
   ],
   "result": {
+    "components": {
+      "minecraft:enchantments": {
+        "minecraft:fire_aspect": 1
+      }
+    },
     "count": 1,
     "id": "jamesiumindustries:nether_sword"
   }

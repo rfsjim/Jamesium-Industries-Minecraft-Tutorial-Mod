@@ -3,6 +3,7 @@ package net.jimmynet.jamesindustries.datagen;
 import java.util.concurrent.CompletableFuture;
 
 import net.jimmynet.jamesindustries.JamesiumIndustries;
+import net.jimmynet.jamesindustries.helpers.EnchantHelpers;
 import net.jimmynet.jamesindustries.item.ModItems;
 import net.jimmynet.jamesindustries.recipe.ModRecipeKeys;
 import net.minecraft.core.HolderLookup;
@@ -14,8 +15,9 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.neoforged.neoforge.common.Tags.Items;
 
 /**
@@ -52,7 +54,7 @@ public class ModRecipeProvider extends RecipeProvider  {
             10
         )
         .unlockedBy("has_red_ore", this.has(ModItems.RED_ORE_ITEM))
-        .save(this.output,ModRecipeKeys.NETHER_BRICK_FROM_RED_ORE);
+        .save(this.output, ModRecipeKeys.NETHER_BRICK_FROM_RED_ORE);
 
         SimpleCookingRecipeBuilder.smelting(
             Ingredient.of(ModItems.SILVER_ORE_ITEM),
@@ -64,11 +66,17 @@ public class ModRecipeProvider extends RecipeProvider  {
         .unlockedBy("has_silver_ore", this.has(ModItems.SILVER_ORE_ITEM))
         .save(this.output);
         
-        // Shaped recipe
+        // Nether Sword - a shaped recipe with enchantments
+        ItemStack enchantedNetherSword = EnchantHelpers.applyEnchantment(
+            new ItemStack(ModItems.NETHER_SWORD.get()),
+            this.registries,
+            Enchantments.FIRE_ASPECT
+        );
+
         ShapedRecipeBuilder.shaped(
             this.registries.lookupOrThrow(Registries.ITEM),
             RecipeCategory.COMBAT,
-            ModItems.NETHER_SWORD
+            enchantedNetherSword
         )
         .pattern(" N ")
         .pattern(" N ")
@@ -78,9 +86,10 @@ public class ModRecipeProvider extends RecipeProvider  {
         .unlockedBy("has_nether_brick", this.has(Items.BRICKS_NETHER))
         .save(this.output);
 
+        // Standard Shaped Recipe
         ShapedRecipeBuilder.shaped(
             this.registries.lookupOrThrow(Registries.ITEM),
-            RecipeCategory.DECORATIONS,
+            RecipeCategory.BUILDING_BLOCKS,
             ModItems.SILVER_ITEM
         )
         .pattern("III")
