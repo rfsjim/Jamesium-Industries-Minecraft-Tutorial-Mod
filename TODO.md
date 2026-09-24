@@ -5,11 +5,11 @@ Nil Currently identified outstanding
 
 ## Basic Blocks / Items
 - [ ] Consider uses for Silver Tools - potentially they are gold tier
-- [ ] Nether Brick Sword spawns with Fire Aspect
 
 ## Pet Rabbit
 
 ### Mob / Pet Interaction
+- [ ] Silver Ingot initiates taming operations
 - [ ] Ownership/taming semantics
 - [ ] Follow owner behaviour
 - [ ] Sit/stay behaviour
@@ -98,6 +98,9 @@ Intentionally postponded because #WORLDGEN
 - [ ] GitHub Releases/CD when distributing builds becomes worthwhile
 - [ ] Changing an `EVIL` rabbit back does not fully restore peaceful behavior. Consider either removing `EVIL` variant interactions, making `EVIL` a one-way transformation, or explicitly managing the reversible behavior. `EVIL` is a fun idea however, balance of loot table is currently off and is it required?
 
+## Items
+- [ ] Level-able Nether Brick Sword, starts with Fire Aspect I after some currently undecided interaction - potentially an achievement / kill count / material / ritual / event upgrades the enchant to Fire Aspect II
+
 # DONE
 
 ## Bug Fix / Clean Up
@@ -149,6 +152,7 @@ Intentionally postponded because #WORLDGEN
 - [X] Merged Existing Stub Mod Shiny Tools from Minecraft 1.16.x Forge 36 - A mod adding shiny new tools to minecraft `SILVER_ORE_BLOCK`, `SILVER_BLOCK`, `SILVER_INGOT` - migrating functions to Minecraft 1.21.11 Neoforge 21.11.45
 - [X] Nether Sword is fire resistant
 - [X] Upscale merged Shiny Tools textures from 32x32 to 64x64
+- [X] Nether Brick Sword recipe and creative tab automatically supplies enchanted sword with Fire Aspect I. Limitation in v1.21.11 does not allow item registration with an enchantment. Meaning that `/get` command or other mods creating it, or `new ItemStack(...)` calls will spawn a basic Nether Brick Sword without Fire Aspect. Migration to 26.x will resolve this issue with the `Item.Properties.delayedComponent(...)` API call.
 
 ## Datagen
 - [X] Model provider

@@ -5,7 +5,9 @@ Using modding Minecraft as an example of how to use VS Code and learn more Java.
 Updated Minecraft tutorial using Neoforge 21.11.45
 Minecraft 1.21.11
 
-![Static Badge](https://img.shields.io/badge/github-another_minecraft_mod_repo-800000?logo=github) 
+![Github](https://img.shields.io/badge/github-another_minecraft_mod_repo-800000?logo=github)
+![NeoForge](https://img.shields.io/badge/Neoforge-21.11.45-orange)
+![Minecraft](https://img.shields.io/badge/Minecraft-1.21.11-yellow) 
 ![GitHub License](https://img.shields.io/github/license/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod?color=red&link=LICENSE) 
 ![Last Commit](https://img.shields.io/github/last-commit/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod) 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod) 
