@@ -17,7 +17,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
     @Override 
     protected void addTags(HolderLookup.Provider provider) {
-        this.tag(ItemTags.SWORDS)
+
+        this.tag(ItemTags.FIRE_ASPECT_ENCHANTABLE)
             .add(ModItems.NETHER_SWORD.get());
 
         this.tag(ItemTags.LOGS_THAT_BURN)

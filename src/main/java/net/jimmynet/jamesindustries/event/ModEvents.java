@@ -48,7 +48,7 @@ public final class ModEvents {
             event.accept(ModItems.PET_RABBIT_SPAWN_EGG);
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
-           ItemStack enchantedNetherSword = EnchantHelpers.applyEnchantment(
+           ItemStack enchantedNetherSword = EnchantHelpers.applyEnchantmentValidated(
             new ItemStack(ModItems.NETHER_SWORD.get()),
             event.getParameters().holders(),
             Enchantments.FIRE_ASPECT);

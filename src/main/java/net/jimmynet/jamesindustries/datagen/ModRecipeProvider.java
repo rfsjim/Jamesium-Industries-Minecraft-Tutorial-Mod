@@ -67,7 +67,7 @@ public class ModRecipeProvider extends RecipeProvider  {
         .save(this.output);
         
         // Nether Sword - a shaped recipe with enchantments
-        ItemStack enchantedNetherSword = EnchantHelpers.applyEnchantment(
+        ItemStack enchantedNetherSword = EnchantHelpers.applyEnchantmentUnchecked(
             new ItemStack(ModItems.NETHER_SWORD.get()),
             this.registries,
             Enchantments.FIRE_ASPECT
