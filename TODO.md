@@ -1,7 +1,8 @@
 # TODO - Jamesium Industries — Project
 
 ## Bug Fix / Clean Up
-Nil Currently identified outstanding
+- [ ] Breeding Pet Rabbits creates Rabbits not Pet Rabbits
+- [ ] Silver ingot Rabbit naming allows empty hand interactions to fall through as well as naming, allowing healing to also occur.
 
 ## Basic Blocks / Items
 - [ ] Consider uses for Silver Tools - potentially they are gold tier
@@ -171,6 +172,7 @@ Intentionally postponded because #WORLDGEN
 - [X] Nether Sword is fire resistant
 - [X] Upscale merged Shiny Tools textures from 32x32 to 64x64
 - [X] Nether Brick Sword recipe and creative tab automatically supplies enchanted sword with Fire Aspect I. Limitation in v1.21.11 does not allow item registration with an enchantment. Meaning that `/get` command or other mods creating it, or `new ItemStack(...)` calls will spawn a basic Nether Brick Sword without Fire Aspect. Migration to 26.x will resolve this issue with the `Item.Properties.delayedComponent(...)` API call.
+- [X] Mining behaviour has for the silver metal blocks, added Pickaxe tag, both ores and metal blocks added an implementation of `requiresCorrectToolForDrops()`
 
 ## Datagen
 - [X] Model provider
