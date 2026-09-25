@@ -61,7 +61,7 @@ public class PetRabbitEntity extends Rabbit {
             }
         }
 
-        if (this.getVariant() != Rabbit.Variant.EVIL || !itemStack.is(Items.WITHER_ROSE)) {
+        if (this.getVariant() != Rabbit.Variant.EVIL && !itemStack.is(Items.WITHER_ROSE)) {
             InteractionResult variantResult = interactionChangeVariant(player, itemStack);
             
             if (variantResult != InteractionResult.PASS) {
