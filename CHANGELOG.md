@@ -24,6 +24,12 @@ All notable changes to Jamesium Industries will be documented in this file.
 
 - Upscaled placeholder Silver textures from ported mod 16 x 16 into 64 x 64 files
 
+- Updated recipe categories for silver blocks
+
+- Nether Sword crafting recipe and creative tab adds Fire Aspect I
+
+- Silver Ingots now have placeholder interaction that gives Pet Rabbits a CUSTOM NAME as start of taming functions
+
 
 
 ### Changed
@@ -51,6 +57,10 @@ All notable changes to Jamesium Industries will be documented in this file.
 - Bugfix for build.yml and shields in README.md
 
 - Added datagen for Tags to create burnable logs
+
+- Added guards to enchantment helper
+
+- Adjusted tests for applying enchantment helper methods applyEnchantmentValidated and applyEnchantmentUnchecked as there is different data available during datagen than during runtime new helper methods reflect this difference
 
 
 
