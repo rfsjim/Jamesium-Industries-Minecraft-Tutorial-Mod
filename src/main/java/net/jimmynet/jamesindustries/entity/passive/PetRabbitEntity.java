@@ -54,9 +54,10 @@ public class PetRabbitEntity extends Rabbit {
         }
 
         if (itemStack.is(ModItems.SILVER_INGOT)) {
-            if (this.getType().canSerialize() && !player.level().isClientSide() && this.isAlive()) {
+            if (
+                this.getType().canSerialize() && this.isAlive() && 
+                !this.level().isClientSide() && this.level() instanceof ServerLevel) {
                 this.setCustomName(Component.literal("Pet Rabbit"));
-
                 return InteractionResult.SUCCESS;
             }
         }
