@@ -4,8 +4,10 @@ import net.minecraft.world.entity.animal.rabbit.Rabbit;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.jimmynet.jamesindustries.item.ModItems;
 import net.jimmynet.jamesindustries.loot.PetRabbitLoot;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -49,6 +51,14 @@ public class PetRabbitEntity extends Rabbit {
             return InteractionResult.SUCCESS;
         } else if (this.isFood(itemStack)) {
             return super.mobInteract(player, hand);
+        }
+
+        if (itemStack.is(ModItems.SILVER_INGOT)) {
+            if (this.getType().canSerialize() && !player.level().isClientSide() && this.isAlive()) {
+                this.setCustomName(Component.literal("Pet Rabbit"));
+
+                return InteractionResult.SUCCESS;
+            }
         }
 
         if (this.getVariant() != Rabbit.Variant.EVIL || !itemStack.is(Items.WITHER_ROSE)) {

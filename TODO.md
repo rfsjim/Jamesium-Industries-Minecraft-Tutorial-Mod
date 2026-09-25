@@ -15,6 +15,23 @@ Nil Currently identified outstanding
 - [ ] Sit/stay behaviour
 - [ ] Additional pet AI goals
 
+#### Considerations
+- [ ] Is this rabbit already tame?
+- [ ] Who owns it?
+- [ ] Does ownership survive save/reload?
+- [ ] What happens if the owner isn't online?
+- [ ] Can another player re-tame it?
+- [ ] Can the owner transfer it?
+- [ ] Should silver be consumed on failed/already-tamed attempts?
+- [ ] Client or server decides each operation?
+- [ ] What InteractionResult should each branch return?
+- [ ] Should the visible "Pet Rabbit" name actually have anything whatsoever to do with taming state? Probably eventually no—right now it's just your wonderfully crude test lamp.
+- [ ] What happens when navigation can't reach the owner?
+- [ ] At what distance does following start/stop?
+- [ ] Does it teleport if hopelessly far away?
+- [ ] Does it follow while panicking/eating/avoiding things?
+- [ ] What priority does the follow goal get relative to existing Rabbit goals?
+
 ### Loot Tables / Periodic Gifts
 - [ ] Tune weights/counts/drop rates after playing with it
 - [ ] Reduce repetitive loot-table construction. Using a small private helper to remove boilerplate. Keep it flexible enough for the planned weights and counts.
@@ -112,7 +129,8 @@ Intentionally postponded because #WORLDGEN
 - [X] Temporarily disabled Variant interactions for `EVIL`.
 - [X] Map log blocks and Red Ore Blocks currently place holder blocks both require corresponding block-drop loot tables, both require block loot-table providers to self drop block items.
 - [X] `ModModelTemplates.java` accepts a block argument but builds textures from the registered red ore block directly. Using the supplied block would make the template reusable without adding another abstraction
-- [X] Convert Maple Log Block from decorative to conventional wood log block, make appropriate sounds, hardness, and orientation. Use the vanilla rotated-pillar pattern and generate models/blockstates for each axis. Also address the axe-mining tag when completing conventional wood behavior. Requires orientation and wood integration. 
+- [X] Convert Maple Log Block from decorative to conventional wood log block, make appropriate sounds, hardness, and orientation. Use the vanilla rotated-pillar pattern and generate models/blockstates for each axis. Also address the axe-mining tag when completing conventional wood behavior. Requires orientation and wood integration.
+- [X] At datagen there is insufficient information for `supportsEnchantment()` to correctly validate the requested enchantment, added two distinct paths for applying enchant to blocks/items either at runtime via validated → check supportsEnchantment() or during datagen unchecked → caller asserts compatibility. Provided two helper methods each with separate overloads for default enchant levels of 1 - `applyEnchantmentValidated(...);` and `applyEnchantmentUnchecked(...);`
 
 ## Core mod / infrastructure
 - [X] Create Jamesium Industries mod
@@ -194,6 +212,7 @@ Intentionally postponded because #WORLDGEN
 - [X] Petting cooldown
 - [X] Rabbit sound when interaction is on cooldown
 - [X] Delegate non-petting interactions back to vanilla `Rabbit`
+- [X] Placeholder action - Silver Ingot adds CUSTOM_NAME to Rabbit
 
 ### Loot Tables / Periodic gifts
 - [X] Investigate vanilla Chicken egg-laying implementation
