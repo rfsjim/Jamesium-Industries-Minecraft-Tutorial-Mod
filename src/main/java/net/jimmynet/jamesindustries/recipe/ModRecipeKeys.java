@@ -16,5 +16,21 @@ public final class ModRecipeKeys {
             )
         );
 
+    public static final ResourceKey<Recipe<?>> SILVER_INGOT_FROM_SILVER_BLOCK =
+        ResourceKey.create(
+            Registries.RECIPE,
+            Identifier.fromNamespaceAndPath(
+                JamesiumIndustries.MODID, "silver_ingot_from_silver_block"
+            )
+        );
+
+    public static final ResourceKey<Recipe<?>> SILVER_INGOT_FROM_SMELTING =
+        ResourceKey.create(
+            Registries.RECIPE,
+            Identifier.fromNamespaceAndPath(
+                JamesiumIndustries.MODID, "silver_ingot_from_smelting"
+            )
+        );
+
     private ModRecipeKeys() {}
 }

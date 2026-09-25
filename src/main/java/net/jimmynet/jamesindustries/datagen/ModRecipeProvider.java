@@ -3,6 +3,7 @@ package net.jimmynet.jamesindustries.datagen;
 import java.util.concurrent.CompletableFuture;
 
 import net.jimmynet.jamesindustries.JamesiumIndustries;
+import net.jimmynet.jamesindustries.block.ModBlocks;
 import net.jimmynet.jamesindustries.helpers.EnchantHelpers;
 import net.jimmynet.jamesindustries.item.ModItems;
 import net.jimmynet.jamesindustries.recipe.ModRecipeKeys;
@@ -39,11 +40,19 @@ public class ModRecipeProvider extends RecipeProvider  {
             this.registries.lookupOrThrow(Registries.ITEM),
             RecipeCategory.MISC,
             ModItems.PET_RABBIT_SPAWN_EGG)
-        .requires(Items.EGGS)
-        .requires(Items.CROPS_CARROT)
-        .unlockedBy("has_chicken_egg", this.has(Items.EGGS))
-        .unlockedBy("has_carrot", this.has(Items.CROPS_CARROT))
-        .save(this.output);
+            .requires(Items.EGGS)
+            .requires(Items.CROPS_CARROT)
+            .unlockedBy("has_chicken_egg", this.has(Items.EGGS))
+            .unlockedBy("has_carrot", this.has(Items.CROPS_CARROT))
+            .save(this.output);
+
+        ShapelessRecipeBuilder.shapeless(
+            this.registries.lookupOrThrow(Registries.ITEM),
+            RecipeCategory.BUILDING_BLOCKS,
+            ModItems.SILVER_INGOT, 9)
+            .requires(ModBlocks.SILVER_BLOCK)
+            .unlockedBy("has_silver_block", this.has(ModItems.SILVER_ITEM))
+            .save(this.output, ModRecipeKeys.SILVER_INGOT_FROM_SILVER_BLOCK);
 
         // Furnace recipe for smelting Red Ore into Nether Bricks
         SimpleCookingRecipeBuilder.smelting(
@@ -64,7 +73,7 @@ public class ModRecipeProvider extends RecipeProvider  {
             10
         )
         .unlockedBy("has_silver_ore", this.has(ModItems.SILVER_ORE_ITEM))
-        .save(this.output);
+        .save(this.output, ModRecipeKeys.SILVER_INGOT_FROM_SMELTING);
         
         // Nether Sword - a shaped recipe with enchantments
         ItemStack enchantedNetherSword = EnchantHelpers.applyEnchantmentUnchecked(

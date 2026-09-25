@@ -27,6 +27,7 @@ public final class ModBlocks {
             .mapColor(MapColor.STONE)
             .strength(3f)
             .sound(SoundType.STONE)
+            .requiresCorrectToolForDrops()
         );
     
     public static final DeferredBlock<Block> SILVER_ORE_BLOCK =
@@ -36,6 +37,7 @@ public final class ModBlocks {
             .mapColor(MapColor.COLOR_GRAY)
             .strength(3f)
             .sound(SoundType.STONE)
+            .requiresCorrectToolForDrops()
         );
 
     public static final DeferredBlock<Block> SILVER_BLOCK =
@@ -46,6 +48,7 @@ public final class ModBlocks {
             .strength(3f)
             .sound(SoundType.METAL)
             .instrument(NoteBlockInstrument.BELL)
+            .requiresCorrectToolForDrops()
         );
 
     public static final DeferredBlock<Block> MAPLE_LOG_BLOCK =

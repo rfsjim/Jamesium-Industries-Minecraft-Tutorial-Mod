@@ -19,7 +19,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
     {
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .add(ModBlocks.RED_ORE_BLOCK.get())
-            .add(ModBlocks.SILVER_ORE_BLOCK.get());
+            .add(ModBlocks.SILVER_ORE_BLOCK.get())
+            .add(ModBlocks.SILVER_BLOCK.get());
 
         this.tag(BlockTags.MINEABLE_WITH_AXE)
             .add(ModBlocks.MAPLE_LOG_BLOCK.get());
