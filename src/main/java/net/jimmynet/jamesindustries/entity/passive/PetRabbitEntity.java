@@ -44,7 +44,7 @@ public class PetRabbitEntity extends Rabbit {
 
         if (itemStack.isEmpty()) {
             
-            if (!this.level().isClientSide() && this.level() instanceof ServerLevel serverLevel) {
+            if (this.level() instanceof ServerLevel serverLevel) {
                 this.patRabbit(player, serverLevel);
             } 
             
@@ -53,13 +53,11 @@ public class PetRabbitEntity extends Rabbit {
             return super.mobInteract(player, hand);
         }
 
-        if (itemStack.is(ModItems.SILVER_INGOT)) {
-            if (
-                this.getType().canSerialize() && this.isAlive() && 
-                !this.level().isClientSide() && this.level() instanceof ServerLevel) {
+        if (itemStack.is(ModItems.SILVER_INGOT) && this.getType().canSerialize() && this.isAlive()) {
+            if (this.level() instanceof ServerLevel) {
                 this.setCustomName(Component.literal("Pet Rabbit"));
-                return InteractionResult.SUCCESS;
             }
+            return InteractionResult.SUCCESS;
         }
 
         if (this.getVariant() != Rabbit.Variant.EVIL && !itemStack.is(Items.WITHER_ROSE)) {
