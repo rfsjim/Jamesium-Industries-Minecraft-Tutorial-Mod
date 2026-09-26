@@ -30,6 +30,12 @@ All notable changes to Jamesium Industries will be documented in this file.
 
 - Silver Ingots now have placeholder interaction that gives Pet Rabbits a CUSTOM NAME as start of taming functions
 
+- Add all mod items and blocks to Mod Creative Tab
+
+- Complete mining block lifecycle
+
+- Add Pet Rabbit Breed - now creates Pet Rabbits instead of Rabbits
+
 
 
 ### Changed
@@ -61,6 +67,12 @@ All notable changes to Jamesium Industries will be documented in this file.
 - Added guards to enchantment helper
 
 - Adjusted tests for applying enchantment helper methods applyEnchantmentValidated and applyEnchantmentUnchecked as there is different data available during datagen than during runtime new helper methods reflect this difference
+
+- Pet Rabbit Interactions logic as interactions were triggering on EVIL and Wither Roses which are supposed to be disabled
+
+- Initial Interaction Causing Double Firing for Pet Rabbit Entity when naming with Silver Ingot
+
+- Removes Pet Rabbit Double Handling of Silver Ingot Interaction Logic
 
 
 

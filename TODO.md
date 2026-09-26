@@ -1,8 +1,6 @@
 # TODO - Jamesium Industries — Project
 
 ## Bug Fix / Clean Up
-- [ ] Breeding Pet Rabbits creates Rabbits not Pet Rabbits
-- [ ] Silver ingot Rabbit naming allows empty hand interactions to fall through as well as naming, allowing healing to also occur.
 
 ## Basic Blocks / Items
 - [ ] Consider uses for Silver Tools - potentially they are gold tier
@@ -132,6 +130,8 @@ Intentionally postponded because #WORLDGEN
 - [X] `ModModelTemplates.java` accepts a block argument but builds textures from the registered red ore block directly. Using the supplied block would make the template reusable without adding another abstraction
 - [X] Convert Maple Log Block from decorative to conventional wood log block, make appropriate sounds, hardness, and orientation. Use the vanilla rotated-pillar pattern and generate models/blockstates for each axis. Also address the axe-mining tag when completing conventional wood behavior. Requires orientation and wood integration.
 - [X] At datagen there is insufficient information for `supportsEnchantment()` to correctly validate the requested enchantment, added two distinct paths for applying enchant to blocks/items either at runtime via validated → check supportsEnchantment() or during datagen unchecked → caller asserts compatibility. Provided two helper methods each with separate overloads for default enchant levels of 1 - `applyEnchantmentValidated(...);` and `applyEnchantmentUnchecked(...);`
+- [X] Silver ingot Rabbit naming allows empty hand interactions to fall through as well as naming, allowing healing to also occur.
+- [X] Breeding Pet Rabbits now creates Pet Rabbits Not Rabbits
 
 ## Core mod / infrastructure
 - [X] Create Jamesium Industries mod
