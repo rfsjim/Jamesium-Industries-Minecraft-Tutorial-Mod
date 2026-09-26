@@ -5,6 +5,7 @@ import java.util.Set;
 
 import net.jimmynet.jamesindustries.datagen.ModBlockLootSubProvider;
 import net.jimmynet.jamesindustries.datagen.ModBlockTagProvider;
+import net.jimmynet.jamesindustries.datagen.ModDataPackProvider;
 import net.jimmynet.jamesindustries.datagen.ModItemTagProvider;
 import net.jimmynet.jamesindustries.datagen.ModLootTableSubProvider;
 import net.jimmynet.jamesindustries.datagen.ModModelProvider;
@@ -92,6 +93,7 @@ public final class ModEvents {
                 provider
             )
         );
+        event.createProvider(ModDataPackProvider::new);
     }
 
     private static void registerAttributes(EntityAttributeCreationEvent event) {

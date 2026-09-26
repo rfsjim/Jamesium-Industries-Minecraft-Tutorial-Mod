@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": "jamesiumindustries:silver_ore_placed_feature",
+  "step": "underground_ores"
+}
