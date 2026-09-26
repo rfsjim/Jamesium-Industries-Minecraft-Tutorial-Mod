@@ -4,6 +4,10 @@ import net.minecraft.world.entity.animal.rabbit.Rabbit;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+
+import org.jspecify.annotations.Nullable;
+
+import net.jimmynet.jamesindustries.entity.ModEntities;
 import net.jimmynet.jamesindustries.item.ModItems;
 import net.jimmynet.jamesindustries.loot.PetRabbitLoot;
 import net.minecraft.core.particles.ParticleTypes;
@@ -12,8 +16,11 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Util;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -180,5 +187,32 @@ public class PetRabbitEntity extends Rabbit {
         } else {
             return this.getVariant();
         }
+    }
+
+    @Nullable
+    @Override 
+    public PetRabbitEntity getBreedOffspring(
+        ServerLevel serverLevel,
+        AgeableMob otherPetRabbitParent) {
+        PetRabbitEntity offspring = ModEntities.PET_RABBIT.get().create(
+            serverLevel,
+            EntitySpawnReason.BREEDING
+        );
+
+        Rabbit.Variant variants[] = Rabbit.Variant.values();
+        Rabbit.Variant variant;
+        
+        if (offspring != null) {
+            do {
+                variant = Util.getRandom(
+                    variants,
+                    this.random
+                );
+            } while (variant == Rabbit.Variant.EVIL);
+            
+            offspring.setVariant(variant);
+        }
+
+        return offspring;
     }
 }
