@@ -36,6 +36,10 @@ All notable changes to Jamesium Industries will be documented in this file.
 
 - Add Pet Rabbit Breed - now creates Pet Rabbits instead of Rabbits
 
+- Initial Worldgen Adds Silver Ore to Underground Ores
+
+- Red Ore World Generation around ruined portals
+
 
 
 ### Changed
