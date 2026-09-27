@@ -3,42 +3,228 @@
 All notable changes to Jamesium Industries will be documented in this file.
 
 
-## Unreleased
+## neoforge-1.21.11-0.22.0 - 2026-09-27
 
 
 
 ### Added
 
 
-- Maple Logs, initial item for future Maple Tree world generation
+- Red Ore World Generation around ruined portals
 
-- Framework for seasonal Pet Rabbit Gifts created, added date aware seasonal checks, adjust loot table based on current season
 
-- Added place holder maple logs to creative tab
 
-- Added Loot tables for Red Ore and Maple Log Blocks
+## neoforge-1.21.11-0.21.0 - 2026-09-26
 
-- Converted Maple Log Block from decorative to conventional wood log block, added block item tags for RED ORE BLOCK and MAPLE LOG BLOCKS, adjusted textures for logs
 
-- Port Silver blocks and items from previous repo based on Minecraft 1.16.x Forge 36 Silver Ore Blocks, Silver Blocks, and Silver Ingots
 
-- Upscaled placeholder Silver textures from ported mod 16 x 16 into 64 x 64 files
+### Added
 
-- Updated recipe categories for silver blocks
 
-- Nether Sword crafting recipe and creative tab adds Fire Aspect I
+- Initial Worldgen Adds Silver Ore to Underground Ores
 
-- Silver Ingots now have placeholder interaction that gives Pet Rabbits a CUSTOM NAME as start of taming functions
+
+
+## neoforge-1.21.11-0.20.0 - 2026-09-26
+
+
+
+### Added
+
+
+- Add Pet Rabbit Breed - now creates Pet Rabbits instead of Rabbits
+
+
+
+### Fixed
+
+
+- Initial Interaction Causing Double Firing for Pet Rabbit Entity when naming with Silver Ingot
+
+- Removes Pet Rabbit Double Handling of Silver Ingot Interaction Logic
+
+
+
+## neoforge-1.21.11-0.19.0 - 2026-09-25
+
+
+
+### Added
+
 
 - Add all mod items and blocks to Mod Creative Tab
 
 - Complete mining block lifecycle
 
-- Add Pet Rabbit Breed - now creates Pet Rabbits instead of Rabbits
 
-- Initial Worldgen Adds Silver Ore to Underground Ores
 
-- Red Ore World Generation around ruined portals
+### Fixed
+
+
+- Pet Rabbit Interactions logic as interactions were triggering on EVIL and Wither Roses which are supposed to be disabled
+
+
+
+## neoforge-1.21.11-0.17.0 - 2026-09-25
+
+
+
+### Added
+
+
+- Silver Ingots now have placeholder interaction that gives Pet Rabbits a CUSTOM NAME as start of taming functions
+
+
+
+### Fixed
+
+
+- Adjusted tests for applying enchantment helper methods applyEnchantmentValidated and applyEnchantmentUnchecked as there is different data available during datagen than during runtime new helper methods reflect this difference
+
+
+
+## neoforge-1.21.11-0.16.1 - 2026-09-24
+
+
+
+### Added
+
+
+- Updated recipe categories for silver blocks
+
+- Nether Sword crafting recipe and creative tab adds Fire Aspect I
+
+
+
+### Fixed
+
+
+- Added guards to enchantment helper
+
+
+
+## neoforge-1.21.11-0.15.1 - 2026-09-23
+
+
+
+### Added
+
+
+- Port Silver blocks and items from previous repo based on Minecraft 1.16.x Forge 36 Silver Ore Blocks, Silver Blocks, and Silver Ingots
+
+- Upscaled placeholder Silver textures from ported mod 16 x 16 into 64 x 64 files
+
+
+
+### Fixed
+
+
+- Added datagen for Tags to create burnable logs
+
+
+
+## neoforge-1.21.11-0.14.1 - 2026-09-22
+
+
+
+### Fixed
+
+
+- Bugfix for build.yml and shields in README.md
+
+
+
+## neoforge-1.21.11-0.14.0 - 2026-09-22
+
+
+
+### Added
+
+
+- Converted Maple Log Block from decorative to conventional wood log block, added block item tags for RED ORE BLOCK and MAPLE LOG BLOCKS, adjusted textures for logs
+
+
+
+## neoforge-1.21.11-0.13.1 - 2026-09-21
+
+
+
+### Fixed
+
+
+- Pet Rabbit bugfix - Adjusted the guard checks around chaning variant to EVIL preventing WITHER ROSE from initiating the variant change
+
+
+
+## neoforge-1.21.11-0.13.0 - 2026-09-21
+
+
+
+### Added
+
+
+- Added Loot tables for Red Ore and Maple Log Blocks
+
+
+
+## neoforge-1.21.11-0.12.5 - 2026-09-21
+
+
+
+### Fixed
+
+
+- Adjust model template and block properties for Maple Log Blocks
+
+
+
+## neoforge-1.21.11-0.12.4 - 2026-09-21
+
+
+
+### Fixed
+
+
+- Fixed code that allowed Pet Rabbit interactions can fire on both hands due to disconnect between client and server interactions
+
+- Temporarily disabled EVIL Pet Rabbit variant interactions due to Changing an EVIL rabbit back does not fully restore peaceful behavior.
+
+
+
+## neoforge-1.21.11-0.12.0 - 2026-09-21
+
+
+
+### Added
+
+
+- Added place holder maple logs to creative tab
+
+
+
+## neoforge-1.21.11-0.11.0 - 2026-09-20
+
+
+
+### Added
+
+
+- Framework for seasonal Pet Rabbit Gifts created, added date aware seasonal checks, adjust loot table based on current season
+
+
+
+## neoforge-1.21.11-0.10.4 - 2026-09-20
+
+
+
+### Fixed
+
+
+- Added controls for change variant mechanics and items are correctly consumed on variant changes
+
+
+
+## neoforge-1.21.11-0.10.2 - 2026-09-20
 
 
 
@@ -49,34 +235,25 @@ All notable changes to Jamesium Industries will be documented in this file.
 
 
 
+## neoforge-1.21.11-0.10.1 - 2026-09-20
+
+
+
 ### Fixed
 
 
 - Repaired incorrect namespace issue with netherbrick smelting recipe from red ore blocks, removed overriden vanilla recipe
 
-- Added controls for change variant mechanics and items are correctly consumed on variant changes
 
-- Fixed code that allowed Pet Rabbit interactions can fire on both hands due to disconnect between client and server interactions
 
-- Temporarily disabled EVIL Pet Rabbit variant interactions due to Changing an EVIL rabbit back does not fully restore peaceful behavior.
+## neoforge-1.21.11-0.10.0 - 2026-09-20
 
-- Adjust model template and block properties for Maple Log Blocks
 
-- Pet Rabbit bugfix - Adjusted the guard checks around chaning variant to EVIL preventing WITHER ROSE from initiating the variant change
 
-- Bugfix for build.yml and shields in README.md
+### Added
 
-- Added datagen for Tags to create burnable logs
 
-- Added guards to enchantment helper
-
-- Adjusted tests for applying enchantment helper methods applyEnchantmentValidated and applyEnchantmentUnchecked as there is different data available during datagen than during runtime new helper methods reflect this difference
-
-- Pet Rabbit Interactions logic as interactions were triggering on EVIL and Wither Roses which are supposed to be disabled
-
-- Initial Interaction Causing Double Firing for Pet Rabbit Entity when naming with Silver Ingot
-
-- Removes Pet Rabbit Double Handling of Silver Ingot Interaction Logic
+- Maple Logs, initial item for future Maple Tree world generation
 
 
 
@@ -98,9 +275,18 @@ All notable changes to Jamesium Industries will be documented in this file.
 ### Added
 
 
-- Added Netherbrick sword
-
 - Updated textures for customed items - Magic Cube, Nether Sword, and Pet Rabbit Spawn Egg
+
+
+
+## neoforge-1.21.11-0.9.0 - 2026-09-13
+
+
+
+### Added
+
+
+- Added Netherbrick sword
 
 
 
@@ -115,7 +301,7 @@ All notable changes to Jamesium Industries will be documented in this file.
 
 
 
-## 0.1.0 - 2026-09-12
+## neoforge-1.21.11-0.7.4 - 2026-09-12
 
 
 
@@ -126,7 +312,7 @@ All notable changes to Jamesium Industries will be documented in this file.
 
 
 
-## 0.0.6 - 2026-09-11
+## neoforge-1.21.11-0.7.1 - 2026-09-11
 
 
 
@@ -134,6 +320,17 @@ All notable changes to Jamesium Industries will be documented in this file.
 
 
 - Pet Rabbits Drop Nuggets and Gems
+
+
+
+### Fixed
+
+
+- Remove unused import references
+
+
+
+## neoforge-1.21.11-0.6.4 - 2026-09-09
 
 
 
@@ -148,8 +345,6 @@ All notable changes to Jamesium Industries will be documented in this file.
 
 - Update Build YAML File
 
-- Remove unused import references
-
 
 
 ## 0.0.5 - 2026-09-09
@@ -159,17 +354,46 @@ All notable changes to Jamesium Industries will be documented in this file.
 ### Added
 
 
-- Pet Rabbit Spawn Egg
+- Pet Rabbit Heals Player and Rabbit
+
+
+
+## neoforge-1.21.11-0.5.0 - 2026-09-08
+
+
+
+### Added
+
 
 - Pet Rabbit Spawn Egg Recipe
 
 - Smelting red ore in a furnace gives nether bricks
 
-- Pet Rabbit Heals Player and Rabbit
+
+
+## neoforge-1.21.11-0.4.0 - 2026-09-06
 
 
 
-## BlocksItemsEntities - 2026-09-06
+### Added
+
+
+- Pet Rabbit Spawn Egg
+
+
+
+## neoforge-1.21.11-0.3.0 - 2026-09-06
+
+
+
+### Added
+
+
+- Red_ore_block magic_cube pet_rabbit - blocks items entities examples
+
+
+
+## neoforge-1.21.11-0.2.1 - 2026-09-06
 
 
 
@@ -177,8 +401,6 @@ All notable changes to Jamesium Industries will be documented in this file.
 
 
 - Add basic block and item assets
-
-- Red_ore_block magic_cube pet_rabbit - blocks items entities examples
 
 
 
@@ -189,7 +411,7 @@ All notable changes to Jamesium Industries will be documented in this file.
 
 
 
-## 1.21.11-baseline - 2017-06-25
+## forge-1.11.2-0.1.0 - 2017-06-25
 
 
 

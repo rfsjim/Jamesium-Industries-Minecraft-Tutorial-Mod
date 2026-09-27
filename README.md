@@ -1,7 +1,7 @@
 # Jamesium Industries: A Minecraft Tutorial Mod
 
 Using modding Minecraft as an example of how to use VS Code and learn more Java.
-
+Version neoforge-1.21.11-0.22.0
 Updated Minecraft tutorial using Neoforge 21.11.45
 Minecraft 1.21.11
 
@@ -14,22 +14,18 @@ Minecraft 1.21.11
 ![Build](https://img.shields.io/github/actions/workflow/status/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod/build.yml) 
 
 
- 
-
-
-
 Features
-=======
+---------
 - A pet rabbit that periodically gifts nuggets and gems
 - Red ore block that smelts into nether bricks
 
 TODO List & CHANGELOG
-=======
+---------
 - [Project Plan / TODO list](TODO.md)
 - [Change Log](CHANGELOG.md)
 
 Useful Tools
-=======
+---------
 - `.\gradlew build` Build
 - `.\gradlew runClient` Run Client
 - `.\gradlew runServer` Run Server
@@ -41,7 +37,7 @@ Useful Tools
 - `Java: List All Java Source Paths` List ALL Java source paths
 
 VS Code IDE Commands and Navigation
-=======
+---------
 - Go to Definition put your cursor on a symbol and F12 or right click --> Go to Definition, OR Ctrl + Click a symbol (editor.action.revealDefinition)
 - Show All Symbols Ctrl+T (workbench.action.showAllSymbols)
 - Go to File..., Quick Open	Ctrl+P	(workbench.action.quickOpen) # to go to symbols, : to go to line number, @ to go to symbol in current file
@@ -51,8 +47,12 @@ VS Code IDE Commands and Navigation
 - Alt+F12 — Peek Definition - You can inspect the signature/source without abandoning your code.
 - Ctrl+Space Trigger Intellisense suggestions (editor.action.triggerSuggest)
 
+GitHub
+---------
+https://github.com/rfsjim/Curated-Dev-Knowledge-Repo/tools/README.md#git
+
 Installation information
-=======
+---------
 
 This template repository can be directly cloned to get you started with a new
 mod. Simply create a new repository cloned from this one, by following the
@@ -65,13 +65,13 @@ run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean`
 {this does not affect your code} and then start the process again.
 
 Mapping Names:
-============
+--------------
 By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
 in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
 license. For the latest license text, refer to the mapping file itself, or the reference copy here:
 https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
 
 Additional Resources: 
-==========
+------------
 Community Documentation: https://docs.neoforged.net/  
 NeoForged Discord: https://discord.neoforged.net/
