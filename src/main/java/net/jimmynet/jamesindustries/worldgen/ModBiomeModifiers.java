@@ -15,6 +15,12 @@ import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
+/**
+ * 
+ * ModBiomeModifiers - Provides the ability to modify aspects of biomes including the ability to inject or remove placed features
+ * Currently the class selects the biome or biome tags that will allow a feature to be placed and the time within world gen
+ * That the feature should be placed.
+ */
 public class ModBiomeModifiers {
     private ModBiomeModifiers() {}
 
@@ -22,6 +28,10 @@ public class ModBiomeModifiers {
         NeoForgeRegistries.Keys.BIOME_MODIFIERS,
         Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "add_silver_ore")
     );
+
+    public static final ResourceKey<BiomeModifier> ADD_RED_ORE = ResourceKey.create(
+        NeoForgeRegistries.Keys.BIOME_MODIFIERS,
+        Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "add_red_ore"));
 
     public static final void bootstrap(BootstrapContext<BiomeModifier> context) {
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
@@ -33,6 +43,15 @@ public class ModBiomeModifiers {
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.SILVER_ORE_PLACED_FEATURE)),
                 GenerationStep.Decoration.UNDERGROUND_ORES
+            )
+        );
+
+        context.register(
+            ADD_RED_ORE,
+            new BiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.RED_ORE_PLACED_FEATURE)),
+                GenerationStep.Decoration.SURFACE_STRUCTURES
             )
         );
     }

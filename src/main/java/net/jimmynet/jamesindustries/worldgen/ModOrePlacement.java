@@ -8,6 +8,12 @@ import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.placement.RarityFilter;
 
+/**
+ * 
+ * ModOrePlacement - Ore specific helper methods to create
+ * Placement modifiers which are the rules used by a placed feature to determine locations
+ * Required as the vanilla orePlacement methods are private.
+ */
 public class ModOrePlacement {
     private ModOrePlacement() {}
 
