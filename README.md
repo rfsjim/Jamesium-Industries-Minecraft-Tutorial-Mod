@@ -49,7 +49,7 @@ VS Code IDE Commands and Navigation
 
 GitHub
 ---------
-https://github.com/rfsjim/Curated-Dev-Knowledge-Repo/tools/README.md#git
+https://github.com/rfsjim/Curated-Dev-Knowledge-Repo/tree/master/tools#git
 
 Installation information
 ---------
