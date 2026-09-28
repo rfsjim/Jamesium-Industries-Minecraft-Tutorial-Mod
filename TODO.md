@@ -34,7 +34,6 @@
 ### Loot Tables / Periodic Gifts
 - [ ] Tune weights/counts/drop rates after playing with it
 - [ ] Reduce repetitive loot-table construction. Using a small private helper to remove boilerplate. Keep it flexible enough for the planned weights and counts.
-- [ ] For loot-table keys use a private factory for the repeated namespace-and-registry construction. Preserving the existing identifiers.
 - [ ] Encapsulate the gift timer. The gift timer is public, and its random initialization is duplicated in the constructor and after a gift. Make the timer private and use one small method to choose the next delay.
 
 ### Seasonal Gifts
@@ -73,7 +72,7 @@ Intentionally postponded because #WORLDGEN
 - [ ] Decide whether we're really doing this
 - [ ] Accept that yes, eventually we're probably doing this
 - [ ] Research tree/worldgen APIs
-- [ ] Maple log
+- [X] Maple log
 - [ ] Maple wood
 - [ ] Stripped maple log
 - [ ] Stripped maple wood
@@ -237,6 +236,7 @@ Intentionally postponded because #WORLDGEN
 - [X] Confirm that rabbits really do gift nuggets and gems
 - [X] Only produce celebratory sound/particles when loot generation succeeds
 - [X] Have datagen and runtime share the same `PET_RABBIT_GIFT` key
+- [X] For loot-table keys use a private factory for the repeated namespace-and-registry construction. Preserving the existing identifiers.
 
 ### Seasonal Gifts
 - [X] Add `isAroundEaster()`

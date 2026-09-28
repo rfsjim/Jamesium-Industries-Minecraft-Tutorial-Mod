@@ -1,8 +1,7 @@
 package net.jimmynet.jamesindustries.loot;
 
-import net.jimmynet.jamesindustries.JamesiumIndustries;
+import net.jimmynet.jamesindustries.helpers.ModResourceKeys;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.storage.loot.LootTable;
 
@@ -12,49 +11,49 @@ import net.minecraft.world.level.storage.loot.LootTable;
  */
 public final class ModLootTableKeys {
 
-    public static final ResourceKey<LootTable> PET_RABBIT_SEASONAL_GIFT = ResourceKey.create(
+    public static final ResourceKey<LootTable> PET_RABBIT_SEASONAL_GIFT = ModResourceKeys.create(
         Registries.LOOT_TABLE,
-        Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "pet_rabbit_seasonal_gift")
+        "pet_rabbit_seasonal_gift"
     );
 
-    public static final ResourceKey<LootTable> PET_RABBIT_GOLD = ResourceKey.create(
+    public static final ResourceKey<LootTable> PET_RABBIT_GOLD = ModResourceKeys.create(
         Registries.LOOT_TABLE,
-        Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "pet_rabbit_gold")
+        "pet_rabbit_gold"
     );
     
-    public static final ResourceKey<LootTable> PET_RABBIT_WHITE = ResourceKey.create(
+    public static final ResourceKey<LootTable> PET_RABBIT_WHITE = ModResourceKeys.create(
         Registries.LOOT_TABLE,
-        Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "pet_rabbit_white")
+        "pet_rabbit_white"
     );
 
-    public static final ResourceKey<LootTable> PET_RABBIT_BROWN = ResourceKey.create(
+    public static final ResourceKey<LootTable> PET_RABBIT_BROWN = ModResourceKeys.create(
         Registries.LOOT_TABLE,
-        Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "pet_rabbit_brown")
+        "pet_rabbit_brown"
     );
 
-    public static final ResourceKey<LootTable> PET_RABBIT_WHITE_SPLOTCHED = ResourceKey.create(
+    public static final ResourceKey<LootTable> PET_RABBIT_WHITE_SPLOTCHED = ModResourceKeys.create(
         Registries.LOOT_TABLE,
-        Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "pet_rabbit_white_splotched")
+        "pet_rabbit_white_splotched"
     );
 
-    public static final ResourceKey<LootTable> PET_RABBIT_BLACK = ResourceKey.create(
+    public static final ResourceKey<LootTable> PET_RABBIT_BLACK = ModResourceKeys.create(
         Registries.LOOT_TABLE,
-        Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "pet_rabbit_black")
+        "pet_rabbit_black"
     );
 
-    public static final ResourceKey<LootTable> PET_RABBIT_SALT = ResourceKey.create(
-        Registries.LOOT_TABLE,
-        Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "pet_rabbit_salt")
+    public static final ResourceKey<LootTable> PET_RABBIT_SALT = ModResourceKeys.create(
+       Registries.LOOT_TABLE,
+        "pet_rabbit_salt"
     );
 
-    public static final ResourceKey<LootTable> PET_RABBIT_EVIL = ResourceKey.create(
+    public static final ResourceKey<LootTable> PET_RABBIT_EVIL = ModResourceKeys.create(
         Registries.LOOT_TABLE,
-        Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "pet_rabbit_evil")
+        "pet_rabbit_evil"
     );
 
-    public static  final ResourceKey<LootTable> NO_LOOT = ResourceKey.create(
+    public static  final ResourceKey<LootTable> NO_LOOT = ModResourceKeys.create(
         Registries.LOOT_TABLE,
-        Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "no_loot")
+        "no_loot"
     );
 
     private ModLootTableKeys() {}

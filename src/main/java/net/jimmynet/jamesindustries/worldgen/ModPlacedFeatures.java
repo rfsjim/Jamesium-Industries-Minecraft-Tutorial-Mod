@@ -2,12 +2,11 @@ package net.jimmynet.jamesindustries.worldgen;
 
 import java.util.List;
 
-import net.jimmynet.jamesindustries.JamesiumIndustries;
+import net.jimmynet.jamesindustries.helpers.ModResourceKeys;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -27,14 +26,14 @@ import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 public class ModPlacedFeatures {
     private ModPlacedFeatures() {}
 
-    public static final ResourceKey<PlacedFeature> SILVER_ORE_PLACED_FEATURE = ResourceKey.create(
+    public static final ResourceKey<PlacedFeature> SILVER_ORE_PLACED_FEATURE = ModResourceKeys.create(
         Registries.PLACED_FEATURE,
-        Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "silver_ore_placed_feature")
+        "silver_ore_placed_feature"
     );
 
-    public static final ResourceKey<PlacedFeature> RED_ORE_PLACED_FEATURE = ResourceKey.create(
+    public static final ResourceKey<PlacedFeature> RED_ORE_PLACED_FEATURE = ModResourceKeys.create(
         Registries.PLACED_FEATURE,
-        Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "red_ore_placed_feature")
+        "red_ore_placed_feature"
     );
     
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {

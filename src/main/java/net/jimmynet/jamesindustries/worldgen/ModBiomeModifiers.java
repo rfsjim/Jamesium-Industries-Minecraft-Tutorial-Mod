@@ -1,11 +1,10 @@
 package net.jimmynet.jamesindustries.worldgen;
 
-import net.jimmynet.jamesindustries.JamesiumIndustries;
+import net.jimmynet.jamesindustries.helpers.ModResourceKeys;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biome;
@@ -24,14 +23,15 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 public class ModBiomeModifiers {
     private ModBiomeModifiers() {}
 
-    public static final ResourceKey<BiomeModifier> ADD_SILVER_ORE = ResourceKey.create(
+    public static final ResourceKey<BiomeModifier> ADD_SILVER_ORE = ModResourceKeys.create(
         NeoForgeRegistries.Keys.BIOME_MODIFIERS,
-        Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "add_silver_ore")
+        "add_silver_ore"
     );
 
-    public static final ResourceKey<BiomeModifier> ADD_RED_ORE = ResourceKey.create(
+    public static final ResourceKey<BiomeModifier> ADD_RED_ORE = ModResourceKeys.create(
         NeoForgeRegistries.Keys.BIOME_MODIFIERS,
-        Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "add_red_ore"));
+        "add_red_ore"
+    );
 
     public static final void bootstrap(BootstrapContext<BiomeModifier> context) {
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);

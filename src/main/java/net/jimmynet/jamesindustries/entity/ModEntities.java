@@ -2,12 +2,10 @@ package net.jimmynet.jamesindustries.entity;
 
 import net.jimmynet.jamesindustries.JamesiumIndustries;
 import net.jimmynet.jamesindustries.entity.passive.PetRabbitEntity;
-
+import net.jimmynet.jamesindustries.helpers.ModResourceKeys;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -28,9 +26,9 @@ public class ModEntities {
                 .of(PetRabbitEntity::new, MobCategory.CREATURE)
                 .sized(0.4f, 0.5f)
                 .build(
-                    ResourceKey.create(
+                    ModResourceKeys.create(
                         Registries.ENTITY_TYPE,
-                        Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "pet_rabbit")
+                        "pet_rabbit"
                     )
                 )
         );

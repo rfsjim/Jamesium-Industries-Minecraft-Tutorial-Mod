@@ -1,10 +1,9 @@
 package net.jimmynet.jamesindustries.worldgen;
 
-import net.jimmynet.jamesindustries.JamesiumIndustries;
 import net.jimmynet.jamesindustries.block.ModBlocks;
+import net.jimmynet.jamesindustries.helpers.ModResourceKeys;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
@@ -22,14 +21,14 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 public class ModConfiguredFeatures {
     private ModConfiguredFeatures() {}
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_SILVER_ORE = ResourceKey.create(
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_SILVER_ORE = ModResourceKeys.create(
         Registries.CONFIGURED_FEATURE,
-        Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "overworld_silver_ore")
+        "overworld_silver_ore"
     );
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_RED_ORE = ResourceKey.create(
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_RED_ORE = ModResourceKeys.create(
         Registries.CONFIGURED_FEATURE,
-        Identifier.fromNamespaceAndPath(JamesiumIndustries.MODID, "overworld_red_ore")
+        "overworld_red_ore"
     );
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
