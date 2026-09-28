@@ -7,7 +7,7 @@ All notable changes to Jamesium Industries will be documented in this file.
 """
 body = """
 {% if version %}
-## {{ version | trim_start_matches(pat="v") }} - {{ timestamp | date(format="%Y-%m-%d") }}
+## {{ version }} - {{ timestamp | date(format="%Y-%m-%d") }}
 {% else %}
 ## Unreleased
 {% endif %}
@@ -37,7 +37,7 @@ filter_unconventional = true
 
 commit_preprocessors = [
     { pattern = "^Initial commit$", replace = "feat: initial commit" },
-    { pattern = "^Added inital files via upload$", replace = "feat: add initial files via upload" },
+    { pattern = "^Added inital files via upload", replace = "feat: add initial files via upload from Forge 1.11 modding tutorial by SilentChaos512" },
     { pattern = "^Migrate tutorial mod from Forge 1\\.11\\.2 to Neoforge 1\\.21\\.11$", replace = "chore: migrate tutorial mod from Forge 1.11.2 to NeoForge 1.21.11" },
     { pattern = "^Basic Block and Item with assets$", replace = "feat: add basic block and item assets" },
     { pattern = "^Commence rewiring into logical modules$", replace = "refactor: commence rewiring into logical modules" },

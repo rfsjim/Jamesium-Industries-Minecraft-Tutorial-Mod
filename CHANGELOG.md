@@ -257,7 +257,7 @@ All notable changes to Jamesium Industries will be documented in this file.
 
 
 
-## 0.2.2 - 2026-09-19
+## neoforge-1.21.11-0.9.2 - 2026-09-19
 
 
 
@@ -268,7 +268,7 @@ All notable changes to Jamesium Industries will be documented in this file.
 
 
 
-## 0.2.1 - 2026-09-19
+## neoforge-1.21.11-0.9.1 - 2026-09-19
 
 
 
@@ -290,7 +290,7 @@ All notable changes to Jamesium Industries will be documented in this file.
 
 
 
-## 0.2.0 - 2026-09-13
+## neoforge-1.21.11-0.8.0 - 2026-09-13
 
 
 
@@ -347,7 +347,7 @@ All notable changes to Jamesium Industries will be documented in this file.
 
 
 
-## 0.0.5 - 2026-09-09
+## neoforge-1.21.11-0.6.1 - 2026-09-09
 
 
 
@@ -400,6 +400,8 @@ All notable changes to Jamesium Industries will be documented in this file.
 ### Added
 
 
+- Add initial files via upload from Forge 1.11 modding tutorial by SilentChaos512
+
 - Add basic block and item assets
 
 
@@ -411,7 +413,7 @@ All notable changes to Jamesium Industries will be documented in this file.
 
 
 
-## forge-1.11.2-0.1.0 - 2017-06-25
+## neoforge-1.21.11-0.1.0 - 2017-06-25
 
 
 
