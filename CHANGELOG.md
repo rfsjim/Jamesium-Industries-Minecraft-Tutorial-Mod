@@ -3,6 +3,24 @@
 All notable changes to Jamesium Industries will be documented in this file.
 
 
+## Unreleased
+
+
+
+### Added
+
+
+- Created initial framework for Pet Rabbits to follow players around
+
+
+
+### Fixed
+
+
+- Versions appear to need only numbers and not alphabets
+
+
+
 ## neoforge-1.21.11-0.22.0 - 2026-09-27
 
 

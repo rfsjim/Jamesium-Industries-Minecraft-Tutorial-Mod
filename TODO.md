@@ -10,7 +10,7 @@
 ### Mob / Pet Interaction
 - [ ] Silver Ingot initiates taming operations
 - [ ] Ownership/taming semantics
-- [ ] Follow owner behaviour
+- [X] Follow owner behaviour more to be performed however, initially created by following player around does not hold ownership state yet...
 - [ ] Sit/stay behaviour
 - [ ] Additional pet AI goals
 
