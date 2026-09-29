@@ -1,15 +1,13 @@
 package net.jimmynet.jamesindustries.entity.passive;
 
-import net.minecraft.world.entity.animal.rabbit.Rabbit;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import java.util.EnumSet;
 
 import org.jspecify.annotations.Nullable;
 
 import net.jimmynet.jamesindustries.entity.ModEntities;
 import net.jimmynet.jamesindustries.item.ModItems;
 import net.jimmynet.jamesindustries.loot.PetRabbitLoot;
+
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -20,8 +18,18 @@ import net.minecraft.util.Util;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.animal.rabbit.Rabbit;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootTable;
 
@@ -214,5 +222,144 @@ public class PetRabbitEntity extends Rabbit {
         }
 
         return offspring;
+    }
+
+    @Override 
+    protected void registerGoals() {
+        super.registerGoals();
+
+        this.goalSelector.addGoal(4, new PetRabbitEntity.FollowPlayer(this, 1.25, false));
+    }
+
+    public class FollowPlayer extends Goal {
+        private static final TargetingConditions FOLLOW_PLAYER = TargetingConditions.forNonCombat().ignoreLineOfSight();
+        private final TargetingConditions targetingConditions;
+        private final PetRabbitEntity petRabbit;
+        private @Nullable Player player;
+        private final double speedModifier;
+        private final double stopDistance;
+        private final boolean canScare; 
+        private int calmDown;
+        private double px;
+        private double py;
+        private double pz;
+        private double pRotX;
+        private double pRotY;
+        private boolean isRunning; 
+
+        public FollowPlayer(PathfinderMob petRabbit, double speedModifier, boolean canScare) {
+            this((PetRabbitEntity)petRabbit, speedModifier, canScare, 2.5);
+        }
+
+        public FollowPlayer(PathfinderMob petRabbit, double speedModifier, boolean canScare, double stopDistance) { 
+            this((PetRabbitEntity)petRabbit, speedModifier, canScare, stopDistance);
+        }
+
+        FollowPlayer(PetRabbitEntity petRabbit, double speedModifier, boolean canScare, double stopDistance) {
+            this.petRabbit = petRabbit;
+            this.speedModifier = speedModifier;
+            this.canScare = canScare;
+            this.stopDistance = stopDistance;
+            this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
+            this.targetingConditions = FOLLOW_PLAYER.copy().selector((target, level) -> this.shouldFollow(target));
+        }
+
+        private boolean shouldFollow(final LivingEntity player) {
+            return true;
+        }
+
+        @Override
+        public boolean canUse() {
+            if (this.calmDown > 0) {
+                --this.calmDown;
+                return false;
+            } else {
+                this.player = getServerLevel(
+                    this.petRabbit
+                ).getNearestPlayer(
+                    this.targetingConditions.range(
+                        this.petRabbit.getAttributeValue(
+                            Attributes.TEMPT_RANGE
+                        )
+                    ),
+                    this.petRabbit
+                );
+                return this.player != null;
+            }
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            if (this.canScare()) {
+                if (this.petRabbit.distanceToSqr(this.player) < (double)36.0F) {
+                    if (this.player.distanceToSqr(this.px, this.py, this.pz) > 0.010000000000000002) {
+                        return false;
+                    }
+
+                    if (
+                        Math.abs((double)this.player.getXRot() - this.pRotX) >
+                        (double)5.0F || Math.abs((double)this.player.getYRot() - this.pRotY) > (double)5.0F
+                    ) {
+                        return false;
+                    }
+                } else {
+                    this.px = this.player.getX();
+                    this.py = this.player.getY();
+                    this.pz = this.player.getZ();
+                }
+
+                this.pRotX = (double)this.player.getXRot();
+                this.pRotY = (double)this.player.getYRot();
+            }
+
+            return this.canUse();
+        }
+
+        protected boolean canScare() {
+            return this.canScare;
+        }
+
+        @Override 
+        public void start() {
+            this.px = this.player.getX();
+            this.py = this.player.getY();
+            this.pz = this.player.getZ();
+            this.isRunning = true;
+        }
+
+        @Override 
+        public void stop() {
+            this.player = null;
+            this.stopNavigation();
+            this.calmDown = reducedTickDelay(100);
+            this.isRunning = false;
+        }
+
+        @Override 
+        public void tick() {
+            this.petRabbit.getLookControl().setLookAt(
+                this.player,
+                (float)(this.petRabbit.getMaxHeadYRot() + 20),
+                (float)(this.petRabbit.getMaxHeadXRot())
+            );
+            if (this.petRabbit.distanceToSqr(this.player) < this.stopDistance * this.stopDistance) {
+                this.stopNavigation();
+            } else {
+                this.navigateTowards(this.player);
+            }
+        }
+
+        protected void stopNavigation() {
+            this.petRabbit.getNavigation().stop();
+        }
+        
+        protected void navigateTowards(final Player player) {
+            this.petRabbit.getNavigation().moveTo((Entity)player, this.speedModifier);
+        }
+
+        public boolean isRunning() {
+            return this.isRunning;
+        }
+
     }
 }
