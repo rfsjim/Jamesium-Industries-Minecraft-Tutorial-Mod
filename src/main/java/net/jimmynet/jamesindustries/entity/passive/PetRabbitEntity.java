@@ -229,6 +229,7 @@ public class PetRabbitEntity extends Rabbit {
         super.registerGoals();
 
         this.goalSelector.addGoal(4, new PetRabbitEntity.FollowPlayer(this, 1.25, false));
+        this.goalSelector.addGoal(9, new PetRabbitEntity.RandomHopWhenIdle(this));
     }
 
     public class FollowPlayer extends Goal {
@@ -361,5 +362,45 @@ public class PetRabbitEntity extends Rabbit {
             return this.isRunning;
         }
 
+    }
+
+    public class RandomHopWhenIdle extends Goal {
+        private final PetRabbitEntity petRabbit;
+        private int idleTimer;
+
+        public RandomHopWhenIdle(PetRabbitEntity petRabbit) {
+            this.petRabbit = petRabbit;
+            this.idleTimer = 0;
+        }
+
+        @Override
+        public boolean canUse() {
+            return petRabbit.random.nextFloat() < 0.02F &&
+            petRabbit.onGround() &&
+            !petRabbit.isInWater() &&
+            !petRabbit.isInLava(); 
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            return this.idleTimer > 0;
+        }
+
+        @Override
+        public void tick() {
+            if (petRabbit.onGround() && !((RabbitJumpControl) petRabbit.jumpControl).canJump()) {
+                ((RabbitJumpControl) petRabbit.jumpControl).setCanJump(true);
+            }
+            
+            if (idleTimer > 0) {
+                --this.idleTimer;
+            }
+        }
+
+        @Override 
+        public void start() {
+            petRabbit.jumpFromGround();
+            idleTimer = 20 + petRabbit.random.nextInt(20);
+        }
     }
 }
