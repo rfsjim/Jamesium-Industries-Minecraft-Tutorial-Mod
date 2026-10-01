@@ -10,6 +10,17 @@ All notable changes to Jamesium Industries will be documented in this file.
 ### Added
 
 
+- Pet Rabbit randomly jumps when idle
+
+
+
+## neoforge-1.21.11-0.23.0 - 2026-09-29
+
+
+
+### Added
+
+
 - Created initial framework for Pet Rabbits to follow players around
 
 

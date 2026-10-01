@@ -215,6 +215,7 @@ Intentionally postponded because #WORLDGEN
 - [X] Rabbit sound when interaction is on cooldown
 - [X] Delegate non-petting interactions back to vanilla `Rabbit`
 - [X] Placeholder action - Silver Ingot adds CUSTOM_NAME to Rabbit
+- [X] Pet Rabbit will randomly jump when idle and no lower priority goals are required.
 
 ### Loot Tables / Periodic gifts
 - [X] Investigate vanilla Chicken egg-laying implementation
