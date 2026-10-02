@@ -172,6 +172,8 @@ Intentionally postponded because #WORLDGEN
 - [X] Nether Brick Sword recipe and creative tab automatically supplies enchanted sword with Fire Aspect I. Limitation in v1.21.11 does not allow item registration with an enchantment. Meaning that `/get` command or other mods creating it, or `new ItemStack(...)` calls will spawn a basic Nether Brick Sword without Fire Aspect. Migration to 26.x will resolve this issue with the `Item.Properties.delayedComponent(...)` API call.
 - [X] Mining behaviour has for the silver metal blocks, added Pickaxe tag, both ores and metal blocks added an implementation of `requiresCorrectToolForDrops()`
 - [X] Add Silver Ore & Red Ore to World Generation
+    - [X] Red Ore is a limited block that spawns around ruined portals, using netherack as its block replacement due to the limited spawning of netherrack within the overworld.
+    - [X] Silver ore spawns anywhere that STONE ORE REPLACEABLES would spawn.
 
 ## Datagen
 - [X] Model provider

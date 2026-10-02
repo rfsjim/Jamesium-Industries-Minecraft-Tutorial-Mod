@@ -3,7 +3,7 @@
 All notable changes to Jamesium Industries will be documented in this file.
 
 
-## Unreleased
+## neoforge-1.21.11-0.24.0 - 2026-10-01
 
 
 
