@@ -112,8 +112,8 @@ public class PetRabbitEntity extends Rabbit {
             serverLevel.sendParticles(
                 ParticleTypes.HEART,
                 this.getX(),
-                this.getY()+ 0.5F,
-                this.getZ() + 0.5F,
+                this.getY(),
+                this.getZ(),
                 5,
                 0.2,
                 0.2,
@@ -148,8 +148,8 @@ public class PetRabbitEntity extends Rabbit {
             serverLevel.sendParticles(
                 ParticleTypes.EGG_CRACK,
                 this.getX(),
-                this.getY()+ 0.5F,
-                this.getZ() + 0.5F,
+                this.getY(),
+                this.getZ(),
                 5,
                 0.2,
                 0.2,

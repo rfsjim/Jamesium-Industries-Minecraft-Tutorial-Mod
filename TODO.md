@@ -1,6 +1,11 @@
 # TODO - Jamesium Industries — Project
 
 ## Bug Fix / Clean Up
+- [ ] The follow goal monopolises rabbit movement whenever any player is nearby - `FollowPlayer.canUse()` succeeds for the nearest player anywhere within `TEMPT_RANGE`, even when the rabbit is already inside its stopping distance. Once started, the goal holds both `MOVE` and `LOOK`. At close range, `tick()` stops navigation, but the goal itself continues running. This can suppress every conflicting equal- or lower-priority goal indefinitely
+- [ ] Persistance related - follow continuation performs a new target acquisition every tick. Pet Rabbit can rapidly change targets, continuation does not actually test whether the original target is alive, valid, still within a desired range, or should still be followed
+- [ ] Empty main-hand petting can prevent an off-hand item interaction
+- [ ] Petting cooldown is shared by every player
+- [ ] Gift/petting particles are consistently shifted on the Z axis
 
 ## Basic Blocks / Items
 - [ ] Consider uses for Silver Tools - potentially they are gold tier
@@ -12,9 +17,9 @@
 - [ ] Ownership/taming semantics
 - [X] Follow owner behaviour more to be performed however, initially created by following player around does not hold ownership state yet...
 - [ ] Sit/stay behaviour
-- [ ] Additional pet AI goals
+- [ ] Additional pet AI goals 
 
-#### Considerations
+#### AI / Taming and Interactions Considerations
 - [ ] Is this rabbit already tame?
 - [ ] Who owns it?
 - [ ] Does ownership survive save/reload?
@@ -24,12 +29,19 @@
 - [ ] Should silver be consumed on failed/already-tamed attempts?
 - [ ] Client or server decides each operation?
 - [ ] What InteractionResult should each branch return?
-- [ ] Should the visible "Pet Rabbit" name actually have anything whatsoever to do with taming state? Probably eventually no—right now it's just your wonderfully crude test lamp.
+- [ ] Should the visible "Pet Rabbit" name actually have anything whatsoever to do with taming state? Probably eventually no—right now it's just a wonderfully crude test lamp.
 - [ ] What happens when navigation can't reach the owner?
 - [ ] At what distance does following start/stop?
 - [ ] Does it teleport if hopelessly far away?
 - [ ] Does it follow while panicking/eating/avoiding things?
 - [ ] What priority does the follow goal get relative to existing Rabbit goals?
+- [ ] Does following really need both `MOVE` and `LOOK` for its entire lifetime?
+- [ ] What causes the goal to start?
+- [ ] What causes it to continue?
+- [ ] What causes it to relinquish control?
+- [ ] How frequently does it recalculate navigation? - Vanilla-style following doesn't necessarily issue moveTo() every game tick; established follow-owner implementations maintain a countdown and periodically recalculate the path.
+- [ ] What happens when navigation fails?
+- [ ] What animal-specific policies differ between `Wolf` and `Cat`?
 
 ### Loot Tables / Periodic Gifts
 - [ ] Tune weights/counts/drop rates after playing with it
