@@ -102,6 +102,14 @@ public class ModLootTableSubProvider implements LootTableSubProvider {
             )));
     }
 
+    /**
+     * Creates a loot pool with the specified parameters.
+     * @param rolls
+     * @param itemCount
+     * @param bonusRolls
+     * @param entries
+     * @return
+     */
     private static LootPool.Builder itemPool(
         NumberProvider rolls,
         NumberProvider itemCount,
@@ -129,6 +137,11 @@ public class ModLootTableSubProvider implements LootTableSubProvider {
         return pool;
     }
 
+    /**
+     * Creates a loot pool with the specified items.
+     * @param items The items to include in the pool.
+     * @return The created loot pool.
+     */
     private static LootPool.Builder itemPool(ItemLike... items) {
         return itemPool(
             ONE_ROLL,
