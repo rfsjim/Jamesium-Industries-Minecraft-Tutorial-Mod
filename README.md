@@ -21,9 +21,9 @@ Features
 - A pet rabbit that periodically gifts nuggets and gems
 - Red ore block that smelts into nether bricks
 
-
-TODO List & CHANGELOG
+Resources
 ---------
+- [WIKI](https://github.com/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod/wiki)
 - [Project Plan / TODO list](TODO.md)
 - [Change Log](CHANGELOG.md)
 
