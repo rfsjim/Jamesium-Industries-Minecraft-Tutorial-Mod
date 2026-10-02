@@ -3,7 +3,7 @@
 # Jamesium Industries: A Minecraft Tutorial Mod
 
 Using modding Minecraft as an example of how to use VS Code and learn more Java.
-Version neoforge-1.21.11-0.22.0
+Version neoforge-1.21.11-0.24.0
 Updated Minecraft tutorial using Neoforge 21.11.45
 Minecraft 1.21.11
 
