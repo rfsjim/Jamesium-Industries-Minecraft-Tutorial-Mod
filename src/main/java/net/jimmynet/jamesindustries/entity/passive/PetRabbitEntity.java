@@ -246,7 +246,8 @@ public class PetRabbitEntity extends Rabbit {
         private double pz;
         private double pRotX;
         private double pRotY;
-        private boolean isRunning; 
+        private boolean isRunning;
+        private int timeToRecalcPath; 
 
         public FollowPlayer(PathfinderMob petRabbit, double speedModifier, boolean canScare) {
             this((PetRabbitEntity)petRabbit, speedModifier, canScare, 2.5);
@@ -285,21 +286,32 @@ public class PetRabbitEntity extends Rabbit {
                     ),
                     this.petRabbit
                 );
+
+                if (this.player == null || !this.player.isAlive()) {
+                    return false;
+                } else if (this.petRabbit.distanceToSqr(this.player) < this.stopDistance * this.stopDistance) {
+                    return false;
+                }
+                
                 return this.player != null;
             }
         }
 
         @Override
         public boolean canContinueToUse() {
-            if (this.canScare()) {
+            if (this.player == null || !this.player.isAlive()) {
+                return false;
+            } else if (this.petRabbit.distanceToSqr(this.player) < this.stopDistance * this.stopDistance) {
+                return false;
+            } else if (this.canScare()) {
                 if (this.petRabbit.distanceToSqr(this.player) < (double)36.0F) {
                     if (this.player.distanceToSqr(this.px, this.py, this.pz) > 0.010000000000000002) {
                         return false;
                     }
 
                     if (
-                        Math.abs((double)this.player.getXRot() - this.pRotX) >
-                        (double)5.0F || Math.abs((double)this.player.getYRot() - this.pRotY) > (double)5.0F
+                        Math.abs((double)this.player.getXRot() - this.pRotX) > (double)5.0F ||
+                        Math.abs((double)this.player.getYRot() - this.pRotY) > (double)5.0F
                     ) {
                         return false;
                     }
@@ -326,6 +338,7 @@ public class PetRabbitEntity extends Rabbit {
             this.py = this.player.getY();
             this.pz = this.player.getZ();
             this.isRunning = true;
+            this.timeToRecalcPath = 0;
         }
 
         @Override 
@@ -346,7 +359,10 @@ public class PetRabbitEntity extends Rabbit {
             if (this.petRabbit.distanceToSqr(this.player) < this.stopDistance * this.stopDistance) {
                 this.stopNavigation();
             } else {
-                this.navigateTowards(this.player);
+                if (--this.timeToRecalcPath <= 0) {
+                    this.timeToRecalcPath = this.adjustedTickDelay(10);
+                    this.navigateTowards(this.player);
+                }
             }
         }
 
