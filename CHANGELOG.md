@@ -3,6 +3,30 @@
 All notable changes to Jamesium Industries will be documented in this file.
 
 
+## Unreleased
+
+
+
+### Added
+
+
+- Diagnostic logging tool
+
+
+
+### Fixed
+
+
+- Adjusted gift & petting visualisation particles to be more consistent over entity
+
+- Update logic for player following
+
+- Continued Pet Rabbit FollowPlayer Goal fixes
+
+- Adjusted Pet Rabbit MobInteractions to only allow petting on genuine main and off hand both being empty, allowing for other interactions with off hand
+
+
+
 ## neoforge-1.21.11-0.24.0 - 2026-10-01
 
 

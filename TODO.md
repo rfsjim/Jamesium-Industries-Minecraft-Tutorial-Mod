@@ -1,11 +1,8 @@
 # TODO - Jamesium Industries — Project
 
 ## Bug Fix / Clean Up
-- [ ] The follow goal monopolises rabbit movement whenever any player is nearby - `FollowPlayer.canUse()` succeeds for the nearest player anywhere within `TEMPT_RANGE`, even when the rabbit is already inside its stopping distance. Once started, the goal holds both `MOVE` and `LOOK`. At close range, `tick()` stops navigation, but the goal itself continues running. This can suppress every conflicting equal- or lower-priority goal indefinitely
 - [ ] Persistance related - follow continuation performs a new target acquisition every tick. Pet Rabbit can rapidly change targets, continuation does not actually test whether the original target is alive, valid, still within a desired range, or should still be followed
-- [ ] Empty main-hand petting can prevent an off-hand item interaction
 - [ ] Petting cooldown is shared by every player
-- [ ] Gift/petting particles are consistently shifted on the Z axis
 
 ## Basic Blocks / Items
 - [ ] Consider uses for Silver Tools - potentially they are gold tier
@@ -16,7 +13,7 @@
 - [ ] Silver Ingot initiates taming operations
 - [ ] Ownership/taming semantics
 - [X] Follow owner behaviour more to be performed however, initially created by following player around does not hold ownership state yet...
-- [ ] Sit/stay behaviour
+- [ ] Stay behaviour - sit behaviour not required as rabbit model always looks to be sitting already.
 - [ ] Additional pet AI goals 
 
 #### AI / Taming and Interactions Considerations
@@ -142,6 +139,9 @@ Intentionally postponded because #WORLDGEN
 - [X] At datagen there is insufficient information for `supportsEnchantment()` to correctly validate the requested enchantment, added two distinct paths for applying enchant to blocks/items either at runtime via validated → check supportsEnchantment() or during datagen unchecked → caller asserts compatibility. Provided two helper methods each with separate overloads for default enchant levels of 1 - `applyEnchantmentValidated(...);` and `applyEnchantmentUnchecked(...);`
 - [X] Silver ingot Rabbit naming allows empty hand interactions to fall through as well as naming, allowing healing to also occur.
 - [X] Breeding Pet Rabbits now creates Pet Rabbits Not Rabbits
+- [X] The follow goal monopolises rabbit movement whenever any player is nearby - `FollowPlayer.canUse()` succeeds for the nearest player anywhere within `TEMPT_RANGE`, even when the rabbit is already inside its stopping distance. Once started, the goal holds both `MOVE` and `LOOK`. At close range, `tick()` stops navigation, but the goal itself continues running. This can suppress every conflicting equal- or lower-priority goal indefinitely
+- [X] Gift/petting particles are consistently shifted on the Z axis
+- [X] Empty main-hand petting can prevent an off-hand item interaction
 
 ## Core mod / infrastructure
 - [X] Create Jamesium Industries mod
