@@ -56,14 +56,21 @@ public class PetRabbitEntity extends Rabbit {
         
         ItemStack itemStack = player.getItemInHand(hand);
 
-        if (itemStack.isEmpty()) {
-            
+        if (this.bothHandsAreEmpty(player)) {
             if (this.level() instanceof ServerLevel serverLevel) {
+                 // Genuine empty-handed petting.
                 this.patRabbit(player, serverLevel);
-            } 
-            
+            }
+
             return InteractionResult.SUCCESS;
-        } else if (this.isFood(itemStack)) {
+        }
+
+        if (itemStack.isEmpty()) {
+            // This hand is empty but the other hand is not, don't pet the rabbit and check for other interactions.
+            return InteractionResult.PASS;
+        } 
+        
+        if (this.isFood(itemStack)) {
             return super.mobInteract(player, hand);
         }
 
@@ -131,6 +138,11 @@ public class PetRabbitEntity extends Rabbit {
                 1.6F
             );
         }
+    }
+
+    private boolean bothHandsAreEmpty(Player player) {
+        return player.getMainHandItem().isEmpty() &&
+        player.getOffhandItem().isEmpty();
     }
 
     private void dropGift(ServerLevel serverLevel) {
