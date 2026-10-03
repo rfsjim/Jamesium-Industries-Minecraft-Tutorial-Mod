@@ -22,7 +22,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
@@ -238,7 +237,8 @@ public class PetRabbitEntity extends Rabbit {
         private final PetRabbitEntity petRabbit;
         private @Nullable Player player;
         private final double speedModifier;
-        private final double stopDistance;
+        private final double stopDistance = 2.5;
+        private final double startDistance = 4.0;
         private final boolean canScare; 
         private int calmDown;
         private double px;
@@ -249,19 +249,14 @@ public class PetRabbitEntity extends Rabbit {
         private boolean isRunning;
         private int timeToRecalcPath; 
 
-        public FollowPlayer(PathfinderMob petRabbit, double speedModifier, boolean canScare) {
-            this((PetRabbitEntity)petRabbit, speedModifier, canScare, 2.5);
+        public FollowPlayer(PetRabbitEntity petRabbit, double speedModifier, boolean canScare) {
+            this(petRabbit, speedModifier, canScare, 2.5);
         }
 
-        public FollowPlayer(PathfinderMob petRabbit, double speedModifier, boolean canScare, double stopDistance) { 
-            this((PetRabbitEntity)petRabbit, speedModifier, canScare, stopDistance);
-        }
-
-        FollowPlayer(PetRabbitEntity petRabbit, double speedModifier, boolean canScare, double stopDistance) {
+        public FollowPlayer(PetRabbitEntity petRabbit, double speedModifier, boolean canScare, double stopDistance) {
             this.petRabbit = petRabbit;
             this.speedModifier = speedModifier;
             this.canScare = canScare;
-            this.stopDistance = stopDistance;
             this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
             this.targetingConditions = FOLLOW_PLAYER.copy().selector((target, level) -> this.shouldFollow(target));
         }
@@ -275,35 +270,41 @@ public class PetRabbitEntity extends Rabbit {
             if (this.calmDown > 0) {
                 --this.calmDown;
                 return false;
-            } else {
-                this.player = getServerLevel(
-                    this.petRabbit
-                ).getNearestPlayer(
-                    this.targetingConditions.range(
-                        this.petRabbit.getAttributeValue(
-                            Attributes.TEMPT_RANGE
-                        )
-                    ),
-                    this.petRabbit
-                );
-
-                if (this.player == null || !this.player.isAlive()) {
-                    return false;
-                } else if (this.petRabbit.distanceToSqr(this.player) < this.stopDistance * this.stopDistance) {
-                    return false;
-                }
-                
-                return this.player != null;
             }
+            
+            double followRange = this.petRabbit.getAttributeValue(Attributes.TEMPT_RANGE);
+            
+            this.player = getServerLevel(this.petRabbit).getNearestPlayer(
+                this.targetingConditions.range(followRange),
+                this.petRabbit
+            );
+            
+            if (this.player == null || !this.player.isAlive()) {
+                return false;
+            }
+            
+            return this.petRabbit.distanceToSqr(this.player) >
+            this.startDistance * this.startDistance; 
         }
 
         @Override
         public boolean canContinueToUse() {
             if (this.player == null || !this.player.isAlive()) {
                 return false;
-            } else if (this.petRabbit.distanceToSqr(this.player) < this.stopDistance * this.stopDistance) {
+            }
+            
+            double followRange = this.petRabbit.getAttributeValue(Attributes.TEMPT_RANGE);
+            double distanceSquared = this.petRabbit.distanceToSqr(this.player);
+
+            if (distanceSquared <= this.stopDistance * this.stopDistance) {
                 return false;
-            } else if (this.canScare()) {
+            }
+
+            if (distanceSquared > followRange * followRange) {
+                return false;
+            }
+
+            if (this.canScare()) {
                 if (this.petRabbit.distanceToSqr(this.player) < (double)36.0F) {
                     if (this.player.distanceToSqr(this.px, this.py, this.pz) > 0.010000000000000002) {
                         return false;
@@ -325,7 +326,8 @@ public class PetRabbitEntity extends Rabbit {
                 this.pRotY = (double)this.player.getYRot();
             }
 
-            return this.canUse();
+            return distanceSquared > this.stopDistance * this.stopDistance &&
+            distanceSquared <= followRange * followRange;
         }
 
         protected boolean canScare() {
