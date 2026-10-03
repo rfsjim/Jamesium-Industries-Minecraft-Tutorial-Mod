@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Assertions;
 
 import net.jimmynet.jamesindustries.helpers.SeasonalHelpers;
 
-public class SeasonalHelpersTests {
+public final class SeasonalHelpersTests {
     private SeasonalHelpersTests() {}
 
     @Test
