@@ -3,18 +3,17 @@
 # Jamesium Industries: A Minecraft Tutorial Mod
 
 Using modding Minecraft as an example of how to use VS Code and learn more Java.
-Version neoforge-1.21.11-0.24.0
 Updated Minecraft tutorial using Neoforge 21.11.45
 Minecraft 1.21.11
 
-![Github](https://img.shields.io/badge/github-another_minecraft_mod_repo-800000?logo=github)
+![Github](https://img.shields.io/badge/github-another_minecraft_mod_repo-6F0F3B?logo=github)
 ![NeoForge](https://img.shields.io/badge/Neoforge-21.11.45-orange)
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.21.11-yellow) 
 ![GitHub License](https://img.shields.io/github/license/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod?color=red&link=LICENSE) 
 ![Last Commit](https://img.shields.io/github/last-commit/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod) 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod) 
-![Build](https://img.shields.io/github/actions/workflow/status/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod/build.yml) 
-
+![Build](https://img.shields.io/github/actions/workflow/status/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod/build.yml)
+![Latest GitHub Tag](https://img.shields.io/github/v/tag/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod?label=Latest%20Version&color=6F0F3B)
 
 Features
 ---------
