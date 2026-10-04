@@ -257,6 +257,7 @@ Intentionally postponded because #WORLDGEN
 ### Seasonal Gifts
 - [X] Add `isAroundEaster()`
 - [X] Use deliberately broad Easter season rather than implementing ecclesiastical computus
+- [X] Date usage is based on authoritive server time, rather than differing client times.
 - [X] Approximate season: 1 March → 1 May
 - [X] Create Easter gift loot table
 - [X] Add enhanced Easter loot such as emeralds/diamonds
