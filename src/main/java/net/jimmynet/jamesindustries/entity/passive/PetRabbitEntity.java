@@ -4,6 +4,7 @@ import org.jspecify.annotations.Nullable;
 
 import net.jimmynet.jamesindustries.entity.ModEntities;
 import net.jimmynet.jamesindustries.entity.ai.goal.FollowPlayerGoal;
+import net.jimmynet.jamesindustries.entity.ai.goal.RandomHopWhenIdleGoal;
 import net.jimmynet.jamesindustries.item.ModItems;
 import net.jimmynet.jamesindustries.loot.PetRabbitLoot;
 
@@ -19,7 +20,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.animal.rabbit.Rabbit;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -235,46 +235,22 @@ public class PetRabbitEntity extends Rabbit {
         super.registerGoals();
 
         this.goalSelector.addGoal(4, new FollowPlayerGoal(this, 1.25, false));
-        this.goalSelector.addGoal(9, new PetRabbitEntity.RandomHopWhenIdle(this));
+        this.goalSelector.addGoal(9, new RandomHopWhenIdleGoal(this));
     }
 
-    public class RandomHopWhenIdle extends Goal {
-        private final PetRabbitEntity petRabbit;
-        private int idleTimer;
+    public static boolean canJump(PetRabbitEntity petRabbit) {
+        return ((RabbitJumpControl) petRabbit.jumpControl).canJump();
+    }
 
-        public RandomHopWhenIdle(PetRabbitEntity petRabbit) {
-            this.petRabbit = petRabbit;
-            this.idleTimer = 0;
-        }
+    public static void setCanJump(PetRabbitEntity petRabbit, boolean canJump) {
+        ((RabbitJumpControl) petRabbit.jumpControl).setCanJump(canJump);
+    }
 
-        @Override
-        public boolean canUse() {
-            return petRabbit.random.nextFloat() < 0.02F &&
-            petRabbit.onGround() &&
-            !petRabbit.isInWater() &&
-            !petRabbit.isInLava(); 
-        }
+    public static int nextInt(PetRabbitEntity petRabbit, int bound) {
+        return petRabbit.random.nextInt(20);
+    }
 
-        @Override
-        public boolean canContinueToUse() {
-            return this.idleTimer > 0;
-        }
-
-        @Override
-        public void tick() {
-            if (petRabbit.onGround() && !((RabbitJumpControl) petRabbit.jumpControl).canJump()) {
-                ((RabbitJumpControl) petRabbit.jumpControl).setCanJump(true);
-            }
-            
-            if (idleTimer > 0) {
-                --this.idleTimer;
-            }
-        }
-
-        @Override 
-        public void start() {
-            petRabbit.jumpFromGround();
-            idleTimer = 20 + petRabbit.random.nextInt(20);
-        }
+    public static float nextFloat(PetRabbitEntity petRabbit) {
+        return petRabbit.random.nextFloat();
     }
 }
