@@ -3,7 +3,27 @@
 All notable changes to Jamesium Industries will be documented in this file.
 
 
-## Unreleased
+## neoforge-1.21.11-0.28.0 - 2026-10-04
+
+
+
+### Added
+
+
+- Add framework for taming Pet Rabbits persistant owner name and scaffolfing for owner related functions
+
+
+
+### Fixed
+
+
+- Resolve Failing Build due to File Naming Issue
+
+- Rename dropGiftStep.java to DropGiftStep.java to fix build failing issue
+
+
+
+## neoforge-1.21.11-0.27.0 - 2026-10-04
 
 
 
@@ -11,6 +31,8 @@ All notable changes to Jamesium Industries will be documented in this file.
 
 
 - Custom logger now accepts logging levels with customised message colouring
+
+- Add persistence for Pet Rabbit Gift Drop Timers
 
 
 
