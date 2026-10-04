@@ -12,7 +12,7 @@ public final class DropGiftStep {
 
     private DropGiftStep() {}
 
-    public static  void dropGift(ServerLevel serverLevel, PetRabbitEntity petRabbit) {
+    public static void dropGift(ServerLevel serverLevel, PetRabbitEntity petRabbit) {
 
         ResourceKey<LootTable> lootTableId = PetRabbitLoot.getLootTableForVariant(petRabbit.getVariant());
 
