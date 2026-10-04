@@ -38,14 +38,14 @@ public class PetRabbitEntity extends Rabbit {
     private static final String GIFT_TIME_TAG = "GiftTime";
     private static final String OWNER_NAME_TAG = "OwnerName";
     private int giftTime;
-    private String ownerName;
+    private String ownerUUIDString;
     private boolean tamed;
     
     public PetRabbitEntity(EntityType<? extends Rabbit> entityType, Level level) {
         super(entityType, level);
 
         this.giftTime = this.nextGiftTime();
-        this.ownerName = null;
+        this.ownerUUIDString = "";
         this.tamed = false;
     }
 
@@ -177,9 +177,9 @@ public class PetRabbitEntity extends Rabbit {
             GIFT_TIME_TAG,
             this.nextGiftTime()
         );
-        this.ownerName = input.getStringOr(
+        this.ownerUUIDString = input.getStringOr(
             OWNER_NAME_TAG,
-            null
+            ""
         );
     }
 
@@ -192,12 +192,12 @@ public class PetRabbitEntity extends Rabbit {
         );
         output.putString(
             OWNER_NAME_TAG,
-            this.ownerName
+            this.ownerUUIDString
         );
     }
 
     public boolean isTame() {
-        return this.ownerName != null && !this.ownerName.isEmpty();
+        return !this.ownerUUIDString.isEmpty();
     }
 
     private void tame(Player player) {
@@ -210,12 +210,12 @@ public class PetRabbitEntity extends Rabbit {
     }
 
     private void setOwner(Player player) {
-        this.ownerName = player.getStringUUID();
+        this.ownerUUIDString = player.getStringUUID();
     }
 
     public String isOwnedBy() {
-        if (this.ownerName != null) {
-            return this.ownerName;
+        if (!this.ownerUUIDString.isEmpty()) {
+            return this.ownerUUIDString;
         }
 
         return  "";
