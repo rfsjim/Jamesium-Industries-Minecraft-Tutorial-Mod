@@ -4,16 +4,13 @@ import org.jspecify.annotations.Nullable;
 
 import net.jimmynet.jamesindustries.entity.ModEntities;
 import net.jimmynet.jamesindustries.entity.ai.interaction.PatRabbitInteraction;
+import net.jimmynet.jamesindustries.entity.ai.step.dropGiftStep;
 import net.jimmynet.jamesindustries.entity.ai.goal.FollowPlayerGoal;
 import net.jimmynet.jamesindustries.entity.ai.goal.RandomHopWhenIdleGoal;
 import net.jimmynet.jamesindustries.item.ModItems;
-import net.jimmynet.jamesindustries.loot.PetRabbitLoot;
 
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Util;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -25,7 +22,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.loot.LootTable;
 
 /**
  * 
@@ -92,7 +88,9 @@ public class PetRabbitEntity extends Rabbit {
         if (this.level() instanceof ServerLevel serverLevel) {
             if (this.isAlive() && !this.isBaby() && --this.giftTime <=0)
             {
-                this.dropGift(serverLevel);
+                dropGiftStep.dropGift(serverLevel, this);
+
+                this.giftTime = this.nextInt(PetRabbitEntity.GIFT_INTERVAL_RANGE) + PetRabbitEntity.GIFT_INTERVAL_RANGE;
             }
         }
     }
@@ -102,33 +100,6 @@ public class PetRabbitEntity extends Rabbit {
         player.getOffhandItem().isEmpty();
     }
 
-    private void dropGift(ServerLevel serverLevel) {
-
-        ResourceKey<LootTable> lootTableId = PetRabbitLoot.getLootTableForVariant(this.getVariant());
-
-        if (this.dropFromGiftLootTable(serverLevel, lootTableId, this::spawnAtLocation)) {
-            this.playSound(
-                SoundEvents.CHICKEN_EGG,
-                1.0F,
-                (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F
-            );
-
-            serverLevel.sendParticles(
-                ParticleTypes.EGG_CRACK,
-                this.getX(),
-                this.getY(),
-                this.getZ(),
-                5,
-                0.2,
-                0.2,
-                0.2,
-                0
-            );
-        }
-        
-        this.giftTime = this.random.nextInt(GIFT_INTERVAL_RANGE) + GIFT_INTERVAL_RANGE;
-    }
- 
     private InteractionResult interactionChangeVariant(Player player, ItemStack itemStack) {
         Rabbit.Variant targetVariant = setTargetVariant(itemStack);
 
