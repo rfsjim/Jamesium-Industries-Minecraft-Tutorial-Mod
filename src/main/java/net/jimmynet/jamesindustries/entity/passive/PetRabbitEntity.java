@@ -36,12 +36,17 @@ public class PetRabbitEntity extends Rabbit {
 
     private static final int GIFT_INTERVAL_RANGE = 6000;
     private static final String GIFT_TIME_TAG = "GiftTime";
+    private static final String OWNER_NAME_TAG = "OwnerName";
     private int giftTime;
+    private String ownerName;
+    private boolean tamed;
     
     public PetRabbitEntity(EntityType<? extends Rabbit> entityType, Level level) {
         super(entityType, level);
 
         this.giftTime = this.nextGiftTime();
+        this.ownerName = null;
+        this.tamed = false;
     }
 
     private int nextGiftTime() {
@@ -71,10 +76,12 @@ public class PetRabbitEntity extends Rabbit {
             return super.mobInteract(player, hand);
         }
 
-        if (itemStack.is(ModItems.SILVER_INGOT) && this.getType().canSerialize() && this.isAlive()) {
+        if (itemStack.is(ModItems.SILVER_INGOT) && this.getType().canSerialize() && this.isAlive() && !this.isTame()) {
             if (this.level() instanceof ServerLevel) {
-                this.setCustomName(Component.literal("Pet Rabbit"));
-            }
+                this.setCustomName(Component.literal(player.getName().getString()));
+                this.tame(player);
+                }
+
             return InteractionResult.SUCCESS;
         }
 
@@ -170,6 +177,10 @@ public class PetRabbitEntity extends Rabbit {
             GIFT_TIME_TAG,
             this.nextGiftTime()
         );
+        this.ownerName = input.getStringOr(
+            OWNER_NAME_TAG,
+            null
+        );
     }
 
     @Override
@@ -179,5 +190,34 @@ public class PetRabbitEntity extends Rabbit {
             GIFT_TIME_TAG,
             this.giftTime
         );
+        output.putString(
+            OWNER_NAME_TAG,
+            this.ownerName
+        );
+    }
+
+    public boolean isTame() {
+        return this.ownerName != null && !this.ownerName.isEmpty();
+    }
+
+    private void tame(Player player) {
+        this.setTame(true);
+        this.setOwner(player);
+    }
+
+    private void setTame(boolean tamed) {
+        this.tamed = tamed;
+    }
+
+    private void setOwner(Player player) {
+        this.ownerName = player.getStringUUID();
+    }
+
+    public String isOwnedBy() {
+        if (this.ownerName != null) {
+            return this.ownerName;
+        }
+
+        return  "";
     }
 }

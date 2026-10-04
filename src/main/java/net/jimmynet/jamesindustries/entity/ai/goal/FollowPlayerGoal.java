@@ -43,7 +43,11 @@ public class FollowPlayerGoal extends Goal {
     }
 
     private boolean shouldFollow(final LivingEntity player) {
-        return true;
+        if (this.player == null || !this.player.isAlive()) {
+            return false;
+        }
+
+        return  true;
     }
 
     @Override
@@ -52,7 +56,7 @@ public class FollowPlayerGoal extends Goal {
             --this.calmDown;
             return false;
         }
-        
+
         double followRange = this.petRabbit.getAttributeValue(Attributes.TEMPT_RANGE);
         
         this.player = getServerLevel(this.petRabbit).getNearestPlayer(
