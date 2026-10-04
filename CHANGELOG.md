@@ -10,6 +10,26 @@ All notable changes to Jamesium Industries will be documented in this file.
 ### Added
 
 
+- Custom logger now accepts logging levels with customised message colouring
+
+
+
+### Fixed
+
+
+- Updated Seasonsal Helper Test to Final
+
+- Removed magic number from nextInt() method
+
+
+
+## neoforge-1.21.11-0.25.3 - 2026-10-03
+
+
+
+### Added
+
+
 - Diagnostic logging tool
 
 

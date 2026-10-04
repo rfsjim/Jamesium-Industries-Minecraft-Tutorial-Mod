@@ -6,6 +6,7 @@
 
 ## Basic Blocks / Items
 - [ ] Consider uses for Silver Tools - potentially they are gold tier
+- [ ] Jamesium Rare end game resource, only mineable with netherite. Fantastic enchant attributes, god like sword attributes. Possibly an entire progression chain. Maybe unique worldgen...
 
 ## Pet Rabbit
 
