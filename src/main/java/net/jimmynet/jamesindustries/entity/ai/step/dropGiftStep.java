@@ -8,9 +8,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.storage.loot.LootTable;
 
-public final class dropGiftStep {
+public final class DropGiftStep {
 
-    private dropGiftStep() {}
+    private DropGiftStep() {}
 
     public static  void dropGift(ServerLevel serverLevel, PetRabbitEntity petRabbit) {
 
