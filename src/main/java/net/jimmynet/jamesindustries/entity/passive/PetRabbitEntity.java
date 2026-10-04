@@ -3,6 +3,7 @@ package net.jimmynet.jamesindustries.entity.passive;
 import org.jspecify.annotations.Nullable;
 
 import net.jimmynet.jamesindustries.entity.ModEntities;
+import net.jimmynet.jamesindustries.entity.ai.interaction.PatRabbitInteraction;
 import net.jimmynet.jamesindustries.entity.ai.goal.FollowPlayerGoal;
 import net.jimmynet.jamesindustries.entity.ai.goal.RandomHopWhenIdleGoal;
 import net.jimmynet.jamesindustries.item.ModItems;
@@ -13,7 +14,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Util;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -35,8 +35,6 @@ import net.minecraft.world.level.storage.loot.LootTable;
  */
 public class PetRabbitEntity extends Rabbit {
 
-    private static final long PETTING_COOLDOWN_TICKS = 200L;
-    private long nextPetTime = 0L;
     private static final int GIFT_INTERVAL_RANGE = 6000;
     public int giftTime;
     
@@ -54,7 +52,7 @@ public class PetRabbitEntity extends Rabbit {
         if (this.bothHandsAreEmpty(player)) {
             if (this.level() instanceof ServerLevel serverLevel) {
                  // Genuine empty-handed petting.
-                this.patRabbit(player, serverLevel);
+                PatRabbitInteraction.patRabbit(player, serverLevel, this);
             }
 
             return InteractionResult.SUCCESS;
@@ -96,42 +94,6 @@ public class PetRabbitEntity extends Rabbit {
             {
                 this.dropGift(serverLevel);
             }
-        }
-    }
-
-    private void patRabbit(Player player, ServerLevel serverLevel) {
-        
-        long currentTime = this.level().getGameTime();
-
-        if (currentTime >= this.nextPetTime) {
-
-            this.nextPetTime = currentTime + PETTING_COOLDOWN_TICKS;
-
-            this.heal(2.0F);
-            player.heal(2.0F);
-
-            serverLevel.sendParticles(
-                ParticleTypes.HEART,
-                this.getX(),
-                this.getY(),
-                this.getZ(),
-                5,
-                0.2,
-                0.2,
-                0.2,
-                0
-            );
-        } else {
-            serverLevel.playSound(
-                null,
-                this.getX(),
-                this.getY(),
-                this.getZ(),
-                SoundEvents.RABBIT_AMBIENT,
-                SoundSource.NEUTRAL,
-                0.5F,
-                1.6F
-            );
         }
     }
 
