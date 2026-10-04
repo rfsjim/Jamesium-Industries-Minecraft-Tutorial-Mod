@@ -14,7 +14,7 @@ public class RandomHopWhenIdleGoal extends Goal {
 
         @Override
         public boolean canUse() {
-            return PetRabbitEntity.nextFloat(petRabbit) < 0.02F &&
+            return petRabbit.nextFloat() < 0.02F &&
             petRabbit.onGround() &&
             !petRabbit.isInWater() &&
             !petRabbit.isInLava(); 
@@ -27,8 +27,8 @@ public class RandomHopWhenIdleGoal extends Goal {
 
         @Override
         public void tick() {
-            if (petRabbit.onGround() && !PetRabbitEntity.canJump(petRabbit)) {
-                PetRabbitEntity.setCanJump(petRabbit, true);
+            if (petRabbit.onGround() && !petRabbit.canJump()) {
+                petRabbit.setCanJump(true);
             }
             
             if (idleTimer > 0) {
@@ -39,6 +39,6 @@ public class RandomHopWhenIdleGoal extends Goal {
         @Override 
         public void start() {
             petRabbit.jumpFromGround();
-            idleTimer = 20 + PetRabbitEntity.nextInt(petRabbit, 20);
+            idleTimer = 20 + petRabbit.nextInt(20);
         }
     }

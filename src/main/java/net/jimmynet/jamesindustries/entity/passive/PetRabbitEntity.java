@@ -238,19 +238,19 @@ public class PetRabbitEntity extends Rabbit {
         this.goalSelector.addGoal(9, new RandomHopWhenIdleGoal(this));
     }
 
-    public static boolean canJump(PetRabbitEntity petRabbit) {
-        return ((RabbitJumpControl) petRabbit.jumpControl).canJump();
+    public boolean canJump() {
+        return ((RabbitJumpControl) this.jumpControl).canJump();
     }
 
-    public static void setCanJump(PetRabbitEntity petRabbit, boolean canJump) {
-        ((RabbitJumpControl) petRabbit.jumpControl).setCanJump(canJump);
+    public void setCanJump(boolean canJump) {
+        ((RabbitJumpControl) this.jumpControl).setCanJump(canJump);
     }
 
-    public static int nextInt(PetRabbitEntity petRabbit, int bound) {
-        return petRabbit.random.nextInt(bound);
+    public int nextInt(int bound) {
+        return this.random.nextInt(bound);
     }
 
-    public static float nextFloat(PetRabbitEntity petRabbit) {
-        return petRabbit.random.nextFloat();
+    public float nextFloat() {
+        return this.random.nextFloat();
     }
 }
