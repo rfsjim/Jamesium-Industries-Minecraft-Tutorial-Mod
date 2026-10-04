@@ -247,7 +247,7 @@ public class PetRabbitEntity extends Rabbit {
     }
 
     public static int nextInt(PetRabbitEntity petRabbit, int bound) {
-        return petRabbit.random.nextInt(20);
+        return petRabbit.random.nextInt(bound);
     }
 
     public static float nextFloat(PetRabbitEntity petRabbit) {
