@@ -23,6 +23,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 
 /**
  * 
@@ -33,12 +35,17 @@ import net.minecraft.world.level.Level;
 public class PetRabbitEntity extends Rabbit {
 
     private static final int GIFT_INTERVAL_RANGE = 6000;
+    private static final String GIFT_TIME_TAG = "GiftTime";
     private int giftTime;
     
     public PetRabbitEntity(EntityType<? extends Rabbit> entityType, Level level) {
         super(entityType, level);
 
-        this.giftTime = this.random.nextInt(GIFT_INTERVAL_RANGE) + GIFT_INTERVAL_RANGE;
+        this.giftTime = this.nextGiftTime();
+    }
+
+    private int nextGiftTime() {
+        return this.random.nextInt(GIFT_INTERVAL_RANGE) + GIFT_INTERVAL_RANGE;
     }
 
     @Override 
@@ -90,7 +97,7 @@ public class PetRabbitEntity extends Rabbit {
             if (this.isAlive() && !this.isBaby() && --this.giftTime <=0)
             {
                 DropGiftStep.dropGift(serverLevel, this);
-                this.giftTime = this.nextInt(PetRabbitEntity.GIFT_INTERVAL_RANGE) + PetRabbitEntity.GIFT_INTERVAL_RANGE;
+                this.giftTime = this.nextGiftTime();
             }
         }
     }
@@ -154,5 +161,23 @@ public class PetRabbitEntity extends Rabbit {
     @Override
     public void setVariant(Rabbit.Variant targetVariant) {
         super.setVariant(targetVariant);
+    }
+
+    @Override
+    protected void readAdditionalSaveData(ValueInput input) {
+        super.readAdditionalSaveData(input);
+        this.giftTime = input.getIntOr(
+            GIFT_TIME_TAG,
+            this.nextGiftTime()
+        );
+    }
+
+    @Override
+    protected void addAdditionalSaveData(ValueOutput output) {
+        super.addAdditionalSaveData(output);
+        output.putInt(
+            GIFT_TIME_TAG,
+            this.giftTime
+        );
     }
 }
