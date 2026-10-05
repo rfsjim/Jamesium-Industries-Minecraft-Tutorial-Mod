@@ -28,6 +28,8 @@ Features
 - Maple logs,
 - Enchanted Nether Sword
 
+More information see the WIKI (below)
+
 Resources
 ---------
 - [WIKI](https://github.com/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod/wiki)
