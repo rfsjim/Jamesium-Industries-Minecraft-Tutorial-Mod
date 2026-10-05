@@ -1,5 +1,7 @@
 package net.jimmynet.jamesindustries.entity.ai.goal;
 
+import java.util.EnumSet;
+
 import net.jimmynet.jamesindustries.entity.passive.PetRabbitEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
 
@@ -10,6 +12,7 @@ public class RandomHopWhenIdleGoal extends Goal {
         public RandomHopWhenIdleGoal(PetRabbitEntity petRabbit) {
             this.petRabbit = petRabbit;
             this.idleTimer = 0;
+            this.setFlags(EnumSet.of(Goal.Flag.JUMP));
         }
 
         @Override
