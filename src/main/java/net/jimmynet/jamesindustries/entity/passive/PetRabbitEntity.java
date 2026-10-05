@@ -1,23 +1,31 @@
 package net.jimmynet.jamesindustries.entity.passive;
 
+import java.util.Optional;
+
 import org.jspecify.annotations.Nullable;
 
 import net.jimmynet.jamesindustries.entity.ModEntities;
 import net.jimmynet.jamesindustries.entity.ai.interaction.PatRabbitInteraction;
 import net.jimmynet.jamesindustries.entity.ai.interaction.SetRabbitVariantInteraction;
 import net.jimmynet.jamesindustries.entity.ai.step.DropGiftStep;
+import net.jimmynet.jamesindustries.entity.ai.goal.FollowOwnerGoal;
 import net.jimmynet.jamesindustries.entity.ai.goal.FollowPlayerGoal;
 import net.jimmynet.jamesindustries.entity.ai.goal.RandomHopWhenIdleGoal;
 import net.jimmynet.jamesindustries.item.ModItems;
 
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Util;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.EntityReference;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.rabbit.Rabbit;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -38,15 +46,18 @@ public class PetRabbitEntity extends Rabbit {
     private static final String GIFT_TIME_TAG = "GiftTime";
     private static final String OWNER_NAME_TAG = "OwnerName";
     private int giftTime;
-    private String ownerUUIDString;
+    protected static final EntityDataAccessor<Optional<EntityReference<LivingEntity>>> DATA_OWNER_UUID_ID =
+        SynchedEntityData.defineId(
+            PetRabbitEntity.class,
+            EntityDataSerializers.OPTIONAL_LIVING_ENTITY_REFERENCE
+        );
     private boolean tamed;
     
     public PetRabbitEntity(EntityType<? extends Rabbit> entityType, Level level) {
         super(entityType, level);
 
         this.giftTime = this.nextGiftTime();
-        this.ownerUUIDString = "";
-        this.tamed = false;
+        this.setTame(false);
     }
 
     private int nextGiftTime() {
@@ -145,7 +156,7 @@ public class PetRabbitEntity extends Rabbit {
     protected void registerGoals() {
         super.registerGoals();
 
-        this.goalSelector.addGoal(4, new FollowPlayerGoal(this, 1.25, false));
+        this.goalSelector.addGoal(4, new FollowOwnerGoal(this, 1.25));
         this.goalSelector.addGoal(9, new RandomHopWhenIdleGoal(this));
     }
 
@@ -171,16 +182,42 @@ public class PetRabbitEntity extends Rabbit {
     }
 
     @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_OWNER_UUID_ID, Optional.empty());
+    }
+
+    @Override
     protected void readAdditionalSaveData(ValueInput input) {
         super.readAdditionalSaveData(input);
         this.giftTime = input.getIntOr(
             GIFT_TIME_TAG,
             this.nextGiftTime()
         );
-        this.ownerUUIDString = input.getStringOr(
-            OWNER_NAME_TAG,
-            ""
-        );
+        EntityReference<LivingEntity> entityReference = 
+            EntityReference.readWithOldOwnerConversion(
+                input,
+                OWNER_NAME_TAG,
+                this.level()
+            );
+
+        if (entityReference != null) {
+            try {
+                this.entityData.set(
+                    DATA_OWNER_UUID_ID,
+                    Optional.of(entityReference)
+                );
+                this.setTame(true);
+            } catch (Throwable t) {
+                this.setTame(false);
+            }
+        } else {
+            this.entityData.set(
+                DATA_OWNER_UUID_ID,
+                Optional.empty()
+            );
+            this.setTame(false);
+        }
     }
 
     @Override
@@ -190,14 +227,12 @@ public class PetRabbitEntity extends Rabbit {
             GIFT_TIME_TAG,
             this.giftTime
         );
-        output.putString(
-            OWNER_NAME_TAG,
-            this.ownerUUIDString
-        );
+        EntityReference<LivingEntity> entityReference = this.getOwnerReference();
+        EntityReference.store(entityReference, output, OWNER_NAME_TAG);
     }
 
     public boolean isTame() {
-        return !this.ownerUUIDString.isEmpty();
+        return this.entityData.get(DATA_OWNER_UUID_ID).isPresent();
     }
 
     private void tame(Player player) {
@@ -209,15 +244,32 @@ public class PetRabbitEntity extends Rabbit {
         this.tamed = tamed;
     }
 
-    private void setOwner(Player player) {
-        this.ownerUUIDString = player.getStringUUID();
+    private void setOwner(@Nullable LivingEntity player) {
+        this.entityData.set(
+            DATA_OWNER_UUID_ID,
+            Optional.ofNullable(player).map(EntityReference::of)
+        );
     }
 
-    public String isOwnedBy() {
-        if (!this.ownerUUIDString.isEmpty()) {
-            return this.ownerUUIDString;
-        }
+    private void setOwnerReference(@Nullable EntityReference<LivingEntity> player) {
+        this.entityData.set(
+            DATA_OWNER_UUID_ID,
+            Optional.ofNullable(player)
+        );
+    }
 
-        return  "";
+    public boolean isOwnedBy(LivingEntity entity) {
+        return entity == this.getOwner();
+    }
+
+    public @Nullable EntityReference<LivingEntity> getOwnerReference() {
+        return this.entityData.get(DATA_OWNER_UUID_ID).orElse(null);
+    }
+
+    public @Nullable LivingEntity getOwner() {
+        return EntityReference.getLivingEntity(
+            this.getOwnerReference(),
+            this.level()
+        );
     }
 }
