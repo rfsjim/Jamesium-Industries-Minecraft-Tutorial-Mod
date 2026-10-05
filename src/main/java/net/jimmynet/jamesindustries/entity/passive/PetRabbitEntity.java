@@ -9,11 +9,9 @@ import net.jimmynet.jamesindustries.entity.ai.interaction.PatRabbitInteraction;
 import net.jimmynet.jamesindustries.entity.ai.interaction.SetRabbitVariantInteraction;
 import net.jimmynet.jamesindustries.entity.ai.step.DropGiftStep;
 import net.jimmynet.jamesindustries.entity.ai.goal.FollowOwnerGoal;
-import net.jimmynet.jamesindustries.entity.ai.goal.FollowPlayerGoal;
 import net.jimmynet.jamesindustries.entity.ai.goal.RandomHopWhenIdleGoal;
 import net.jimmynet.jamesindustries.item.ModItems;
 
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -89,7 +87,6 @@ public class PetRabbitEntity extends Rabbit {
 
         if (itemStack.is(ModItems.SILVER_INGOT) && this.getType().canSerialize() && this.isAlive() && !this.isTame()) {
             if (this.level() instanceof ServerLevel) {
-                this.setCustomName(Component.literal(player.getName().getString()));
                 this.tame(player);
                 }
 
@@ -138,15 +135,37 @@ public class PetRabbitEntity extends Rabbit {
         Rabbit.Variant variants[] = Rabbit.Variant.values();
         Rabbit.Variant variant;
         
-        if (offspring != null) {
-            do {
-                variant = Util.getRandom(
-                    variants,
-                    this.random
-                );
-            } while (variant == Rabbit.Variant.EVIL);
+        if (offspring != null && otherPetRabbitParent instanceof PetRabbitEntity parentRabbit) {
+            int inheritanceRoll = this.random.nextInt(4);
+
+            if (
+                parentRabbit.getVariant() != Variant.EVIL &&
+                this.getVariant() != Variant.EVIL &&
+                inheritanceRoll < 3
+            ) {
+                if (this.random.nextBoolean()) {
+                    offspring.setVariant(this.getVariant());
+                } else {
+                    offspring.setVariant(parentRabbit.getVariant());
+                }
+            } else {
+                do {
+                    variant = Util.getRandom(
+                        variants,
+                        this.random
+                    );
+                } while (variant == Rabbit.Variant.EVIL);
+                offspring.setVariant(variant);
+            }
             
-            offspring.setVariant(variant);
+            if (this.isTame() && parentRabbit.isTame()) {
+                if (this.random.nextBoolean()) {
+                    offspring.setOwnerReference(this.getOwnerReference());
+                } else {
+                    offspring.setOwnerReference(parentRabbit.getOwnerReference());
+                }
+                offspring.setTame(true);
+            }
         }
 
         return offspring;
@@ -232,7 +251,7 @@ public class PetRabbitEntity extends Rabbit {
     }
 
     public boolean isTame() {
-        return this.entityData.get(DATA_OWNER_UUID_ID).isPresent();
+        return this.entityData.get(DATA_OWNER_UUID_ID).isPresent() && this.tamed;
     }
 
     private void tame(Player player) {

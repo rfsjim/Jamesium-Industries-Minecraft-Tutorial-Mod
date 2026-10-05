@@ -58,15 +58,14 @@ public class FollowOwnerGoal extends Goal {
             return false;
         }
 
-        return distanceSquared > this.stopDistance * this.stopDistance &&
-            distanceSquared <= followRange * followRange;
+        return true;
     }
 
     @Override 
     public void start() {
         this.timeToRecalcPath = 0;
         this.oldWaterCost = this.petRabbit.getPathfindingMalus(PathType.WATER);
-        this.petRabbit.setPathfindingMalus(PathType.WATER, timeToRecalcPath);
+        this.petRabbit.setPathfindingMalus(PathType.WATER, 0F);
     }
 
     @Override 
