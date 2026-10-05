@@ -3,6 +3,19 @@
 All notable changes to Jamesium Industries will be documented in this file.
 
 
+## neoforge-1.21.11-0.30.3 - 2026-10-05
+
+
+
+### Fixed
+
+
+- Consistency with handling of variables, persistance of tamed state, attach petting cooldown to per rabbit, add required MOVE and LOOK flags for Follow Owner AI Goal
+
+- Add required JUMP flag for Random Jump When Idle AI Goal
+
+
+
 ## neoforge-1.21.11-0.30 - 2026-10-05
 
 

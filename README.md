@@ -18,7 +18,15 @@ Minecraft 1.21.11
 Features
 ---------
 - A pet rabbit that periodically gifts nuggets and gems
+  - Pet Rabbit drops are controlled by the variant of pet rabbit
+  - Pet Rabbit drops seasonal gifts over easter.
+  - Pet Rabbits have an ownership state and will follow owners around similar to dogs & cats.
+  - Pet Rabbits have breeding logic
 - Red ore block that smelts into nether bricks
+- Silver ore, silver blocks, silver ingots
+- World generation of ores
+- Maple logs,
+- Enchanted Nether Sword
 
 Resources
 ---------

@@ -1,7 +1,7 @@
 # TODO - Jamesium Industries — Project
 
 ## Bug Fix / Clean Up
-- [ ] Petting cooldown is shared by every player
+Nil
 
 ## Basic Blocks / Items
 - [ ] Consider uses for Silver Tools - potentially they are gold tier
@@ -129,6 +129,7 @@ Intentionally postponded because #WORLDGEN
 - [X] The follow goal monopolises rabbit movement whenever any player is nearby - `FollowPlayer.canUse()` succeeds for the nearest player anywhere within `TEMPT_RANGE`, even when the rabbit is already inside its stopping distance. Once started, the goal holds both `MOVE` and `LOOK`. At close range, `tick()` stops navigation, but the goal itself continues running. This can suppress every conflicting equal- or lower-priority goal indefinitely
 - [X] Gift/petting particles are consistently shifted on the Z axis
 - [X] Empty main-hand petting can prevent an off-hand item interaction
+- [X] Petting cooldown is now shared for each rabbit rather than being shared by every player
 
 ## Core mod / infrastructure
 - [X] Create Jamesium Industries mod
