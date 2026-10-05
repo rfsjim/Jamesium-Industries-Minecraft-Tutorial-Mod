@@ -3,6 +3,39 @@
 All notable changes to Jamesium Industries will be documented in this file.
 
 
+## neoforge-1.21.11-0.30 - 2026-10-05
+
+
+
+### Added
+
+
+- Add chance for new pet rabbits to inherit their parents ownership and variant or inherit a new variant
+
+
+
+## neoforge-1.21.11-0.29 - 2026-10-05
+
+
+
+### Added
+
+
+- Add new Pet Rabbit Goal Follow Owner
+
+
+
+## neoforge-1.21.11-0.28.1 - 2026-10-04
+
+
+
+### Fixed
+
+
+- Fix null string regression preventing pet rabbit spawn eggs from spawning pet rabbits
+
+
+
 ## neoforge-1.21.11-0.28.0 - 2026-10-04
 
 

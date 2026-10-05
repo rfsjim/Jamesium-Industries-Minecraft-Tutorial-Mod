@@ -1,7 +1,6 @@
 # TODO - Jamesium Industries — Project
 
 ## Bug Fix / Clean Up
-- [ ] Persistance related - follow continuation performs a new target acquisition every tick. Pet Rabbit can rapidly change targets, continuation does not actually test whether the original target is alive, valid, still within a desired range, or should still be followed
 - [ ] Petting cooldown is shared by every player
 
 ## Basic Blocks / Items
@@ -11,33 +10,21 @@
 ## Pet Rabbit
 
 ### Mob / Pet Interaction
-- [ ] Silver Ingot initiates taming operations
-- [ ] Ownership/taming semantics
-- [X] Follow owner behaviour more to be performed however, initially created by following player around does not hold ownership state yet...
 - [ ] Stay behaviour - sit behaviour not required as rabbit model always looks to be sitting already.
 - [ ] Additional pet AI goals 
 
 #### AI / Taming and Interactions Considerations
-- [ ] Is this rabbit already tame?
-- [ ] Who owns it?
-- [ ] Does ownership survive save/reload?
+
 - [ ] What happens if the owner isn't online?
 - [ ] Can another player re-tame it?
 - [ ] Can the owner transfer it?
 - [ ] Should silver be consumed on failed/already-tamed attempts?
-- [ ] Client or server decides each operation?
-- [ ] What InteractionResult should each branch return?
-- [ ] Should the visible "Pet Rabbit" name actually have anything whatsoever to do with taming state? Probably eventually no—right now it's just a wonderfully crude test lamp.
 - [ ] What happens when navigation can't reach the owner?
-- [ ] At what distance does following start/stop?
 - [ ] Does it teleport if hopelessly far away?
 - [ ] Does it follow while panicking/eating/avoiding things?
 - [ ] What priority does the follow goal get relative to existing Rabbit goals?
 - [ ] Does following really need both `MOVE` and `LOOK` for its entire lifetime?
-- [ ] What causes the goal to start?
-- [ ] What causes it to continue?
 - [ ] What causes it to relinquish control?
-- [ ] How frequently does it recalculate navigation? - Vanilla-style following doesn't necessarily issue moveTo() every game tick; established follow-owner implementations maintain a countdown and periodically recalculate the path.
 - [ ] What happens when navigation fails?
 - [ ] What animal-specific policies differ between `Wolf` and `Cat`?
 
@@ -217,6 +204,20 @@ Intentionally postponded because #WORLDGEN
 - [X] Add spawn-egg localisation
 - [X] Add survival crafting recipe for pet-rabbit spawn egg
 
+### Pet Rabbit AI / Goals
+- [X] Persistance related - Follow now only follows tamed pet rabbit owner. Previously follow continuation performs a new target acquisition every tick. Pet Rabbit can rapidly change targets, continuation does not actually test whether the original target is alive, valid, still within a desired range, or should still be followed
+- [X] Persistance now obtained from Initial Follow owner behaviour more to be performed however, initially created by following player around does not hold ownership state
+- [X] Is this rabbit already tame?
+- [X] Who owns it?
+- [X] Does ownership survive save/reload?
+- [X] Client or server decides each operation?
+- [X] What InteractionResult should each branch return?
+- [X] Should the visible "Pet Rabbit" name actually have anything whatsoever to do with taming state? Probably eventually no—right now it's just a wonderfully crude test lamp.
+- [X] At what distance does following start/stop?
+- [X] What causes the goal to start?
+- [X] What causes it to continue?
+- [X] How frequently does it recalculate navigation? - Vanilla-style following doesn't necessarily issue moveTo() every game tick; established follow-owner implementations maintain a countdown and periodically recalculate the path.
+
 ### Mob / Pet Interaction
 - [X] Detect empty-hand `mobInteract`
 - [X] Keep interaction authoritative on logical server
@@ -229,6 +230,8 @@ Intentionally postponded because #WORLDGEN
 - [X] Delegate non-petting interactions back to vanilla `Rabbit`
 - [X] Placeholder action - Silver Ingot adds CUSTOM_NAME to Rabbit
 - [X] Pet Rabbit will randomly jump when idle and no lower priority goals are required.
+- [X] Silver Ingot initiates taming operations
+- [X] Ownership/taming semantics
 
 ### Loot Tables / Periodic gifts
 - [X] Investigate vanilla Chicken egg-laying implementation
