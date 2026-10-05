@@ -43,6 +43,7 @@ public class PetRabbitEntity extends Rabbit {
     private static final int GIFT_INTERVAL_RANGE = 6000;
     private static final String GIFT_TIME_TAG = "GiftTime";
     private static final String OWNER_NAME_TAG = "OwnerName";
+    private static final String RABBIT_TAMED_TAG = "RabbitTamed";
     private int giftTime;
     protected static final EntityDataAccessor<Optional<EntityReference<LivingEntity>>> DATA_OWNER_UUID_ID =
         SynchedEntityData.defineId(
@@ -50,6 +51,8 @@ public class PetRabbitEntity extends Rabbit {
             EntityDataSerializers.OPTIONAL_LIVING_ENTITY_REFERENCE
         );
     private boolean tamed;
+    private static final long PETTING_COOLDOWN_TICKS = 200L;
+    private long nextPetTime = 0L;
     
     public PetRabbitEntity(EntityType<? extends Rabbit> entityType, Level level) {
         super(entityType, level);
@@ -218,7 +221,7 @@ public class PetRabbitEntity extends Rabbit {
                 input,
                 OWNER_NAME_TAG,
                 this.level()
-            );
+        );
 
         if (entityReference != null) {
             try {
@@ -237,6 +240,11 @@ public class PetRabbitEntity extends Rabbit {
             );
             this.setTame(false);
         }
+
+        this.tamed = input.getBooleanOr(
+            RABBIT_TAMED_TAG,
+            false
+        );
     }
 
     @Override
@@ -246,8 +254,14 @@ public class PetRabbitEntity extends Rabbit {
             GIFT_TIME_TAG,
             this.giftTime
         );
+        
         EntityReference<LivingEntity> entityReference = this.getOwnerReference();
         EntityReference.store(entityReference, output, OWNER_NAME_TAG);
+
+        output.putBoolean(
+            RABBIT_TAMED_TAG,
+            this.tamed
+        );
     }
 
     public boolean isTame() {
@@ -290,5 +304,14 @@ public class PetRabbitEntity extends Rabbit {
             this.getOwnerReference(),
             this.level()
         );
+    }
+
+    public boolean tryBeginPettingCooldown(long time) {
+        if (time >= this.nextPetTime) {
+            this.nextPetTime = time + PETTING_COOLDOWN_TICKS;
+            return true;
+        }
+
+        return false;
     }
 }

@@ -9,18 +9,13 @@ import net.minecraft.world.entity.player.Player;
 
 public final class PatRabbitInteraction {
 
-    private static final long PETTING_COOLDOWN_TICKS = 200L;
-    private static long nextPetTime = 0L;
-
     private PatRabbitInteraction() {}
 
     public static  void patRabbit(Player player, ServerLevel serverLevel, PetRabbitEntity petRabbit) {
         
         long currentTime = petRabbit.level().getGameTime();
 
-        if (currentTime >= nextPetTime) {
-
-            nextPetTime = currentTime + PETTING_COOLDOWN_TICKS;
+        if (petRabbit.tryBeginPettingCooldown(currentTime)) {
 
             petRabbit.heal(2.0F);
             player.heal(2.0F);

@@ -1,5 +1,7 @@
 package net.jimmynet.jamesindustries.entity.ai.goal;
 
+import java.util.EnumSet;
+
 import javax.annotation.Nullable;
 
 import net.jimmynet.jamesindustries.entity.passive.PetRabbitEntity;
@@ -23,6 +25,7 @@ public class FollowOwnerGoal extends Goal {
         this.petRabbit = petRabbit;
         this.pathNavigation = petRabbit.getNavigation();
         this.speedModifier = speedModifier;
+        this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
     }
 
     @Override 
