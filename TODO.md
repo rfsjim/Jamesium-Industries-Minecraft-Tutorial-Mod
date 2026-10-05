@@ -11,6 +11,7 @@ Nil
 
 ### Mob / Pet Interaction
 - [ ] Stay behaviour - sit behaviour not required as rabbit model always looks to be sitting already.
+- [ ] Teleporting - Multipart - What happens when navigation can't reach the owner? What happens when navigation fails? `unableToMoveToOwner()`, Does it teleport if hopelessly far away? logically brings about `shouldTryToTeleportToOwner()` and `tryToTeleportToOwner()`
 - [ ] Additional pet AI goals 
 
 #### AI / Taming and Interactions Considerations
@@ -19,13 +20,10 @@ Nil
 - [ ] Can another player re-tame it?
 - [ ] Can the owner transfer it?
 - [ ] Should silver be consumed on failed/already-tamed attempts?
-- [ ] What happens when navigation can't reach the owner?
-- [ ] Does it teleport if hopelessly far away?
 - [ ] Does it follow while panicking/eating/avoiding things?
 - [ ] What priority does the follow goal get relative to existing Rabbit goals?
 - [ ] Does following really need both `MOVE` and `LOOK` for its entire lifetime?
 - [ ] What causes it to relinquish control?
-- [ ] What happens when navigation fails?
 - [ ] What animal-specific policies differ between `Wolf` and `Cat`?
 
 ### Loot Tables / Periodic Gifts
@@ -33,6 +31,12 @@ Nil
 
 ### Seasonal Gifts
 - [ ] Decide how seasonal table selection interacts with rabbit variants
+
+## Tests
+In game and unit testing
+- [ ] Ownership serialization and breeding
+- [ ] Have date/season and random decisions injectable, then expand ordinary unit coverage
+- [ ] Datagen-drift validation (having already been stung by this once)
 
 ## Canada Expansion Pack
 
@@ -98,12 +102,8 @@ Intentionally postponded because #WORLDGEN
 ## Research rabbit holes deliberately deferred
 - [ ] Synched entity data when a feature actually needs client/server state synchronisation
 - [ ] Persistent custom pet state when a feature actually needs to survive save/reload
-- [ ] Persistent `nextPetTime` and/or `GiftTime` across unload/reload of the entity
-- [ ] Ownership UUID persistence
 - [ ] More advanced AI goal architecture
 - [ ] Custom entity rendering/models
-- [ ] Worldgen
-- [ ] Data components for stateful items where appropriate
 - [ ] Loot contexts beyond `EMPTY` when gift generation actually needs contextual information
 - [ ] GitHub Releases/CD when distributing builds becomes worthwhile
 - [ ] Changing an `EVIL` rabbit back does not fully restore peaceful behavior. Consider either removing `EVIL` variant interactions, making `EVIL` a one-way transformation, or explicitly managing the reversible behavior. `EVIL` is a fun idea however, balance of loot table is currently off and is it required?
@@ -174,6 +174,7 @@ Intentionally postponded because #WORLDGEN
 - [X] Add Silver Ore & Red Ore to World Generation
     - [X] Red Ore is a limited block that spawns around ruined portals, using netherack as its block replacement due to the limited spawning of netherrack within the overworld.
     - [X] Silver ore spawns anywhere that STONE ORE REPLACEABLES would spawn.
+- [X] Worldgen
 
 ## Datagen
 - [X] Model provider
@@ -218,6 +219,8 @@ Intentionally postponded because #WORLDGEN
 - [X] What causes the goal to start?
 - [X] What causes it to continue?
 - [X] How frequently does it recalculate navigation? - Vanilla-style following doesn't necessarily issue moveTo() every game tick; established follow-owner implementations maintain a countdown and periodically recalculate the path.
+- [X] Ownership UUID persistence
+- [X] Data components for stateful items where appropriate
 
 ### Mob / Pet Interaction
 - [X] Detect empty-hand `mobInteract`
@@ -257,6 +260,7 @@ Intentionally postponded because #WORLDGEN
 - [X] For loot-table keys use a private factory for the repeated namespace-and-registry construction. Preserving the existing identifiers.
 - [X] Reduce repetitive loot-table construction. Using a small private helper to remove boilerplate. Keep it flexible enough for the planned weights and counts.
 - [X] Encapsulate the gift timer. The gift timer is public, and its random initialization is duplicated in the constructor and after a gift. Make the timer private and use one small method to choose the next delay.
+- [X] Persistent `nextPetTime` and/or `GiftTime` across unload/reload of the entity
 
 ### Seasonal Gifts
 - [X] Add `isAroundEaster()`
