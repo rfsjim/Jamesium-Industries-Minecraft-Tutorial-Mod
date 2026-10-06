@@ -1,5 +1,7 @@
 package net.jimmynet.jamesindustries.loot;
 
+import java.time.LocalDate;
+
 import net.jimmynet.jamesindustries.helpers.SeasonalHelpers;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.animal.rabbit.Rabbit;
@@ -9,11 +11,18 @@ public class PetRabbitLoot {
     private PetRabbitLoot() {}
 
     public static ResourceKey<LootTable> getLootTableForVariant(Rabbit.Variant variant) {
+        return getLootTableForVariant(variant, LocalDate.now());
+    }
 
-        SeasonalHelpers season = new SeasonalHelpers();
+    public static ResourceKey<LootTable> getLootTableForVariant(
+        Rabbit.Variant variant,
+        LocalDate date
+    ) {
+
+        SeasonalHelpers season = new SeasonalHelpers(date);
 
         if (season.isAroundEaster()) {
-            return ModLootTableKeys.PET_RABBIT_SEASONAL_GIFT;
+            return ModLootTableKeys.PET_RABBIT_EASTER_GIFT;
         }
         else {
             switch (variant) {

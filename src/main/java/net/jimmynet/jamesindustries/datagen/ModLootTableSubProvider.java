@@ -38,7 +38,7 @@ public class ModLootTableSubProvider implements LootTableSubProvider {
     public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer) {
         
         consumer.accept(
-            ModLootTableKeys.PET_RABBIT_SEASONAL_GIFT,
+            ModLootTableKeys.PET_RABBIT_EASTER_GIFT,
             LootTable.lootTable()
                 .withPool(itemPool(
                     Items.EMERALD,

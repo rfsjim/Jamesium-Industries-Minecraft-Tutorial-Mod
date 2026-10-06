@@ -11,9 +11,9 @@ import net.minecraft.world.level.storage.loot.LootTable;
  */
 public final class ModLootTableKeys {
 
-    public static final ResourceKey<LootTable> PET_RABBIT_SEASONAL_GIFT = ModResourceKeys.create(
+    public static final ResourceKey<LootTable> PET_RABBIT_EASTER_GIFT = ModResourceKeys.create(
         Registries.LOOT_TABLE,
-        "pet_rabbit_seasonal_gift"
+        "pet_rabbit_easter_gift"
     );
 
     public static final ResourceKey<LootTable> PET_RABBIT_GOLD = ModResourceKeys.create(
