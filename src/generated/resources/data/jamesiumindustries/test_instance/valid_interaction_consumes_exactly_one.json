@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "jamesiumindustries:valid_interaction_consumes_exactly_one",
+  "max_ticks": 20,
+  "structure": "jamesiumindustries:rabbit_interaction_test"
+}

@@ -24,4 +24,22 @@ public final class ModGameTestRegistry {
         () -> SetRabbitVariantInteractionGameTests
         ::sameVariantPassesAndConsumesNothing
     );
+
+    public static final DeferredHolder<Consumer<GameTestHelper>,
+    Consumer<GameTestHelper>
+    > VALID_INTERACTION_CONSUMES_EXACTLY_ONE =
+    TEST_FUNCTIONS.register(
+        "valid_interaction_consumes_exactly_one",
+        () -> SetRabbitVariantInteractionGameTests
+        ::validInteractionConsumesExactlyOne
+    );
+
+    public static final DeferredHolder<Consumer<GameTestHelper>,
+    Consumer<GameTestHelper>
+    > CREATIVE_CONSUMPTION_IS_INTENDED =
+    TEST_FUNCTIONS.register(
+        "creative_consumption_is_intended",
+        () -> SetRabbitVariantInteractionGameTests
+        ::creativeConsumptionIsIntended
+    );
 }

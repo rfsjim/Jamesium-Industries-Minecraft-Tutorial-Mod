@@ -16,6 +16,7 @@ public final class SetRabbitVariantInteractionGameTests {
     private SetRabbitVariantInteractionGameTests() {}
 
     private static final int STACK_SIZE = 8;
+    private static final BlockPos BLOCK_POS = new BlockPos(1,1,1);
 
     /*
      * Successful Completion
@@ -33,7 +34,7 @@ public final class SetRabbitVariantInteractionGameTests {
     public static void sameVariantPassesAndConsumesNothing(GameTestHelper helper) {
         PetRabbitEntity petRabbit = helper.spawn(
             ModEntities.PET_RABBIT.get(),
-            new BlockPos(1, 1, 1)
+            BLOCK_POS
         );
 
         petRabbit.setVariant(Rabbit.Variant.WHITE);
@@ -69,11 +70,79 @@ public final class SetRabbitVariantInteractionGameTests {
         helper.succeed();
     }
 
-    // public static void validInteractionConsumesExactlyOne(GameTestHelper helper) {
+    public static void validInteractionConsumesExactlyOne(GameTestHelper helper) {
+        PetRabbitEntity petRabbit = helper.spawn(
+            ModEntities.PET_RABBIT.get(),
+            BLOCK_POS
+        );
 
-    // }
+        petRabbit.setVariant(Rabbit.Variant.GOLD);
 
-    // public static void creativeConsumptionIsIntended(GameTestHelper helper) {
+        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
 
-    // }
+        ItemStack itemStack = new ItemStack(
+            Items.APPLE,
+            STACK_SIZE
+        );
+
+        InteractionResult result = SetRabbitVariantInteraction.interactionChangeVariant(
+            player,
+            itemStack,
+            petRabbit
+        );
+
+        helper.assertValueEqual(
+            STACK_SIZE - 1,
+            itemStack.getCount(),
+            "Item stack size"
+        );
+        helper.assertValueEqual(
+            Rabbit.Variant.SALT,
+            petRabbit.getVariant(),
+            "Rabbit Variant"
+        );
+        helper.assertValueEqual(
+            InteractionResult.CONSUME,
+            result,
+            "Interaction Result"
+        );
+        helper.succeed();
+    }
+
+    public static void creativeConsumptionIsIntended(GameTestHelper helper) {
+        PetRabbitEntity petRabbit = helper.spawn(
+            ModEntities.PET_RABBIT.get(),
+            BLOCK_POS
+        );
+
+        petRabbit.setVariant(Rabbit.Variant.WHITE_SPLOTCHED);
+
+        Player player = helper.makeMockPlayer(GameType.CREATIVE);
+        player.getAbilities().instabuild = true;
+
+        ItemStack itemStack = new ItemStack(Items.GOLD_INGOT, STACK_SIZE);
+
+        InteractionResult result = SetRabbitVariantInteraction.interactionChangeVariant(
+            player,
+            itemStack,
+            petRabbit
+        );
+
+        helper.assertValueEqual(
+            STACK_SIZE,
+            itemStack.getCount(),
+            "Stack Size"
+        );
+        helper.assertValueEqual(
+            Rabbit.Variant.GOLD,
+            petRabbit.getVariant(),
+            "Rabbit Variant"
+        );
+        helper.assertValueEqual(
+            InteractionResult.CONSUME,
+            result,
+            "Interaction Result"
+        );
+        helper.succeed();
+    }
 }

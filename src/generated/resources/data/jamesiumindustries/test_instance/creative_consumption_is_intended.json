@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "jamesiumindustries:creative_consumption_is_intended",
+  "max_ticks": 20,
+  "structure": "jamesiumindustries:rabbit_interaction_test"
+}
