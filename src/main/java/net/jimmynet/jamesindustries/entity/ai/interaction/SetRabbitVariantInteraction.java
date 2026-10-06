@@ -12,11 +12,9 @@ public final class SetRabbitVariantInteraction {
     private SetRabbitVariantInteraction() {}
 
     public static InteractionResult interactionChangeVariant(Player player, ItemStack itemStack, PetRabbitEntity petRabbit) {
-        Rabbit.Variant targetVariant = setTargetVariant(itemStack, petRabbit);
+        Rabbit.Variant targetVariant = resolveTargetVariant(itemStack, petRabbit.getVariant());
 
-        if (petRabbit.getVariant() == targetVariant) {
-            return InteractionResult.PASS;
-        }
+        if (petRabbit.getVariant() == targetVariant) return InteractionResult.PASS;
 
         if (petRabbit.level() instanceof ServerLevel)
         {
@@ -27,23 +25,15 @@ public final class SetRabbitVariantInteraction {
         return  InteractionResult.CONSUME;
     }
 
-    private static Rabbit.Variant setTargetVariant(ItemStack itemStack, PetRabbitEntity petRabbit) {
-        if (itemStack.is(Items.GOLD_INGOT)) {
-            return  Rabbit.Variant.GOLD;
-        } else if (itemStack.is(Items.IRON_INGOT)) { 
-            return  Rabbit.Variant.WHITE;
-        } else if (itemStack.is(Items.COAL)) {
-            return  Rabbit.Variant.BLACK;
-        } else if (itemStack.is(Items.DIRT)) {
-            return  Rabbit.Variant.BROWN;
-        } else if (itemStack.is(Items.FLINT)) {
-            return  Rabbit.Variant.WHITE_SPLOTCHED;
-        } else if (itemStack.is(Items.APPLE)) {
-            return  Rabbit.Variant.SALT;
-        } else if (itemStack.is(Items.WITHER_ROSE)) {
-            return  Rabbit.Variant.EVIL;
-        } else {
-            return petRabbit.getVariant();
-        }
-    }
+    public static Rabbit.Variant resolveTargetVariant(ItemStack itemStack, Rabbit.Variant currentVariant) {
+        if (itemStack.is(Items.GOLD_INGOT)) return Rabbit.Variant.GOLD;
+        if (itemStack.is(Items.IRON_INGOT)) return Rabbit.Variant.WHITE;
+        if (itemStack.is(Items.COAL)) return Rabbit.Variant.BLACK;
+        if (itemStack.is(Items.DIRT)) return Rabbit.Variant.BROWN;
+        if (itemStack.is(Items.FLINT)) return Rabbit.Variant.WHITE_SPLOTCHED;
+        if (itemStack.is(Items.APPLE)) return Rabbit.Variant.SALT;
+        if (itemStack.is(Items.WITHER_ROSE)) return Rabbit.Variant.EVIL;
+
+        return currentVariant;
+    } 
 }
