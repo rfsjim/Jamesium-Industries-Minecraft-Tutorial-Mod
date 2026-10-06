@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "jamesiumindustries:same_variant_passes_and_consumes_nothing",
+  "max_ticks": 20,
+  "structure": "jamesiumindustries:rabbit_interaction_test"
+}

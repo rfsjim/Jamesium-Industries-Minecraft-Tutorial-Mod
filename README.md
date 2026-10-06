@@ -43,10 +43,17 @@ Useful Tools
 - `.\gradlew runServer` Run Server
 - `.\gradlew classes` Fast Compilation Checks
 - `.\gradlew clean` Clean Slate
-- `.\gradlew test` Run Tests
+- `.\gradlew test` Run JUnit Tests
+- `.\gradlew runGameTestServer` Run In Game Tests
 - `Restart Java Language Server` VS Code's understanding of this Java project appears to be wrong. Rebuild it.
 - `Clean Java Language Server Workspace` A heavier cache/project-workspace cleanup when restarting isn't enough.
 - `Java: List All Java Source Paths` List ALL Java source paths
+
+In Game Tests
+- `/test run <test_name>`  
+- `/test runall`
+- `/test runfailed`
+- `/test runclosest`
 
 VS Code IDE Commands and Navigation
 ---------
