@@ -3,6 +3,8 @@ package net.jimmynet.jamesindustries;
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.api.Assertions;
 
 import net.jimmynet.jamesindustries.helpers.SeasonalHelpers;
@@ -53,5 +55,24 @@ public final class SeasonalHelpersTests {
         );
 
         Assertions.assertTrue(seasons.isAroundEaster());
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "2027-02-28, false",
+        "2026-04-05, true",
+        "2027-05-01, false",
+        "2027-03-01, true",
+        "2027-04-30, true",
+        "2024-03-31, true",
+        "2025-04-18, true",
+        "2040-03-30, true"
+    })
+    void shouldClassifyEasterDates(
+        LocalDate date,
+        boolean expectedAroundEaster
+    ) {
+        SeasonalHelpers seasons = new SeasonalHelpers(date);
+        Assertions.assertEquals(expectedAroundEaster, seasons.isAroundEaster());
     }
 }
