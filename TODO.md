@@ -35,7 +35,6 @@ Nil
 ## Tests
 In game and unit testing
 - [ ] Ownership serialization and breeding
-- [ ] Have date/season and random decisions injectable, then expand ordinary unit coverage
 - [ ] Datagen-drift validation (having already been stung by this once)
 
 ## Canada Expansion Pack
@@ -278,3 +277,7 @@ Intentionally postponded because #WORLDGEN
 - [X] Gold rabbit → influence gift production toward gold nuggets
 - [X] Wither rose or wither skeleton skull → EVIL/Killer Bunny
 - [X] Determine whether other vanilla rabbit variants deserve corresponding transformation items
+
+## Tests
+- [X] Have date/season and random decisions injectable, and then expanded ordinary unit coverage
+- [X] Checks that correct loot is issued for each variant
