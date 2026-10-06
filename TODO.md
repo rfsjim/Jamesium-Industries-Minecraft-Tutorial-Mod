@@ -144,7 +144,6 @@ Intentionally postponded because #WORLDGEN
 - [X] Git repository
 - [X] GitHub Actions CI build
 - [X] Create milestone tags/checkpoints
-- [X] Test current loot/gift implementation thoroughly
 - [X] Refactor growing bootstrap/main-class responsibilities
 - [X] Move datagen provider wiring out of `JamesiumIndustries`
 - [X] Consider an `event/` package as event handling grows
@@ -281,3 +280,5 @@ Intentionally postponded because #WORLDGEN
 ## Tests
 - [X] Have date/season and random decisions injectable, and then expanded ordinary unit coverage
 - [X] Checks that correct loot is issued for each variant
+- [X] Test current loot/gift implementation thoroughly
+- [X] Pet Rabbit Variant Changing Interaction tests 
