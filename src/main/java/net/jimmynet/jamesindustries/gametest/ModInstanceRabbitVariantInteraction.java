@@ -12,10 +12,16 @@ import net.minecraft.gametest.framework.GameTestEnvironments;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.gametest.framework.GameTestInstance;
 import net.minecraft.gametest.framework.TestData;
-import net.minecraft.gametest.framework.TestEnvironmentDefinition;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.block.Rotation;
+
+/* *********
+ * TODO
+ * Full Registration usage is available as a helper
+ * See [master 061cbea] Refactor: registerFunctionGameTest assists in removing framework plumbing calls that are duplicated,
+ * added additional method that makes all registration options available
+ * ********* 
+ */
 
 public final class ModInstanceRabbitVariantInteraction {
     private ModInstanceRabbitVariantInteraction() {}
@@ -62,49 +68,6 @@ public final class ModInstanceRabbitVariantInteraction {
                 .getKey()
             );
         }
-    
-    private static Holder.Reference<GameTestInstance> registerFunctionGameTest(
-        BootstrapContext<GameTestInstance> bootstrapContext,
-        ResourceKey<GameTestInstance> gameTestInstanceKey,
-        ResourceKey<Consumer<GameTestHelper>> gameTestFunctionKey,
-        ResourceKey<TestEnvironmentDefinition> gameTestEnvironmentKey,
-        String structurePath,
-        int maxTicks,
-        int setupTicks,
-        boolean isTestRequiredToSucceed,
-        Rotation rotation,
-        boolean onlyRunThroughTestCommand,
-        int maxAttempts,
-        int requiredSuccesses,
-        boolean skyAccess
-    ) {
-        return bootstrapContext.register(
-            gameTestInstanceKey,
-            new FunctionGameTestInstance(
-                gameTestFunctionKey,
-                new TestData<> (
-                    bootstrapContext.lookup(
-                        Registries.TEST_ENVIRONMENT
-                    )
-                    .getOrThrow(
-                        gameTestEnvironmentKey
-                    ),
-                    Identifier.fromNamespaceAndPath(
-                        JamesiumIndustries.MODID,
-                        structurePath
-                    ),
-                    maxTicks,
-                    setupTicks,
-                    isTestRequiredToSucceed,
-                    rotation,
-                    onlyRunThroughTestCommand,
-                    maxAttempts,
-                    requiredSuccesses,
-                    skyAccess
-                )
-            )
-        );
-    }
 
     private static Holder.Reference<GameTestInstance> registerFunctionGameTest(
         BootstrapContext<GameTestInstance> bootstrapContext,
