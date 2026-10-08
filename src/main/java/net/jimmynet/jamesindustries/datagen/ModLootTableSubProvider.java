@@ -19,6 +19,7 @@ import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 /**
  * 
  * ModLootTableSubProvider Custom Loot Tables
+ * 
  */
 public class ModLootTableSubProvider implements LootTableSubProvider {
     protected final HolderLookup.Provider lookupProvider;
@@ -139,6 +140,7 @@ public class ModLootTableSubProvider implements LootTableSubProvider {
 
     /**
      * Creates a loot pool with the specified items.
+     * specifically one roll, one item, no bonus rolls
      * @param items The items to include in the pool.
      * @return The created loot pool.
      */
@@ -151,6 +153,12 @@ public class ModLootTableSubProvider implements LootTableSubProvider {
         );
     }
 
+    /**
+     * Includes option for items and rolls
+     * @param rolls
+     * @param items
+     * @return
+     */
     private static LootPool.Builder itemPool(
         NumberProvider rolls,
         ItemLike... items
@@ -163,6 +171,13 @@ public class ModLootTableSubProvider implements LootTableSubProvider {
         );
     }
 
+    /**
+     * Includes options for rolls itemCount and items
+     * @param rolls
+     * @param itemCount
+     * @param items
+     * @return
+     */
     private static LootPool.Builder itemPool(
         NumberProvider rolls,
         NumberProvider itemCount,
@@ -176,6 +191,12 @@ public class ModLootTableSubProvider implements LootTableSubProvider {
         );
     }
 
+    /**
+     * Includes options for rolls and items
+     * @param rolls
+     * @param entries
+     * @return
+     */
     private static LootPool.Builder weightedItemPool(
         NumberProvider rolls,
         ItemEntry... entries
@@ -188,6 +209,13 @@ public class ModLootTableSubProvider implements LootTableSubProvider {
         );
     }
 
+    /**
+     * Rolls Item Counts and Items
+     * @param rolls
+     * @param itemCount
+     * @param entries
+     * @return
+     */
     private static LootPool.Builder weightedItemPool(
         NumberProvider rolls,
         NumberProvider itemCount,
@@ -201,12 +229,21 @@ public class ModLootTableSubProvider implements LootTableSubProvider {
         );
     }
 
+    /**
+     * Provides for empty pools
+     * @return
+     */
     private static LootPool.Builder emptyPool() {
         return LootPool.lootPool()
             .setRolls(ONE_ROLL)
             .add(EmptyLootItem.emptyItem());
     }
 
+    /**
+     * Return items
+     * @param items
+     * @return
+     */
     private static ItemEntry[] toEntries(ItemLike... items) {
         ItemEntry[] entries = new ItemEntry[items.length];
 
@@ -217,6 +254,12 @@ public class ModLootTableSubProvider implements LootTableSubProvider {
         return entries;
     }
 
+    /**
+     * Returns items and weights
+     * @param item
+     * @param weight
+     * @return
+     */
     private static ItemEntry weighted(ItemLike item, int weight) {
         return new ItemEntry(item, weight);
     }
