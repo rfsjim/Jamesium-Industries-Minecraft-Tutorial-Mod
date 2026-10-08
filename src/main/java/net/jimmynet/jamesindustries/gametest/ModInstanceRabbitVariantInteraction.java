@@ -5,7 +5,6 @@ import java.util.function.Consumer;
 import net.jimmynet.jamesindustries.JamesiumIndustries;
 import net.jimmynet.jamesindustries.helpers.ModResourceKeys;
 import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.gametest.framework.FunctionGameTestInstance;
@@ -39,77 +38,35 @@ public final class ModInstanceRabbitVariantInteraction {
     public static void bootstrap(
         BootstrapContext<GameTestInstance> bootstrap
     ) {
-            HolderGetter<TestEnvironmentDefinition> environments = bootstrap.lookup(Registries.TEST_ENVIRONMENT);
-
-            bootstrap.register(
+            registerFunctionGameTest(
+                bootstrap,
                 SAME_VARIANT_PASSES_AND_CONSUMES_NOTHING,
-                new FunctionGameTestInstance(
-                    ModGameTestRegistry
-                    .SAME_VARIANT_PASSES_AND_CONSUMES_NOTHING
-                    .getKey(),
-                    new TestData<>(
-                        environments.getOrThrow(
-                            GameTestEnvironments.DEFAULT_KEY
-                        ),
-                        Identifier.fromNamespaceAndPath(
-                            JamesiumIndustries.MODID,
-                            "rabbit_interaction_test"
-                        ),
-                        20,
-                        0,
-                        true
-                    )
-                )
+                ModGameTestRegistry
+                .SAME_VARIANT_PASSES_AND_CONSUMES_NOTHING
+                .getKey()
             );
 
-            bootstrap.register(
+            registerFunctionGameTest(
+                bootstrap,
                 VALID_INTERACTION_CONSUMES_EXACTLY_ONE,
-                new FunctionGameTestInstance(
-                    ModGameTestRegistry
-                    .VALID_INTERACTION_CONSUMES_EXACTLY_ONE
-                    .getKey(),
-                    new TestData<>(
-                        environments.getOrThrow(
-                            GameTestEnvironments.DEFAULT_KEY
-                        ),
-                        Identifier.fromNamespaceAndPath(
-                            JamesiumIndustries.MODID,
-                            "rabbit_interaction_test"
-                        ),
-                        20,
-                        0,
-                        true
-                    )
-                )
+                ModGameTestRegistry
+                .VALID_INTERACTION_CONSUMES_EXACTLY_ONE
+                .getKey()
             );
 
-            bootstrap.register(
+            registerFunctionGameTest(
+                bootstrap,
                 CREATIVE_CONSUMPTION_IS_INTENDED,
-                new FunctionGameTestInstance(
-                    ModGameTestRegistry
-                    .CREATIVE_CONSUMPTION_IS_INTENDED
-                    .getKey(),
-                    new TestData<>(
-                        environments.getOrThrow(
-                            GameTestEnvironments.DEFAULT_KEY
-                        ),
-                        Identifier.fromNamespaceAndPath(
-                            JamesiumIndustries.MODID,
-                            "rabbit_interaction_test"
-                        ),
-                        20,
-                        0,
-                        true
-                    )
-                )
+                ModGameTestRegistry
+                .CREATIVE_CONSUMPTION_IS_INTENDED
+                .getKey()
             );
         }
     
-    private static Holder.Reference<GameTestInstance> createGameTestInstanceReference(
+    private static Holder.Reference<GameTestInstance> registerFunctionGameTest(
         BootstrapContext<GameTestInstance> bootstrapContext,
         ResourceKey<GameTestInstance> gameTestInstanceKey,
         ResourceKey<Consumer<GameTestHelper>> gameTestFunctionKey,
-        HolderGetter<TestEnvironmentDefinition> environments,
         ResourceKey<TestEnvironmentDefinition> gameTestEnvironmentKey,
         String structurePath,
         int maxTicks,
@@ -126,7 +83,10 @@ public final class ModInstanceRabbitVariantInteraction {
             new FunctionGameTestInstance(
                 gameTestFunctionKey,
                 new TestData<> (
-                    environments.getOrThrow(
+                    bootstrapContext.lookup(
+                        Registries.TEST_ENVIRONMENT
+                    )
+                    .getOrThrow(
                         gameTestEnvironmentKey
                     ),
                     Identifier.fromNamespaceAndPath(
@@ -141,6 +101,35 @@ public final class ModInstanceRabbitVariantInteraction {
                     maxAttempts,
                     requiredSuccesses,
                     skyAccess
+                )
+            )
+        );
+    }
+
+    private static Holder.Reference<GameTestInstance> registerFunctionGameTest(
+        BootstrapContext<GameTestInstance> bootstrapContext,
+        ResourceKey<GameTestInstance> gameTestInstanceKey,
+        ResourceKey<Consumer<GameTestHelper>> gameTestFunctionKey
+    ) {
+        return bootstrapContext.register(
+            gameTestInstanceKey,
+            new FunctionGameTestInstance(
+                gameTestFunctionKey,
+                new TestData<> (
+                    bootstrapContext
+                    .lookup(
+                        Registries.TEST_ENVIRONMENT
+                    )
+                    .getOrThrow(
+                        GameTestEnvironments.DEFAULT_KEY
+                    ),
+                    Identifier.fromNamespaceAndPath(
+                        JamesiumIndustries.MODID,
+                        "rabbit_interaction_test"
+                    ),
+                    20,
+                    0,
+                    true
                 )
             )
         );
