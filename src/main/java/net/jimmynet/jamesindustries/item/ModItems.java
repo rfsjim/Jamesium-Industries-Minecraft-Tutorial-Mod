@@ -12,6 +12,21 @@ import net.minecraft.world.item.equipment.trim.TrimMaterials;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+/* *********
+ * TODO
+ * Uses for Silver - Toolset? Potentially they are gold tier
+ * Jamesium Rare end game resource, only mineable with netherrite.
+ * Fantastic enchant attributes, god like sword attributes.
+ * Possibly an entire progression chain. Maybe unique worldgen...
+ * ********* 
+ *
+ * *********
+ * 
+ * Level-able Nether Brick Sword, starts with Fire Aspect I after some currently undecided interaction -
+ * potentially an achievement / kill count / material / ritual / event upgrades the enchant to Fire Aspect II
+ * ********* 
+ */
+
 public class ModItems {
     
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(JamesiumIndustries.MODID);

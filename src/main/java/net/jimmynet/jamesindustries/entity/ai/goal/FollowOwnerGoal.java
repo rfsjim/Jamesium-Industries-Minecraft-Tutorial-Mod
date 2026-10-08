@@ -11,6 +11,12 @@ import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.level.pathfinder.PathType;
 
+/* *********
+ * TODO
+ * Can not navigate to owner and teleport to owner logic
+ * ********* 
+ */
+
 public class FollowOwnerGoal extends Goal {
     private final PetRabbitEntity petRabbit;
     private @Nullable LivingEntity owner;

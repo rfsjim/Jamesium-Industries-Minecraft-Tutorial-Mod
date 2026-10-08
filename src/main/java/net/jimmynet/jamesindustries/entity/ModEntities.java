@@ -10,6 +10,12 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
+/* *********
+ * TODO
+ * Stay behaviour - sit behaviour not required as rabbit model always looks to be sitting already.
+ * ********* 
+ */
+
 /**
  * 
  * ModEntities provides attributes for entities
