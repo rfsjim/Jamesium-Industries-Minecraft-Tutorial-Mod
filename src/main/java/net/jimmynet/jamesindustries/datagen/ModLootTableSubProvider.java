@@ -16,6 +16,14 @@ import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 
+/* *********
+ * TODO
+ * Full custom item loot table helpers available
+ * See commit [master 084aa4f] Refactor: Custom Helper Functions to allow for
+ * item rolls, weighted items returns, bonus rolls with several permutations
+  * ********* 
+ */
+
 /**
  * 
  * ModLootTableSubProvider Custom Loot Tables
@@ -154,82 +162,6 @@ public class ModLootTableSubProvider implements LootTableSubProvider {
     }
 
     /**
-     * Includes option for items and rolls
-     * @param rolls
-     * @param items
-     * @return
-     */
-    private static LootPool.Builder itemPool(
-        NumberProvider rolls,
-        ItemLike... items
-    ) {
-        return itemPool(
-            rolls,
-            null,
-            null,
-            toEntries(items)
-        );
-    }
-
-    /**
-     * Includes options for rolls itemCount and items
-     * @param rolls
-     * @param itemCount
-     * @param items
-     * @return
-     */
-    private static LootPool.Builder itemPool(
-        NumberProvider rolls,
-        NumberProvider itemCount,
-        ItemLike... items
-    ) {
-        return itemPool(
-            rolls,
-            itemCount,
-            null,
-            toEntries(items)
-        );
-    }
-
-    /**
-     * Includes options for rolls and items
-     * @param rolls
-     * @param entries
-     * @return
-     */
-    private static LootPool.Builder weightedItemPool(
-        NumberProvider rolls,
-        ItemEntry... entries
-    ) {
-        return itemPool(
-            rolls,
-            null,
-            null,
-            entries
-        );
-    }
-
-    /**
-     * Rolls Item Counts and Items
-     * @param rolls
-     * @param itemCount
-     * @param entries
-     * @return
-     */
-    private static LootPool.Builder weightedItemPool(
-        NumberProvider rolls,
-        NumberProvider itemCount,
-        ItemEntry... entries
-    ) {
-        return itemPool(
-            rolls,
-            itemCount,
-            null,
-            entries
-        );
-    }
-
-    /**
      * Provides for empty pools
      * @return
      */
@@ -252,15 +184,5 @@ public class ModLootTableSubProvider implements LootTableSubProvider {
         }
 
         return entries;
-    }
-
-    /**
-     * Returns items and weights
-     * @param item
-     * @param weight
-     * @return
-     */
-    private static ItemEntry weighted(ItemLike item, int weight) {
-        return new ItemEntry(item, weight);
     }
 }
