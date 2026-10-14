@@ -13,7 +13,7 @@ Minecraft 1.21.11
 ![GitHub License](https://img.shields.io/github/license/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod?logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE2IDUuMzA4Yy02LjA4MSAwLTExLjAxMSA0LjkxNS0xMS4wMTEgMTAuOTc3czQuOTMgMTAuOTc3IDExLjAxMSAxMC45NzcgMTEuMDExLTQuOTE1IDExLjAxMS0xMC45Nzd2MGMwLTYuMDYzLTQuOTMtMTAuOTc3LTExLjAxMS0xMC45Nzd6TTI2LjEwNSAxNi4yODZjMCA1LjU2NC00LjUyNCAxMC4wNzQtMTAuMTA1IDEwLjA3NHMtMTAuMTA1LTQuNTEtMTAuMTA1LTEwLjA3NGMwLTUuNTY0IDQuNTI0LTEwLjA3NCAxMC4xMDUtMTAuMDc0czEwLjEwNSA0LjUxIDEwLjEwNSAxMC4wNzR2MHpNOC40NjIgMjAuNjY0di04LjYwN2gyLjA2NGwxLjIzOSA1Ljg3MSAxLjIyNS01Ljg3MWgyLjA2OXY4LjYwN2gtMS4yODF2LTYuNzc1bC0xLjM1NiA2Ljc3NWgtMS4zMjhsLTEuMzUxLTYuNzc1djYuNzc1aC0xLjI4MXpNMTYuMzg3IDIwLjY2NHYtOC42MDdoMS4zNzl2OC42MDdoLTEuMzc5ek0yMC42MTcgMjAuNjY0di03LjE1MWgtMi4wMjd2LTEuNDU2aDUuNDI4djEuNDU2aC0yLjAyMnY3LjE1MWgtMS4zNzl6Ii8+Cjwvc3ZnPg==&color=white&link=LICENSE) 
 ![Last Commit](https://img.shields.io/github/last-commit/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod) 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod) 
-![Build](https://img.shields.io/github/actions/workflow/status/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod/build.yml)
+![Build](https://github.com/rfsjim/Jamesium-Industries-Minecraft-Tutorial-Mod/actions/workflows/build.yml/badge.svg)
 
 Features
 ---------
